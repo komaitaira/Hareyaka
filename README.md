@@ -21,9 +21,14 @@
 身近な人にはあまり言いたくないような悩み（健康、美容、お金、恋愛、etc.）を持つ方、悩みはあるけどわざわざ外に出向いていくほどでもない（銀行に話を聞きにいく等）と思っている方が、インターネット上で気軽に情報を手に入れられたり、その道のプロに話を聞きたい時に利用する
 
 ## 設計書
-
+ER図：https://www.draw.io/#G1Bpz4NuuUMQFlHKxPN-DPr6uCSm5QFzgW
+ワイヤーフレーム個人会員側：https://www.draw.io/#G15_xvrJZNuOE_iWD-G4-QUr7y9PjsRWbd
+ワイヤーフレーム法人会員側：https://www.draw.io/#G1bXba40GrUhMYTnxUA_s0Bf7o4oJcbJlr
+ワイヤーフレーム管理者側：https://www.draw.io/#G11xFB32F1o_L_Vm2u4cIMUahitXsDqkms
+テーブル定義書：https://docs.google.com/spreadsheets/d/1Bo2GLLkIjWINUhlxbrh8bp5UI-WAUD15oV_v3wc4OqA/edit#gid=1957857558
+アプリケーション詳細設計：https://docs.google.com/spreadsheets/d/1Ui2r66scEc2rbJDWFodH3EsaUTc5TQ4iVuRCOTneqqU/edit#gid=0
 ### 機能一覧
-https://docs.google.com/spreadsheets/d/1W4wlZuPI5ALpAkt4EvuLftHnyrNGN6Zlgp-5mHSqcrw/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/1zo5diDanQnlDX6ztauF_PCgrkGDQLfGkCZXiOt0s7hg/edit#gid=420035931
 
 Things you may want to cover:
 
