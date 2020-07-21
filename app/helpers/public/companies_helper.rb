@@ -1,0 +1,2 @@
+module Public::CompaniesHelper
+end
