@@ -1,0 +1,2 @@
+module Corporate::ArticlesHelper
+end
