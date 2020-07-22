@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'home#top'
-  get 'about' => 'home#about'
+  get 'about/vision' => 'home#vision'
+  get 'about/solution' => 'home#solution'
+  get 'about/challenge' => 'home#challenge'
 
   #管理者側ルーティング
   devise_for :admins, controllers: {
