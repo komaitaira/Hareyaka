@@ -1,2 +1,10 @@
-<h1>Corporate::Companies#unsubscribe</h1>
-<p>Find me in app/views/corporate/companies/unsubscribe.html.erb</p>
+<div class="row">
+  <h3>本当に退会しますか？</h3>
+  <p>
+    退会すると、企業登録情報や<br>
+    投稿済み記事等が閲覧できなくなります。<br>
+    退会する場合は、「退会する」をクリックしてください。
+  </p>
+  <%= link_to "退会する", corporate_unsubscribe_path, method: :put, class: "btn btn-outline-danger", "data-confirm" => "本当に退会しますか？", class:"btn btn-danger" %>
+  <%= link_to "退会しない", corporate_mypage_path, class: "btn btn-default" %>
+</div>
