@@ -1,2 +1,39 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div class="row-xs-12">
+  <div class="header_item">
+    <h3>会員登録情報</h3>
+  </div>
+</div>
+
+<div class="row-xs-12">
+  <table class='table col-xs-12'>
+    <tr>
+      <th>氏名</th>
+      <td><%= @user.full_name %></td>
+    </tr>
+    <tr>
+      <th>フリガナ</th>
+      <td><%= @user.kana_full_name %></td>
+    </tr>
+    <tr>
+      <th>郵便番号</th>
+      <td><%= @user.postal_code %></td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td><%= @user.address %></td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td><%= @user.phone_number %></td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= @user.email %></td>
+    </tr>
+  </table>
+</div>
+
+<div class="row-xs-12">
+	<%= link_to '編集する', mypage_edit_path(@user), class:"data-disable-with", class:"btn btn-default col-xs-6" %>
+	<%= link_to 'パスワードを変更する', edit_user_registration_path(@user), class:"data-disable-with", class:"btn btn-default col-xs-6" %>
+</div>

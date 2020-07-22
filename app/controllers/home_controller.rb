@@ -10,4 +10,7 @@ class HomeController < ApplicationController
 
   def challenge
   end
+
+  def thanks
+  end
 end
