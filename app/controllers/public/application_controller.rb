@@ -1,6 +1,6 @@
 class Public::ApplicationController < ApplicationController
   layout 'public/application'
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   # before_action :configure_permitted_parameters, if: :devise_controller?
 
   # # 会員ログイン後　＝＞　記事一覧

@@ -1,2 +1,55 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
+<div class="row-xs-12">
+  <div class="header_item">
+    <h3>登録情報編集</h3>
+  </div>
+</div>
+
+<div class="row-xs-12">
+  <%= form_for(@user, url: mypage_path) do |f| %>
+    <div class="col-xs-6">
+      <div class="form-group row">
+        <div class="col-xs-6">
+          <%= f.label :名前 %>
+          <%= f.label :"(姓)"%><%= f.text_field :last_name, autofocus: true, class: "form-control" %>
+        </div>
+        <div class="col-xs-6">
+          <%= f.label :"(名)" %><%= f.text_field :first_name, autofocus: true, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-xs-6">
+          <%= f.label :フリガナ %>
+          <%= f.label :"(セイ)"%><%= f.text_field :kana_last_name, autofocus: true, class: "form-control" %>
+        </div>
+        <div class="col-xs-6">
+          <%= f.label :"(メイ)" %><%= f.text_field :kana_first_name, autofocus: true, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :メールアドレス  %>
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :郵便番号（ハイフンなし） %>
+        <%= f.text_field :postal_code, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :住所 %>
+        <%= f.text_field :address, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :電話番号（ハイフンなし）%>
+        <%= f.text_field :phone_number, autofocus: true, class: "form-control" %>
+      </div>
+
+    <div class="actions">
+        <%= f.submit '編集内容を保存する',　class:"data-disable-with", class: "btn btn-success" %>　　
+        <%= link_to '退会する', unsubscribe_path, class:"btn btn-default" %>
+    </div>
+  <% end %>
+</div>

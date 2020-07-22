@@ -16,8 +16,8 @@
           <%= link_to 'Hareyaka', root_path, class: "logo" %>
           <ul class="flex">
             <p>ようこそ、<%= current_user.full_name %> さん!</p>
+            <li><%= link_to 'マイページ', mypage_path %></li>
             <li><%= link_to '記事一覧', articles_path %></li>
-            
             
             <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
           </ul>
