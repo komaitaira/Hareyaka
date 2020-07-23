@@ -1,6 +1,18 @@
 class Admin::ApplicationController < ApplicationController
   layout 'admin/application'
   # before_action :authenticate_admin!
+
+  # 詳細検索サイドバーの検索結果
+  # def set_search_user
+  #   @search_user = User.ransack(params[:q])
+  #   @q_users = @search_user.result.page(params[:page])
+  # end
+
+  # def set_search_company
+  #   @search_company = Company.ransack(params[:q])
+  #   @q_companies = @search_company.result.page(params[:page])
+  # end
+
   # before_action :configure_permitted_parameters, if: :devise_controller?
 
   # # 管理者ログイン後　＝＞　記事一覧
