@@ -24,9 +24,14 @@
         </div>
       </header>
     <% end %>
+
     <div class="body">
-      <%= yield %>
+      <div class='container'>
+        <p id="notice"><%= notice %></p>
+        <%= yield %>
+      </div>
     </div>
+
     <%= render 'layouts/footer' %>
   </body>
 </html>

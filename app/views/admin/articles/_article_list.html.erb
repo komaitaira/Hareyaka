@@ -1,0 +1,22 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th>会員ID</th>
+      <th>氏名</th>
+      <th>メールアドレス</th>
+      <th>会員ステータス</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% articles.each do |article| %>
+      <tr>
+        <td><%= article.created_at %></td>
+        <td><%= link_to article.company.company_name, admin_company_path(article.id) %></td>
+        <td><%= article.title %></td>
+        <td><%= article.genre.genre_name %></td>
+        <td><%= article.is_active == true ? "掲載中" : "掲載停止中" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -10,11 +10,18 @@
   </head>
 
   <body>
+    <%# ヘッダー %>
     <%= render 'layouts/header' %>
+
+    <%# body %>
     <div class="body">
-      <p id="notice"><%= notice %></p>
-      <%= yield %>
+      <div class="container">
+        <p id="notice"><%= notice %></p>
+        <%= yield %>
+      </div>
     </div>
+
+    <%# フッター %>
     <%= render 'layouts/footer' %>
   </body>
 </html>

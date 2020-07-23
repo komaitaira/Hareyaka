@@ -4,6 +4,7 @@ class Company < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :articles
   attachment :profile_image
   attachment :background_image
 end

@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.top {
+  background-image: image-url("Hareyaka.jpg");
+  background-size: cover;
+  background-position: 70px;
+  width: 100%;
+  height: 950px;
+}

@@ -1,23 +1,10 @@
 <div class="row-xs-12">
-  <div class="header_item">
-    <h3>登録情報編集</h3>
-  </div>
+  <h3 class="col-xs-7">登録情報編集</h3>
 </div>
 
-
-<%= form_for(@company, url: corporate_mypage_path) do |f| %>
-  <div class="row-xs-6">
-    <div class="col-xs-12">
-
-      <div class="form-group">
-        <%= f.label :背景画像  %>
-        <%= f.attachment_field :background_image %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :プロフィール画像  %>
-        <%= f.attachment_field :profile_image %>
-      </div>
+<div class="row">
+  <%= form_for(@company, url: corporate_mypage_path) do |f| %>
+    <div class="col-xs-7">
 
       <div class="form-group">
         <%= f.label :企業名  %>
@@ -55,14 +42,24 @@
       </div>
 
     </div>
-  </div>
 
-  <div class="row-xs-6">
-    <div class="col-xs-12">
+    <div class="col-xs-5">
+
+      <div class="form-group">
+        <%= f.label :背景画像  %>
+        <%= f.attachment_field :background_image %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :プロフィール画像  %>
+        <%= f.attachment_field :profile_image %>
+      </div>
+
       <div class="form-group">
         <%= f.label :会員へのメッセージ %> <p>500文字以内でご入力ください</p>
         <%= f.text_field :introduction, autofocus: true, class: "form-control", size: "100*500" %>
       </div>
+
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
