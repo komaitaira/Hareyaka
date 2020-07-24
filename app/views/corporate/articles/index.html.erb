@@ -1,1 +1,27 @@
-<h1>corporateの記事一覧</h1>
+<div class="row">
+  <div class="col-xs-4">
+    <%= render 'corporate/shared/search_article', search: @search %>
+    <h3>記事を登録する</h3>
+    <div class="new-btn-wrap">
+      <%= link_to "記事登録", new_corporate_article_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <% if @q_articles %>
+    <div class="col-xs-8">
+      <h3>記事一覧</h3>
+      <% if @q_articles.empty? %>
+        <%# 検索該当なしの場合 %>
+        <p class="top-empty-message">条件に合う記事が見つかりませんでした</p>
+      <% else %>
+        <%# 検索該当ありの場合 %>
+        <p><%="全#{@q_articles.total_count}件中" + "(#{@q_articles.count}件表示)" %></p>
+        <%= render 'article_list', articles: @q_articles %>
+        <div class="row text-center">
+          <%= paginate @q_articles, class: "paginate" %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+</div>

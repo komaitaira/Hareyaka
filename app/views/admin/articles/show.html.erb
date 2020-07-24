@@ -1,1 +1,31 @@
-admin show
+<div class="row">
+  <div class="col-xs-12">
+    <%= attachment_image_tag @article, :image, size: '1100x200', fallback: "no_image.png" %>
+    <h3>記事情報詳細</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <table class='table'>
+      <tr>
+        <th class="col-xs-2">ジャンル</th>
+        <td class="col-xs-10"><%= @article.genre.genre_name %></td>
+      </tr>
+      <tr>
+        <th>掲載ステータス</th>
+        <td><%= @article.is_active == true ? "掲載中" : "掲載停止中" %></td>
+      </tr>
+      <tr>
+        <th>記事タイトル</th>
+        <td><%= @article.title %></td>
+      </tr>
+      <tr>
+        <th>記事本文</th>
+        <td><%= @article.body %></td>
+      </tr>
+    </table>
+    <%= link_to '編集する', edit_admin_article_path(@article), class:"data-disable-with", class:"btn btn-default col-xs-6" %>
+    <%= link_to '記事一覧へ戻る', admin_articles_path, class:"data-disable-with", class:"btn btn-default col-xs-6" %>
+  </div>
+</div>
