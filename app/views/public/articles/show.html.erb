@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-xs-4">
+    <h4>ジャンル一覧</h4>
+    <h4>人気記事ランキング</h4>
+    <h4>詳細検索</h4>
+  </div>
+
+  <div class="col-xs-8">
+    <div class="title">
+      <h4 class="text-center">記事詳細</h4>
+    </div>
+    <hr class="titleHr">
+
+    <div class="article-title">
+      <h3 class="text-center"><%= @article.title %></h3>
+    </div>
+    <div class="row article-image">
+      <%= attachment_image_tag @article, :image, class: "col-xs-12", fallback: "no_image.png" %>
+    </div>
+    <div class="row article-company-genre-favorite">
+      <p class="col-xs-6 text-left">
+        投稿者：<%= @article.company.company_name %>         
+      </p>
+      <p class="col-xs-6 text-right">ジャンル：<%= @article.genre.genre_name %></p>
+    </div>
+    <div class="row article-body">
+      <p class="col-xs-12"><%= @article.body %></p>
+    </div>
+    <p class="text-right"><%= link_to "この記事の話をもっと聞きたい！", company_path(@article.company_id) %></p>
+  </div>
+</div>
