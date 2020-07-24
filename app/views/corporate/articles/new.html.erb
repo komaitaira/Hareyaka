@@ -1,0 +1,40 @@
+<div class="row">
+  <h3 class="col-xs-12">新規記事投稿</h3>
+</div>
+
+<div class="row">
+  <%= form_for(@article, url: corporate_articles_path) do |f| %>
+    <div class="col-xs-6">     
+      <div class="form-group">
+        <%= f.label :記事トップ画像 %>
+        <%= f.attachment_field :image %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :ジャンル %><br>
+        <%= f.collection_select :genre_id, Genre.all, :id, :genre_name, include_blank: "--選択してください--" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :掲載ステータス %><br>
+        <%= f.select :is_active, [["掲載中", true], ["掲載停止中", false]], include_blank: "--選択してください--" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit '記事を投稿する',　class: "data-disable-with", class: "btn btn-primary col-xs-12" %>
+      </div>
+    </div>
+
+    <div class="col-xs-6">
+      <div class="form-group">
+        <%= f.label :記事タイトル %>
+        <%= f.text_field :title, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :記事内容 %>
+        <%= f.text_field :body, autofocus: true, class: "form-control" %>
+      </div>
+    </div>
+  <% end %>
+</div>

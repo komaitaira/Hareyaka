@@ -1,0 +1,33 @@
+<%= search_form_for [:corporate, search] do |f| %>
+  <div class="article_search_form">
+    <h3>記事検索</h3>
+    <h4><%= link_to "全記事を表示", corporate_articles_path %></h4>
+    <div class="form-group row">
+      <div class="col-xs-12">
+        <%= f.label :created_at_cont, :投稿日時で検索 %>
+        <%= f.search_field :created_at_lteq_end_of_day, placeholder: "例)2020-07-01", autofocus: true, class: "form-control" %><p>までの投稿</p>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-xs-12">
+        <%= f.label :title_cont, :記事タイトルで検索 %><br>
+        <%= f.search_field :title_cont, placeholder: "例)資産運用", autofocus: true, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-xs-12">
+        <%= f.label :genre_genre_name_cont, :ジャンルで検索 %><br>
+        <%= f.search_field :genre_genre_name_cont, placeholder: "例)お金", autofocus: true, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-xs-12">
+        <%= f.label :is_active_eq, :掲載ステータスで検索 %><br>
+        <%= f.select :is_active_eq, [["掲載中", true], ["掲載停止中", false]], include_blank: "--選択してください--", autofocus: true, class: "form-control" %>
+      </div>
+    </div>
+    <div class="item_search_btns">
+      <%= f.submit "検索", class:"btn btn-info" %>
+    </div>
+  </div>
+<% end %>
