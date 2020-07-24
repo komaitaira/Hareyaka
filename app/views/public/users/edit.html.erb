@@ -46,8 +46,9 @@
       </div>
 
       <div class="actions">
-          <%= f.submit '編集内容を保存する',　class:"data-disable-with", class: "btn btn-success" %>　　
-          <%= link_to '退会する', unsubscribe_path, class:"btn btn-default" %>
+          <%= f.submit '編集内容を保存する', class: "btn btn-success col-xs-12" %>　
+          <%= link_to 'マイページへ戻る', mypage_path, class:"btn btn-default col-xs-12" %>　
+          <%= link_to '退会する', unsubscribe_path, class:"btn btn-default col-xs-12" %>
       </div>
     </div>
 
