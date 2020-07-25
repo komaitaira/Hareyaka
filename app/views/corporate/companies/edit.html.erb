@@ -3,7 +3,7 @@
 </div>
 
 <div class="row">
-  <%= form_for(@company, url: corporate_mypage_path) do |f| %>
+  <%= form_for(@company, url: corporate_company_path) do |f| %>
     <div class="col-xs-6">
       <div class="form-group">
         <%= f.label :企業名 %>
@@ -37,7 +37,7 @@
 
       <div class="actions">
         <%= f.submit '変更を保存する',　class:"data-disable-with", class: "btn btn-success col-xs-12" %>　　
-        <%= link_to 'マイページへ戻る', corporate_mypage_path, class:"btn btn-default col-xs-12" %>
+        <%= link_to 'マイページへ戻る', corporate_company_path(@company), class:"btn btn-default col-xs-12" %>
         <%= link_to '退会する', corporate_unsubscribe_path, class:"btn btn-default col-xs-12" %>
       </div>
     </div>

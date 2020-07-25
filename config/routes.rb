@@ -25,11 +25,9 @@ Rails.application.routes.draw do
     registrations: 'corporate/registrations'
   }
   namespace :corporate do
-    get 'mypage' => 'companies#show'
-    get 'mypage/edit' => 'companies#edit'
-    patch 'mypage' => 'companies#update'
     get 'unsubscribe' => 'companies#unsubscribe'
     put 'unsubscribe' => 'companies#hide'
+    resources :companies, only: [:show, :edit, :update]
     resources :articles
   end
 
@@ -40,12 +38,10 @@ Rails.application.routes.draw do
     registrations: 'public/registrations'
   }
   scope module: :public do
-    get 'mypage' => 'users#show'
-    get 'mypage/edit' => 'users#edit'
-    patch 'mypage' => 'users#update'
     get 'unsubscribe' => 'users#unsubscribe'
     put 'unsubscribe' => 'users#hide'
     get 'favorites' => 'users#favorites'
+    resources :users, only: [:show, :edit, :update]
     resources :companies, only: [:show]
     resources :articles, only: [:index, :show] do
       resource :favorites, only: [:create, :destroy]

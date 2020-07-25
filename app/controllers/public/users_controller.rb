@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  before_action :set_current_user, only:[:show, :edit, :update, :hide]
+  before_action :set_current_user, except: [:favorites]
   
   def show
   end
@@ -9,7 +9,7 @@ class Public::UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to mypage_path, notice: "会員情報の更新が完了しました。"
+      redirect_to user_path(@user), notice: "会員情報の更新が完了しました。"
     else
       render :edit
     end

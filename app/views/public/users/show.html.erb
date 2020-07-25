@@ -30,7 +30,7 @@
         <td><%= @user.email %></td>
       </tr>
     </table>
-    <%= link_to '編集する', mypage_edit_path(@user), class:"data-disable-with", class:"btn btn-default col-xs-6" %>
+    <%= link_to '編集する', edit_user_path(@user), class:"data-disable-with", class:"btn btn-default col-xs-6" %>
     <%= link_to 'パスワードを変更する', edit_user_registration_path(@user), class:"data-disable-with", class:"btn btn-default col-xs-6" %>
   </div>
   <div class="col-xs-4">

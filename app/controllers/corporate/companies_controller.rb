@@ -1,5 +1,5 @@
 class Corporate::CompaniesController < ApplicationController
-  before_action :set_current_company, only:[:show, :edit, :update, :hide]
+  before_action :set_current_company
 
   def show
   end
@@ -9,7 +9,7 @@ class Corporate::CompaniesController < ApplicationController
 
   def update
     if @company.update(company_params)
-      redirect_to corporate_mypage_path, notice: "企業情報の更新が完了しました。"
+      redirect_to corporate_company_path(@company), notice: "企業情報の更新が完了しました。"
     else
       render :edit
     end
