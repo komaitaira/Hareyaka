@@ -24,6 +24,10 @@ class Public::UsersController < Public::ApplicationController
     redirect_to thanks_path
   end
 
+  def favorites
+    @favorite_articles = current_user.favorite_articles.page(params[:page]).reverse_order
+  end
+
   private
   def set_current_user
     @user = current_user

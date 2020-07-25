@@ -45,6 +45,7 @@ Rails.application.routes.draw do
     patch 'mypage' => 'users#update'
     get 'unsubscribe' => 'users#unsubscribe'
     put 'unsubscribe' => 'users#hide'
+    get 'favorites' => 'users#favorites'
     resources :companies, only: [:show]
     resources :articles, only: [:index, :show] do
       resource :favorites, only: [:create, :destroy]
