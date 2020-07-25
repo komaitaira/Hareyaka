@@ -1,4 +1,4 @@
-class Admin::GenresController < Admin::ApplicationController
+class Admin::GenresController < ApplicationController
   before_action :set_genre, only:[:edit, :update]
 
   def index
