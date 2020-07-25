@@ -18,7 +18,7 @@
             <p>ようこそ、<%= current_user.full_name %> さん!</p>
             <li><%= link_to 'マイページ', mypage_path %></li>
             <li><%= link_to '記事一覧', articles_path %></li>
-            
+            <li><%= link_to 'お気に入り一覧', favorites_path %></li>
             <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
           </ul>
         </div>

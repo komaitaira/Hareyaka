@@ -4,7 +4,7 @@ class Corporate::ArticlesController < Corporate::ApplicationController
   def index
     # @articles = Article.page(params[:page])
     @search = current_company.articles.ransack(params[:q])
-    @q_articles = @search.result.page(params[:page])
+    @q_articles = @search.result.page(params[:page]).reverse_order
   end
 
   def new

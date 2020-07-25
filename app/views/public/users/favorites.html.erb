@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-xs-4">
+    <h4>ジャンル一覧</h4>
+    <h4>人気記事ランキング</h4>
+    <h4>詳細検索</h4>
+  </div>
+
+  <div class="col-xs-8">
+    <div class="title">
+      <h4 class="text-center">お気に入り記事一覧</h4>
+    </div>
+    <hr class="titleHr">
+
+    <% @favorite_articles.each do |favorite_article| %>
+      <div id="article_contents_<%= favorite_article.id %>">
+        <%= render 'public/shared/detail', article: favorite_article %>
+      </div>
+      <div class="row article-body">
+        <div class="col-xs-12">
+          <%= truncate(favorite_article.body, length: 200) do %>
+            <p class="text-right"><%= link_to "続きを読む", article_path(favorite_article.id) %></p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <div class="row text-center">
+      <%= paginate @favorite_articles %>
+    </div>
+  </div>
+</div>

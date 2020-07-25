@@ -12,22 +12,16 @@
     <hr class="titleHr">
 
     <% @articles.each do |article| %>
-      <div class="article-title">
-        <h3 class="text-center"><%= article.title %></h3>
-      </div>
-      <div class="row article-image">
-        <%= attachment_image_tag article, :image, class: "col-xs-12", fallback: "no_image.png" %>
-      </div>
-      <div class="row article-company-genre-favorite">
-        <p class="col-xs-6 text-left">
-          投稿者：<%= article.company.company_name %>         
-        </p>
-        <p class="col-xs-6 text-right">ジャンル：<%= article.genre.genre_name %></p>
+      <div id="article_contents_<%= article.id %>">
+        <%= render 'public/shared/detail', article: article %>
       </div>
       <div class="row article-body">
-        <p class="col-xs-12"><%= article.body %></p>
+        <div class="col-xs-12">
+          <%= truncate(article.body, length: 200) do %>
+            <p class="text-right"><%= link_to "続きを読む", article_path(article.id) %></p>
+          <% end %>
+        </div>
       </div>
-      <%= link_to "詳細を見る", article_path(article.id) %>
     <% end %>
     <div class="row text-center">
       <%= paginate @articles %>
