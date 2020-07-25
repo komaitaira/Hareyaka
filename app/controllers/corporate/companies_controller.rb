@@ -1,4 +1,4 @@
-class Corporate::CompaniesController < Corporate::ApplicationController
+class Corporate::CompaniesController < ApplicationController
   before_action :set_current_company, only:[:show, :edit, :update, :hide]
 
   def show

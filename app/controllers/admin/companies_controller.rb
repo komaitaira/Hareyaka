@@ -1,4 +1,4 @@
-class Admin::CompaniesController < Admin::ApplicationController
+class Admin::CompaniesController < ApplicationController
   before_action :set_company, only:[:show, :edit, :update]
 
   def index

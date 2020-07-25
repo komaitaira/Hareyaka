@@ -1,4 +1,4 @@
-class Corporate::ArticlesController < Corporate::ApplicationController
+class Corporate::ArticlesController < ApplicationController
   before_action :set_article, only:[:show, :edit, :update, :destroy]
 
   def index

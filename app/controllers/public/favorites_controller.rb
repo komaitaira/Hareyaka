@@ -1,4 +1,4 @@
-class Public::FavoritesController < Public::ApplicationController  
+class Public::FavoritesController < ApplicationController  
   def create
     @article = Article.find(params[:article_id])
     favorite = current_user.favorites.build(article_id: params[:article_id])

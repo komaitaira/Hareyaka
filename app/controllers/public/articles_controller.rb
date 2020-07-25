@@ -1,4 +1,6 @@
-class Public::ArticlesController < Public::ApplicationController
+class Public::ArticlesController < ApplicationController
+  before_action :authenticate_user!, except:[:index]
+
   def index
     @articles = Article.page(params[:page]).reverse_order
   end
