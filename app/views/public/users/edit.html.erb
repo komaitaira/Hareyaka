@@ -3,7 +3,7 @@
 </div>
 
 <div class="row">
-  <%= form_for(@user, url: mypage_path) do |f| %>
+  <%= form_for(@user, url: user_path) do |f| %>
     <div class="col-xs-8">
       <div class="form-group row">
         <div class="col-xs-6">
@@ -47,7 +47,7 @@
 
       <div class="actions">
           <%= f.submit '編集内容を保存する', class: "btn btn-success col-xs-12" %>　
-          <%= link_to 'マイページへ戻る', mypage_path, class:"btn btn-default col-xs-12" %>　
+          <%= link_to 'マイページへ戻る', user_path(@user), class:"btn btn-default col-xs-12" %>　
           <%= link_to '退会する', unsubscribe_path, class:"btn btn-default col-xs-12" %>
       </div>
     </div>

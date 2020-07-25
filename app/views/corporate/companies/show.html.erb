@@ -37,7 +37,7 @@
         <td><%= @company.email %></td>
       </tr>
     </table>
-    <%= link_to '編集する', corporate_mypage_edit_path(@company), class:"data-disable-with", class:"btn btn-default col-xs-6" %>
+    <%= link_to '編集する', edit_corporate_company_path(@company), class:"data-disable-with", class:"btn btn-default col-xs-6" %>
     <%= link_to 'パスワードを変更する', edit_company_registration_path(@company), class:"data-disable-with", class:"btn btn-default col-xs-6" %>
   </div>
   <div class="col-xs-6">

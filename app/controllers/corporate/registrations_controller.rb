@@ -56,7 +56,7 @@ class Corporate::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(resource)
-    corporate_mypage_path
+    corporate_company_path(resource)
   end
 
   # The path used after sign up for inactive accounts.

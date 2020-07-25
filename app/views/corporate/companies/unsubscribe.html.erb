@@ -10,7 +10,7 @@
       </p>
       <p class="text-center">
         <%= link_to "退会する", corporate_unsubscribe_path, method: :put, class: "btn btn-danger", "data-confirm" => "本当に退会しますか？" %>
-        <%= link_to "退会しない", corporate_mypage_path, class: "btn btn-default" %>
+        <%= link_to "退会しない", corporate_company_path(@company), class: "btn btn-default" %>
       </p>
     </div>
   </div>
