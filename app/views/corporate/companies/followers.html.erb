@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-xs-4">
+    <%# <%= render 'corporate/shared/search_article', search: @search %> %>
+    <h3>CSV出力をする</h3>
+    <div class="new-btn-wrap">
+      <h5>ボタン</h5>
+    </div>
+  </div>
+
+
+  <div class="col-xs-8">
+    <h3>フォロワー会員一覧</h3>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th></th>
+          <th>氏名</th>
+          <th>フリガナ</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @followers.each do |follower| %>
+          <tr>
+            <td><%= attachment_image_tag follower, :profile_image, size: '50x50', fallback: "no_image.png" %></td>
+            <td><%= follower.full_name %></td>
+            <td><%= follower.kana_full_name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="row text-center">
+      <%= paginate @followers %>
+    </div>
+  </div>
+</div>

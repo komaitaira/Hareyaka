@@ -27,7 +27,10 @@ Rails.application.routes.draw do
   namespace :corporate do
     get 'unsubscribe' => 'companies#unsubscribe'
     put 'unsubscribe' => 'companies#hide'
-    resources :companies, only: [:show, :edit, :update]
+    resources :companies, only: [:show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      get :followers, on: :member
+    end
     resources :articles
   end
 
@@ -41,7 +44,10 @@ Rails.application.routes.draw do
     get 'unsubscribe' => 'users#unsubscribe'
     put 'unsubscribe' => 'users#hide'
     get 'favorites' => 'users#favorites'
-    resources :users, only: [:show, :edit, :update]
+    resources :users, only: [:show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      get :follows, on: :member
+    end
     resources :companies, only: [:show]
     resources :articles, only: [:index, :show] do
       resource :favorites, only: [:create, :destroy]

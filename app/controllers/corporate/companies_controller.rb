@@ -1,5 +1,5 @@
 class Corporate::CompaniesController < ApplicationController
-  before_action :set_current_company
+  before_action :set_current_company, except: [:followers]
 
   def show
   end
@@ -22,6 +22,12 @@ class Corporate::CompaniesController < ApplicationController
     @company.update(is_active: false)
     reset_session
     redirect_to thanks_path
+  end
+
+  def followers
+    company = Company.find(params[:id])
+    # companyがフォローされている会員の情報を@followersと定義
+    @followers = company.followers.page(params[:page])
   end
 
   private

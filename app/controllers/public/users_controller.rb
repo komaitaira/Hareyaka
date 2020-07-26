@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  before_action :set_current_user, except: [:favorites]
+  before_action :set_current_user, except: [:follows]
   
   def show
   end
@@ -25,7 +25,13 @@ class Public::UsersController < ApplicationController
   end
 
   def favorites
-    @favorite_articles = current_user.favorite_articles.page(params[:page]).reverse_order
+    @favorite_articles = @user.favorite_articles.page(params[:page]).reverse_order
+  end
+
+  def follows
+    user = User.find(params[:id])
+    # userがフォローしている企業の情報を@followsと定義
+    @follows = user.followings.page(params[:page])
   end
 
   private
