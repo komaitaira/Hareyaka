@@ -36,5 +36,13 @@
     <h4>企業紹介</h4>
     <hr class="titleHr">
     <p><%= @company.introduction %></p>
+    <hr class="titleHr">
+    <% if current_user != @company %>
+      <% if @company.followed_by?(current_user) %>
+        <p><%= link_to "フォロー済み", user_relationships_path(@company.id), method: :delete %></p>
+      <% else %>
+        <p><%= link_to "フォローする", user_relationships_path(@company.id), method: :post %></p>
+      <% end %>
+    <% end %>
   </div>
 </div>
