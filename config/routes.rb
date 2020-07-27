@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   scope module: :public do
     get 'unsubscribe' => 'users#unsubscribe'
     put 'unsubscribe' => 'users#hide'
-    get 'favorites' => 'users#favorites'
+    get 'favorites' => 'articles#favorites'
     resources :users, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get :follows, on: :member

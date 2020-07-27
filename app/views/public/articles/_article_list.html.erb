@@ -1,0 +1,12 @@
+<% articles.each do |article| %>
+  <div id="article_contents_<%= article.id %>">
+    <%= render 'public/shared/detail', article: article %>
+  </div>
+  <div class="row article-body">
+    <div class="col-xs-12">
+      <%= truncate(article.body, length: 200) do %>
+        <p class="text-right"><%= link_to "続きを読む", article_path(article.id) %></p>
+      <% end %>
+    </div>
+  </div>
+<% end %>

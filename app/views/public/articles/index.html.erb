@@ -1,8 +1,6 @@
 <div class="row">
   <div class="col-xs-4">
-    <h4>ジャンル一覧</h4>
-    <h4>人気記事ランキング</h4>
-    <h4>詳細検索</h4>
+    <%= render 'public/shared/sidebar' %>
   </div>
 
   <div class="col-xs-8">
@@ -11,20 +9,28 @@
     </div>
     <hr class="titleHr">
 
-    <% @articles.each do |article| %>
-      <div id="article_contents_<%= article.id %>">
-        <%= render 'public/shared/detail', article: article %>
-      </div>
-      <div class="row article-body">
-        <div class="col-xs-12">
-          <%= truncate(article.body, length: 200) do %>
-            <p class="text-right"><%= link_to "続きを読む", article_path(article.id) %></p>
-          <% end %>
+    <% if @q_articles %>
+      <% if @q_articles.empty? %>
+        <%# 検索該当なしの場合 %>
+        <p class="top-empty-message">条件に合致する記事が見つかりませんでした。</p>
+      <% else %>
+        <%# 検索該当ありの場合 %>
+        <p><%="入力内容で検索した結果 #{@q_articles.total_count} 件の記事がヒットしました。" %></p>
+        <%= render 'article_list', articles: @q_articles %>
+        <div class="row text-center">
+          <%= paginate @q_articles, class: "paginate" %>
         </div>
-      </div>
+      <% end %>
+    <% elsif @articles %>   
+      <% if @articles.count > 0 %>
+        <%# 記事一覧 %>
+        <%= render 'article_list', articles: @articles %>
+        <div class="row text-center">
+          <%= paginate @articles, class: "paginate" %>
+        </div>
+      <% else %>
+        <h4>現在掲載している記事はありません。</h4>
+      <% end %>    
     <% end %>
-    <div class="row text-center">
-      <%= paginate @articles %>
-    </div>
   </div>
 </div>

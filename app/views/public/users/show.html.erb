@@ -1,8 +1,20 @@
-<div class="row-xs-12">
-  <h3 class="col-xs-8">会員登録情報</h3>
-</div>
-
 <div class="row">
+  <div class="col-xs-offset-4 col-xs-8">
+    <h3>会員登録情報</h3>
+  </div>
+
+  <div class="col-xs-4">
+    <%= attachment_image_tag @user, :profile_image, size: '200x200', fallback: "no_image.png" %>
+    <p>円グラフみたいなものを入れてもいいかも</p>
+    <p>円グラフみたいなものを入れてもいいかも</p>
+    <p>円グラフみたいなものを入れてもいいかも</p>
+    <p>円グラフみたいなものを入れてもいいかも</p>
+    <p>円グラフみたいなものを入れてもいいかも</p>
+    <p>円グラフみたいなものを入れてもいいかも</p>
+    <p>円グラフみたいなものを入れてもいいかも</p>
+    <p>円グラフみたいなものを入れてもいいかも</p>
+    <p>円グラフみたいなものを入れてもいいかも</p>
+  </div>
   <div class="col-xs-8">
     <table class='table'>
       <tr>
@@ -32,17 +44,5 @@
     </table>
     <%= link_to '編集する', edit_user_path(@user), class:"data-disable-with", class:"btn btn-default col-xs-6" %>
     <%= link_to 'パスワードを変更する', edit_user_registration_path(@user), class:"data-disable-with", class:"btn btn-default col-xs-6" %>
-  </div>
-  <div class="col-xs-4">
-    <%= attachment_image_tag @user, :profile_image, size: '200x200', fallback: "no_image.png" %>
-    <p>円グラフみたいなものを入れてもいいかも</p>
-    <p>円グラフみたいなものを入れてもいいかも</p>
-    <p>円グラフみたいなものを入れてもいいかも</p>
-    <p>円グラフみたいなものを入れてもいいかも</p>
-    <p>円グラフみたいなものを入れてもいいかも</p>
-    <p>円グラフみたいなものを入れてもいいかも</p>
-    <p>円グラフみたいなものを入れてもいいかも</p>
-    <p>円グラフみたいなものを入れてもいいかも</p>
-    <p>円グラフみたいなものを入れてもいいかも</p>
   </div>
 </div>
