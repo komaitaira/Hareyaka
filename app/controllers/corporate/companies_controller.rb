@@ -27,7 +27,17 @@ class Corporate::CompaniesController < ApplicationController
   def followers
     company = Company.find(params[:id])
     # companyがフォローされている会員の情報を@followersと定義
-    @followers = company.followers.page(params[:page])
+    @search = company.followers.ransack(params[:q])
+    @q_followers = @search.result.page(params[:page])
+
+    # CSVエクスポート機能
+    @followers = company.followers
+    respond_to do |format|
+      format.html
+      format.csv do |csv|
+        send_data render_to_string, filename: "フォロワー会員一覧.csv", type: :csv
+      end
+    end
   end
 
   private
