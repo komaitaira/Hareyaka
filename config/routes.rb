@@ -44,11 +44,13 @@ Rails.application.routes.draw do
     get 'unsubscribe' => 'users#unsubscribe'
     put 'unsubscribe' => 'users#hide'
     get 'favorites' => 'articles#favorites'
+    get 'contact/:company_id' => 'contacts#contact', as: 'contact'
     resources :users, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get :follows, on: :member
+      resource :contacts, only: [:create]
     end
-    resources :companies, only: [:show]
+    resources :companies, only: [:index, :show]
     resources :articles, only: [:index, :show] do
       resource :favorites, only: [:create, :destroy]
     end

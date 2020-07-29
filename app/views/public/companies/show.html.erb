@@ -37,12 +37,9 @@
     <hr class="titleHr">
     <p><%= @company.introduction %></p>
     <hr class="titleHr">
-    <% if current_user != @company %>
-      <% if @company.followed_by?(current_user) %>
-        <p><%= link_to "フォロー済み", user_relationships_path(@company.id), method: :delete %></p>
-      <% else %>
-        <p><%= link_to "フォローする", user_relationships_path(@company.id), method: :post %></p>
-      <% end %>
-    <% end %>
+    <span id="follow_button_<%= @company.id %>">
+      <%= render 'public/shared/follow_button', company: @company %>
+    </span>
+    <p><%= link_to "メールでお問い合わせ", contact_path(@company.id) %></p>
   </div>
 </div>

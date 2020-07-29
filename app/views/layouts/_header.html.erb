@@ -17,15 +17,16 @@
         <li>ようこそ、<%= current_company.company_name %>　様</li>
         <li><%= link_to 'マイページ', corporate_company_path(current_company) %></li>
         <li><%= link_to '記事一覧', corporate_articles_path %></li>
-        <li><%= link_to "フォロワー会員一覧", followers_corporate_company_path(current_company.id) %></li>
+        <li><%= link_to "フォロワー会員", followers_corporate_company_path(current_company.id) %></li>
         <li><%= link_to 'ログアウト', destroy_company_session_path, method: :delete %></li>
       <%# 個人会員ログインの場合 %>
       <% elsif user_signed_in? %>
         <li>ようこそ、<%= current_user.full_name %> さん!</li>
         <li><%= link_to 'マイページ', user_path(current_user) %></li>
         <li><%= link_to '記事一覧', articles_path %></li>
-        <li><%= link_to 'お気に入り一覧', favorites_path %></li>
-        <li><%= link_to "フォロー企業一覧", follows_user_path(current_user.id) %></li>
+        <li><%= link_to 'お気に入り', favorites_path %></li>
+        <li><%= link_to '専門家', companies_path %></li>
+        <li><%= link_to "フォロー企業", follows_user_path(current_user.id) %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
       <%# ログインしていない場合 %>
       <% else %>
