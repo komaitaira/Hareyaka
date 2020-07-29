@@ -5,14 +5,14 @@
 
   <div class="col-xs-8">
     <div class="title">
-      <h4 class="text-center">お気に入り(全 <%= current_user.favorites.count %> 件)</h4>
+      <h4 class="text-center">専門家</h4>
     </div>
     <hr class="titleHr">
 
-    <%= render 'article_list', articles: @favorite_articles %>
+    <%= render 'company_list', companies: @companies %>
 
     <div class="row text-center">
-      <%= paginate @favorite_articles %>
+      <%= paginate @companies %>
     </div>
   </div>
 </div>

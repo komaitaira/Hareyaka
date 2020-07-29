@@ -25,7 +25,12 @@
   height: 950px;
 }
 
-hr {
+.titleHr {
   margin-top: 0px;
   border-top: 1px solid #000;
+}
+
+.companyHr {
+  margin-top: 20px;
+  border-top: 1px solid rgba(185, 193, 194, 0.562);
 }
