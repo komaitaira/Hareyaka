@@ -1,37 +1,26 @@
 <div class="row">
   <div class="col-xs-4">
-    <%# <%= render 'corporate/shared/search_article', search: @search %> %>
+    <%= render 'corporate/shared/search_follower', search: @search %>
     <h3>CSV出力をする</h3>
-    <div class="new-btn-wrap">
-      <h5>ボタン</h5>
+    <div class="csv-btn-wrap">
+      <%= link_to "CSVエクスポート", followers_corporate_company_path(format: :csv), class: "btn btn-primary col-xs-12" %>
     </div>
   </div>
 
-
-  <div class="col-xs-8">
-    <h3>フォロワー会員一覧</h3>
-    <table class='table'>
-      <thead>
-        <tr>
-          <th></th>
-          <th>氏名</th>
-          <th>フリガナ</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @followers.each do |follower| %>
-          <tr>
-            <td><%= attachment_image_tag follower, :profile_image, size: '50x50', fallback: "no_image.png" %></td>
-            <td><%= follower.full_name %></td>
-            <td><%= follower.kana_full_name %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-    <div class="row text-center">
-      <%= paginate @followers %>
+  <% if @q_followers %>
+    <div class="col-xs-8">
+      <h3>フォロワー会員</h3>
+      <% if @q_followers.empty? %>
+        <%# 検索該当なしの場合 %>
+        <p class="top-empty-message">条件に合う会員が見つかりませんでした</p>
+      <% else %>
+        <%# 検索該当ありの場合 %>
+        <p><%="全#{@q_followers.total_count}件中" + "(#{@q_followers.count}件表示)" %></p>
+        <%= render 'follower_list', followers: @q_followers %>
+        <div class="row text-center">
+          <%= paginate @q_followers, class: "paginate" %>
+        </div>
+      <% end %>
     </div>
-  </div>
+  <% end %>
 </div>

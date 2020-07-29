@@ -1,0 +1,21 @@
+<%= search_form_for [:corporate, search], url: followers_corporate_company_path(current_company.id)  do |f| %>
+  <div class="user_search_form">
+    <h3>フォロワー会員検索</h3>
+    <h4><%= link_to "全フォロワー会員を表示", followers_corporate_company_path(current_company.id) %></h4>
+    <div class="form-group row">
+      <div class="col-xs-12">
+        <%= f.label :last_name_cont, :氏名で検索 %><br>
+        <%= f.search_field :last_name_cont, placeholder: "例)青山", autofocus: true, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-xs-12">
+        <%= f.label :email_cont, :メールアドレスで検索 %><br>
+        <%= f.search_field :email_cont, placeholder: "例)aoyama@email.com", autofocus: true, class: "form-control" %>
+      </div>
+    </div>
+    <div class="item_search_btns">
+      <%= f.submit "検索", class:"btn btn-info col-xs-12" %>
+    </div>
+  </div>
+<% end %>
