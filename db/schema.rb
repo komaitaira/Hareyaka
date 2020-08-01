@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_25_153854) do
+ActiveRecord::Schema.define(version: 2020_07_31_072914) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -56,6 +56,25 @@ ActiveRecord::Schema.define(version: 2020_07_25_153854) do
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
   end
 
+  create_table "company_entries", force: :cascade do |t|
+    t.integer "company_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_company_entries_on_company_id"
+    t.index ["room_id"], name: "index_company_entries_on_room_id"
+  end
+
+  create_table "company_messages", force: :cascade do |t|
+    t.integer "company_id"
+    t.integer "room_id"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_company_messages_on_company_id"
+    t.index ["room_id"], name: "index_company_messages_on_room_id"
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "article_id", null: false
@@ -75,6 +94,30 @@ ActiveRecord::Schema.define(version: 2020_07_25_153854) do
     t.integer "follower_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_entries", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_user_entries_on_room_id"
+    t.index ["user_id"], name: "index_user_entries_on_user_id"
+  end
+
+  create_table "user_messages", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_user_messages_on_room_id"
+    t.index ["user_id"], name: "index_user_messages_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

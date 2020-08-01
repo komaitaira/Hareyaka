@@ -10,6 +10,21 @@ class Public::CompaniesController < ApplicationController
   
   def show
     @company = Company.find(params[:id])
+    @currentUserEntry=UserEntry.where(user_id: current_user.id)
+    @companyEntry=CompanyEntry.where(company_id: @company.id)
+    @currentUserEntry.each do |cu|
+      @companyEntry.each do |c|
+        if cu.room_id == c.room_id then
+          @isRoom = true
+          @roomId = cu.room_id
+        end
+      end
+    end
+    unless @isRoom
+      @room = Room.new
+      @cu_entry = UserEntry.new
+      @c_entry = CompanyEntry.new
+    end
   end
 
   private
