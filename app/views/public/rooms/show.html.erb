@@ -1,0 +1,51 @@
+<div class="left-button">
+  <%= link_to "企業一覧に戻る", companies_path, class:"btn btn-default" %>
+</div>
+<h4 class="title">メッセージ</h4>
+<% @c_entries.each do |c| %>
+  <div class="company-name">
+    <h4>
+      <a class="rooms-company-link" href="/companies/<%= c.company.id %>">
+        <%= c.company.company_name %>
+      </a>
+    </h4>
+  </div>
+<% end %>
+<hr>
+<div class="row chats">
+  <div class="col-xs-6 chat">
+    <% if @c_messages.present? %>
+      <% @c_messages.each do |cm| %>
+        <div class="chat-box">
+          <div class="chat-face">
+            <%= attachment_image_tag cm.company, :profile_image, size: '50x50', fallback: "no_image.png" %>
+          </div>
+          <div class="chat-hukidashi"> <strong><%= cm.message %></strong> <br>
+            <%= cm.created_at.strftime("%Y-%m-%d %H:%M")%>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-xs-6 chat">
+    <% if @u_messages.present? %>
+      <% @u_messages.each do |um| %>
+        <div class="chat-box">
+          <div class="chat-face">
+            <%= attachment_image_tag um.user, :profile_image, size: '50x50', fallback: "no_image.png" %>
+          </div>
+          <div class="chat-hukidashi"> <strong><%= um.message %></strong> <br>
+            <%= um.created_at.strftime("%Y-%m-%d %H:%M")%>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-xs-offset-2 col-xs-8 col-xs-offset-2 posts">
+    <%= form_for @message do |f| %>
+      <%= f.text_area :message, placeholder: "メッセージを入力して下さい" , size: "100x10", class:"form-text-field" %>
+      <%= f.hidden_field :room_id, value: @room.id %>
+      <%= f.submit "投稿", class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

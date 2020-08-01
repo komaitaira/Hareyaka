@@ -18,6 +18,7 @@
         <li><%= link_to 'マイページ', corporate_company_path(current_company) %></li>
         <li><%= link_to '記事一覧', corporate_articles_path %></li>
         <li><%= link_to "フォロワー会員", followers_corporate_company_path(current_company.id) %></li>
+        <li><%= link_to 'DM一覧', corporate_rooms_path %></li>
         <li><%= link_to 'ログアウト', destroy_company_session_path, method: :delete %></li>
       <%# 個人会員ログインの場合 %>
       <% elsif user_signed_in? %>
