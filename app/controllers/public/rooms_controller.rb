@@ -11,10 +11,14 @@ class Public::RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     if UserEntry.where(user_id: current_user.id, room_id: @room.id).present?
-      @u_messages = @room.user_messages
-      @c_messages = @room.company_messages # これらをまとめてcreated_at順に表示することができれば会話のキャッチボール的な表示になるかも
-      array = [@u_messages, @c_messages]
-      @messages = array.map {|message| message.order(created_at: :desc)} # mapメソッドでやってみたけど@messagesで繰り返し処理するとmessageカラムとかがどっちのもの？というエラーが出る
+      array = [] # 空の配列arrayを用意
+      @room.user_messages.each do |u|
+        array << u # arrayにuser_messagesを代入
+      end
+      @room.company_messages.each do |c|
+        array << c # arrayにcompany_messagesを代入
+      end
+      @messages = array.sort{|p,n| p.created_at <=> n.created_at} # 配列arrayの中でcreated_atを比べて並び替えし、@messagesに代入
       @message = UserMessage.new
       @c_entries = @room.company_entries
     else
