@@ -1,0 +1,17 @@
+<h3 class="text-center">通知</h3>
+<%= link_to destroy_all_notifications_path, method: :delete do %>
+  <i class="fas fa-trash" style="color: black;"></i>
+  <h6 class="text-right" style="color: black;">全削除</h6>
+<% end %>
+<%= link_to rooms_path do %>
+  <h6 class="text-left" style="color: black;">DM一覧</h6>
+<% end %>
+<hr>
+<% if @notifications.exists? %>
+  <div class="users-index">
+    <%= render 'notification_list', notifications: @notifications %>
+    <%= pagenate @notifications %>
+  </div>
+<% else %>
+  <p>通知はありません</p>
+<% end %>

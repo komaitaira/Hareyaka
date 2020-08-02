@@ -4,6 +4,7 @@ class Public::UserMessagesController < ApplicationController
   def create
     if UserEntry.where(user_id: current_user.id, room_id: params[:user_message][:room_id]).present?
       @message = UserMessage.create(params.require(:user_message).permit(:user_id, :message, :room_id).merge(user_id: current_user.id))
+      @message.u_create_notification_message(current_user, @message.id, @message.room_id)
     else
       flash.now[:alert] = "メッセージ送信に失敗しました。"
     end

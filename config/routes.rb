@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   namespace :corporate do
     get 'unsubscribe' => 'companies#unsubscribe'
     put 'unsubscribe' => 'companies#hide'
+    delete 'destroy_all_notifications' => 'notifications#destroy_all'
     resources :companies, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get :followers, on: :member # フォロワーのみがDM受信対象
@@ -40,6 +41,7 @@ Rails.application.routes.draw do
     resources :rooms, only: [:index, :show] # indexがあればいいかも。corporate側は基本的に参照のみなのでcreateは不要
     resources :company_messages, only: [:create]
     resources :articles
+    resources :notifications, only: :index
   end
 
   #個人会員側ルーティング
@@ -52,6 +54,7 @@ Rails.application.routes.draw do
     get 'unsubscribe' => 'users#unsubscribe'
     put 'unsubscribe' => 'users#hide'
     get 'favorites' => 'articles#favorites'
+    delete 'destroy_all_notifications' => 'notifications#destroy_all'
     # get 'contact/:company_id' => 'contacts#contact', as: 'contact'
     resources :users, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
@@ -64,5 +67,6 @@ Rails.application.routes.draw do
     resources :articles, only: [:index, :show] do
       resource :favorites, only: [:create, :destroy]
     end
+    resources :notifications, only: :index
   end
 end

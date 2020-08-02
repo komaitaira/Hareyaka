@@ -1,0 +1,8 @@
+<div class="list clearfix">
+  <% @notifications.each do |notification| %>
+  <%= attachment_image_tag notification.u_visiter, :profile_image, size:'30x30', fallback: "no_image.png" %>
+  <p>
+    <%= notification.u_visiter.full_name %>さんからの<%= link_to 'メッセージ', corporate_room_path(notification.room_id) %>があります<span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)}前)" %></span>
+  </p>
+  <% end %>
+</div>
