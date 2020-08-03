@@ -4,11 +4,14 @@ class Company < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :company_entries, dependent: :destroy
-  has_many :company_messages, dependent: :destroy
+  has_many :rooms, dependent: :destroy
+  has_many :messages, dependent: :destroy
   has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
   has_many :followers, through: :passive_relationships, source: :following
   has_many :articles
+  # has_many :c_active_notifications, class_name: 'Notification', foreign_key: 'company_id', dependent: :destroy
+  # has_many :c_passive_notifications, class_name: 'Notification', foreign_key: 'company_id', dependent: :destroy
+  has_many :notifications, dependent: :destroy
   attachment :profile_image
   attachment :background_image
 

@@ -71,11 +71,12 @@ gem 'devise-i18n-views'
 gem 'rails-i18n'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
-gem 'bootstrap-sass'
-gem 'jquery-rails'
 gem 'ransack'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
+gem 'jquery-rails'
+gem 'bootstrap'
+gem 'summernote-rails'
 
 gem 'dotenv-rails'
 group :production do

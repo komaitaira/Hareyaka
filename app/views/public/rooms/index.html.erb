@@ -1,0 +1,6 @@
+<% @rooms.each do |room| %>
+  <%= link_to room_path(room.id) do %>
+    <%= room.company.company_name %>
+    
+  <% end %>
+<% end %>

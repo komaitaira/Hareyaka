@@ -31,9 +31,9 @@
         <%= f.text_field :title, autofocus: true, class: "form-control" %>
       </div>
 
-      <div class="form-group">
+      <div class="field">
         <%= f.label :記事内容 %>
-        <%= f.text_field :body, autofocus: true, class: "form-control" %>
+        <%= f.text_area :body, 'data-provider': :summernote %>
       </div>
     </div>
   <% end %>

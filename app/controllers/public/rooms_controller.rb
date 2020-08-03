@@ -1,28 +1,37 @@
 class Public::RoomsController < ApplicationController
   before_action :authenticate_user!
   
+  def index
+    @rooms = current_user.rooms
+  end
+  
+  # 基本的にDMを始めるのは必ず個人会員なので個人会員側のみcreate定義
   def create
-    @room = Room.create
-    @cu_entry = UserEntry.create(room_id: @room.id, user_id: current_user.id)
-    @c_entry = CompanyEntry.create(params.require(:company_entry).permit(:company_id, :room_id).merge(room_id: @room.id)) # @company = Comapny.find(params[:id])でも取れそう
-    redirect_to "/rooms/#{@room.id}"
+    @room = Room.new(room_params)
+    if @room.save
+      redirect_to "/rooms/#{@room.id}"
+    else
+      redirect_back(fallback_location: root_path)
+    end
   end
   
   def show
     @room = Room.find(params[:id])
-    if UserEntry.where(user_id: current_user.id, room_id: @room.id).present?
-      array = [] # 空の配列arrayを用意
-      @room.user_messages.each do |u|
-        array << u # arrayにuser_messagesを代入
-      end
-      @room.company_messages.each do |c|
-        array << c # arrayにcompany_messagesを代入
-      end
-      @messages = array.sort{|p,n| p.created_at <=> n.created_at} # 配列arrayの中でcreated_atを比べて並び替えし、@messagesに代入
-      @message = UserMessage.new
-      @c_entries = @room.company_entries
+    if Room.where(user_id: current_user.id, company_id: @room.company_id).present?
+      # Roomに紐づくnotificationsから通知を受け取った側が個人のデータかつcheckedがfalseのものを取得しtrueに更新
+      Notification.where(
+        receiver_id: current_user.id,
+        receiver_class: "user",
+        checked: false
+      ).update_all(checked: true)
+      @messages = @room.messages.order(updated_at: "ASC")
+      @message = Message.new
     else
       redirect_back(fallback_location: root_path)
     end
+  end
+
+  def room_params
+    params.require(:room).permit(:user_id, :company_id)
   end
 end

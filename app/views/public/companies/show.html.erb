@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-xs-12">
+  <div class="col-sm-12">
     <%= attachment_image_tag @company, :background_image, size: '1135x200', fallback: "no_image.png" %>
     <h3 class="text-center"><%= @company.company_name %></h3>
     <hr class="titleHr">
@@ -7,7 +7,7 @@
 </div>
 
 <div class="row">
-  <div class="col-xs-6">
+  <div class="col-sm-6">
     <h4>企業情報</h4>
     <table class='table'>
       <tr>
@@ -32,7 +32,7 @@
     </div>
   </div>
 
-  <div class="col-xs-6">
+  <div class="col-sm-6">
     <h4>企業紹介</h4>
     <hr class="titleHr">
     <p><%= @company.introduction %></p>
@@ -43,16 +43,12 @@
     <%# チャットボタン表示 %>
     <% if @company.followed_by?(current_user)  %>
       <% if @isRoom == true %>
-        <p class="company-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary">チャットへ</a>
+        <p class="company-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary">DMへ進む</a>
       <% else %>
         <%= form_for @room do |f| %>
-          <%= fields_for @cu_entry do |cu| %>
-            <%= cu.hidden_field :user_id, value: current_user.id %>
-          <% end %>
-          <%= fields_for @c_entry do |c| %>
-            <%= c.hidden_field :company_id, value: @company.id %>
-          <% end %>
-          <%= f.submit "チャットを始める", class:"btn btn-primary user-show-chat"%>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :company_id, value: @company.id %>
+          <%= f.submit "DMを始める", class:"btn btn-primary user-show-chat"%>
         <% end %>
       <% end %>
     <% end %>

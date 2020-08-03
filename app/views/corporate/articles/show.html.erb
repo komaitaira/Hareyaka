@@ -22,7 +22,7 @@
       </tr>
       <tr>
         <th>記事本文</th>
-        <td><%= @article.body %></td>
+        <td><%= @article.body.html_safe %></td>
       </tr>
     </table>
     <%= link_to '編集する', edit_corporate_article_path(@article), class:"data-disable-with", class:"btn btn-default col-xs-6" %>

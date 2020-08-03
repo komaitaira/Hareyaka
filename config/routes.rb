@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
-  namespace :corporate do
-    get 'rooms/show'
-  end
-  namespace :public do
-    get 'rooms/show'
-  end
+
   root 'home#top'
   get 'about/vision' => 'home#vision'
   get 'about/solution' => 'home#solution'
@@ -33,13 +28,15 @@ Rails.application.routes.draw do
   namespace :corporate do
     get 'unsubscribe' => 'companies#unsubscribe'
     put 'unsubscribe' => 'companies#hide'
+    delete 'destroy_all_notifications' => 'notifications#destroy_all'
     resources :companies, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get :followers, on: :member # フォロワーのみがDM受信対象
     end
     resources :rooms, only: [:index, :show] # indexがあればいいかも。corporate側は基本的に参照のみなのでcreateは不要
-    resources :company_messages, only: [:create]
+    resources :messages, only: [:create]
     resources :articles
+    resources :notifications, only: :index
   end
 
   #個人会員側ルーティング
@@ -52,17 +49,19 @@ Rails.application.routes.draw do
     get 'unsubscribe' => 'users#unsubscribe'
     put 'unsubscribe' => 'users#hide'
     get 'favorites' => 'articles#favorites'
+    delete 'destroy_all_notifications' => 'notifications#destroy_all'
     # get 'contact/:company_id' => 'contacts#contact', as: 'contact'
     resources :users, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get :follows, on: :member
       # resource :contacts, only: [:create]
     end
-    resources :rooms, only: [:create, :show]
-    resources :user_messages, only: [:create]
+    resources :rooms, only: [:index, :create, :show]
+    resources :messages, only: [:create]
     resources :companies, only: [:index, :show] # :showにDM開始ボタン表示
     resources :articles, only: [:index, :show] do
       resource :favorites, only: [:create, :destroy]
     end
+    resources :notifications, only: :index
   end
 end
