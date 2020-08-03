@@ -2,25 +2,25 @@
   <div class="article_search_form">
     <h4 class="text-center">詳細検索</h4>
     <div class="form-group row">
-      <div class="col-xs-12">
+      <div class="col-sm-12">
         <%= f.label :created_at_cont, :投稿日時で検索 %>
         <%= f.search_field :created_at_lteq_end_of_day, placeholder: "例)2020-07-01", class: "form-control" %><p>までの投稿</p>
       </div>
     </div>
     <div class="form-group row">
-      <div class="col-xs-12">
+      <div class="col-sm-12">
         <%= f.label :company_company_name_cont, :投稿企業で検索 %><br>
         <%= f.search_field :company_company_name_cont, placeholder: "例)三菱USJ銀行", class: "form-control" %>
       </div>
     </div>
       <div class="form-group row">
-        <div class="col-xs-12">
+        <div class="col-sm-12">
           <%= f.label :body_cont, :キーワードで検索 %><br>
           <%= f.search_field :body_cont, placeholder: "例)資産運用", class: "form-control" %>
         </div>
       </div>
       <div class="item_search_btns">
-        <%= f.submit "検索", class:"btn btn-info col-xs-12" %>
+        <%= f.submit "検索", class:"btn btn-info col-sm-12" %>
       </div>
   </div>
 <% end %>

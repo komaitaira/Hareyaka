@@ -5,6 +5,7 @@ class Public::RoomsController < ApplicationController
     @rooms = current_user.rooms
   end
   
+  # 基本的にDMを始めるのは必ず個人会員なので個人会員側のみcreate定義
   def create
     @room = Room.new(room_params)
     if @room.save
@@ -17,15 +18,13 @@ class Public::RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     if Room.where(user_id: current_user.id, company_id: @room.company_id).present?
+      # Roomに紐づくnotificationsから通知を受け取った側が個人のデータかつcheckedがfalseのものを取得しtrueに更新
+      Notification.where(
+        receiver_id: current_user.id,
+        receiver_class: "user",
+        checked: false
+      ).update_all(checked: true)
       @messages = @room.messages.order(updated_at: "ASC")
-      # array = [] # 空の配列arrayを用意
-      # @room.user_messages.each do |u|
-      #   array << u # arrayにuser_messagesを代入
-      # end
-      # @room.company_messages.each do |c|
-      #   array << c # arrayにcompany_messagesを代入
-      # end
-      # @messages = array.sort{|p,n| p.created_at <=> n.created_at} # 配列arrayの中でcreated_atを比べて並び替えし、@messagesに代入
       @message = Message.new
     else
       redirect_back(fallback_location: root_path)

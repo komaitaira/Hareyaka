@@ -1,17 +1,20 @@
 class Public::NotificationsController < ApplicationController
   def index
-    #current_userのmessageに紐づいた通知一覧
-    @notifications = current_user.notifications.page(params[:page])
-    #notificationの中でまだ確認していない(indexに一度も遷移していない)通知のみ探し出しcheckedをtrueに複数同時更新
-    @notifications.where(checked: false).each do |notification|
-      notification.update_attributes(checked: true)
-    end
-    # @notifications = notifications.where.not(user_id: current_user.id)
+    #Notificationモデルの中で通知を受け取った側のid(receiver_id)と、class(receiver_class)の配列を取得
+    @notifications = Notification.where(
+      receiver_id: current_user.id,
+      receiver_class: "user",
+      checked: false
+    ).page(params[:page])
   end
 
   def destroy_all
     #通知を全削除
-    @notifications = current_user.notifications.destroy_all
+    @notifications = Notification.where(
+      receiver_id: current_user.id,
+      receiver_class: "user",
+      checked: false
+    ).destroy_all
     redirect_to notifications_path
   end
 end

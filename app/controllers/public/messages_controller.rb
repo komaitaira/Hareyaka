@@ -3,12 +3,18 @@ class Public::MessagesController < ApplicationController
 
   def create
     if Room.where(user_id: current_user.id, id: params[:message][:room_id]).present?
-      @message = Message.create(params.require(:message).permit(:user_id, :message, :room_id).merge(user_id: current_user.id))
-      notification = Notification.new(user_id: current_user.id, room_id: @message.room_id, company_id: @message.room.company_id)
-      # 自分のメッセージを自分に通知する必要はないため、通知済みとする
-      if notification.user_id == current_user.id
-        notification.checked = true
-      end
+      @message = Message.create(
+        params.require(:message).permit(:user_id, :message, :room_id)
+        .merge(user_id: current_user.id)
+      )
+      # Messageがcreateされた直後にNotificationモデルのインスタンス作成。通知を送る側(個人)、通知を受け取る側(法人)
+      notification = Notification.new(
+        sender_id: current_user.id, 
+        sender_class: "user", 
+        receiver_id: @message.room.company_id, 
+        receiver_class: "company", 
+        room_id: @message.room_id
+      )
       notification.save if notification.valid?
     else
       flash.now[:alert] = "メッセージ送信に失敗しました。"

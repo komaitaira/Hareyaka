@@ -83,15 +83,16 @@ ActiveRecord::Schema.define(version: 2020_08_01_231704) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "company_id"
+    t.integer "receiver_id"
+    t.integer "sender_id"
+    t.string "receiver_class"
+    t.string "sender_class"
+    t.string "action"
     t.integer "room_id"
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["company_id"], name: "index_notifications_on_company_id"
     t.index ["room_id"], name: "index_notifications_on_room_id"
-    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|

@@ -1,9 +1,9 @@
 <% companies.each do |company| %>
   <div class="row">
-    <div class="col-xs-3">
-      <%= attachment_image_tag company, :profile_image, class: "col-xs-12", fallback: "no_image.png" %>
+    <div class="col-sm-3">
+      <%= attachment_image_tag company, :profile_image, class: "col-sm-12", fallback: "no_image.png" %>
     </div>
-    <div class="col-xs-9">
+    <div class="col-sm-9">
       <h4><%= link_to company.company_name, company_path(company.id) %></h4>
       <p><%= truncate(company.introduction, length: 100) %></p>
       <div id="follow_button_<%= company.id %>">

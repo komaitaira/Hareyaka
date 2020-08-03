@@ -1,10 +1,9 @@
 <h3 class="text-center">通知</h3>
-<%= link_to destroy_all_notifications_path, method: :delete do %>
-  <i class="fas fa-trash" style="color: black;"></i>
-  <h6 class="text-right" style="color: black;">全削除</h6>
+<%= link_to destroy_all_notifications_path, method: :delete, "data-confirm" => "確認していないメッセージがあります。本当に削除しますか？" do %>
+  <i class="fas fa-trash-alt" style="color: black;">全削除</i>
 <% end %>
 <%= link_to rooms_path do %>
-  <h6 class="text-left" style="color: black;">DM一覧</h6>
+  <i class="far fa-envelope" style="color: black;">DM一覧</i>
 <% end %>
 <hr>
 <% if @notifications.exists? %>
