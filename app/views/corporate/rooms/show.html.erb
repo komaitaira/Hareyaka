@@ -1,30 +1,26 @@
 <div class="left-button">
   <%= link_to "DM一覧に戻る", corporate_rooms_path, class:"btn btn-default" %>
 </div>
-<% @u_entries.each do |u| %>
-  <div class="user-name">
-    <h3 class="text-center">
-      <%= u.user.full_name %>
-    </h3>
-  </div>
-<% end %>
+<div class="user-name">
+  <h3 class="text-center"><%= @room.user.full_name %></h3>
+</div>
 <hr>
 <div class="row">
   <div class="col-xs-offset-1 col-xs-10 col-xs-offset-1">
     <% @messages.each do |m| %>
-      <% if m.attribute_present?(:company_id) %>
-        <div class="col-xs-12 text-right">
+      <% if m.attribute_present?(:user_id) %>
+        <div class="col-xs-12 text-left">
           <div class="chat-face">
-            <%= attachment_image_tag m.company, :profile_image, size: '50x50', fallback: "no_image.png" %>
+            <%= attachment_image_tag m.user, :profile_image, size: '50x50', fallback: "no_image.png" %>
           </div>
           <div class="chat-hukidashi"> <strong><%= m.message %></strong> <br>
             <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
           </div>
         </div>
-      <% elsif m.attribute_present?(:user_id) %>
-        <div class="col-xs-12 text-left">
+      <% elsif m.attribute_present?(:company_id) %>
+        <div class="col-xs-12 text-right">
           <div class="chat-face">
-            <%= attachment_image_tag m.user, :profile_image, size: '50x50', fallback: "no_image.png" %>
+            <%= attachment_image_tag m.company, :profile_image, size: '50x50', fallback: "no_image.png" %>
           </div>
           <div class="chat-hukidashi"> <strong><%= m.message %></strong> <br>
             <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
@@ -34,7 +30,7 @@
     <% end %>
   </div>
   <div class="col-xs-offset-2 col-xs-8 col-xs-offset-2">
-    <%= form_for(@message, url: corporate_company_messages_path) do |f| %>
+    <%= form_for(@message, url: corporate_messages_path) do |f| %>
       <%= f.text_area :message, placeholder: "メッセージを入力して下さい" , size: "100x10", class:"form-text-field" %>
       <%= f.hidden_field :room_id, value: @room.id %>
       <p class="text-right"><%= f.submit "投稿", class: 'btn btn-primary' %></p>

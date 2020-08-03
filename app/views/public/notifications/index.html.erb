@@ -10,7 +10,7 @@
 <% if @notifications.exists? %>
   <div class="users-index">
     <%= render 'notification_list', notifications: @notifications %>
-    <%= pagenate @notifications %>
+    <%= paginate @notifications %>
   </div>
 <% else %>
   <p>通知はありません</p>

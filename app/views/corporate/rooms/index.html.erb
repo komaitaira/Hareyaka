@@ -1,5 +1,5 @@
 <% @rooms.each do |room| %>
-  <%= link_to corporate_room_path(room.room.id) do %>
+  <%= link_to corporate_room_path(room.id) do %>
     <%= room.user.full_name %>
     
   <% end %>

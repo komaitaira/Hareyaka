@@ -1,5 +1,5 @@
 module Public::NotificationsHelper
   def user_unchecked_notifications
-    @notifications = current_user.passive_notifications.where(checked: false)
+    @notifications = current_user.notifications.where(checked: false)
   end
 end
