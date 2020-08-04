@@ -24,7 +24,7 @@
 
 
 $(function() {
-	$(document).on('turbolinks:load', () => {
+	$(document).on('turbolinks:load', function() {
 		// 住所自動入力機能
     $('#user_postal_code').jpostal({
       postcode : [
