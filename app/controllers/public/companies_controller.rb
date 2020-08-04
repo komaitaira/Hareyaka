@@ -1,8 +1,8 @@
 class Public::CompaniesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_search_genre
-  before_action :set_ranking
-  before_action :set_ransack
+  before_action :set_search_genre, only:[:index]
+  before_action :set_ranking, only:[:index]
+  before_action :set_ransack, only:[:index]
 
   def index
     @companies = Company.all.page(params[:page])

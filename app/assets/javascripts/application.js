@@ -19,3 +19,28 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+
+$(function() {
+	$(document).on('turbolinks:load', () => {
+		// 住所自動入力機能
+    $('#user_postal_code').jpostal({
+      postcode : [
+      '#user_postal_code'
+      ],
+
+      address: {
+        "#user_address": "%3%4%5%6%7"
+      }
+    });
+    $('#company_postal_code').jpostal({
+      postcode : [
+      '#company_postal_code'
+      ],
+
+      address: {
+        "#company_address": "%3%4%5%6%7"
+      }
+    });
+	});
+});
