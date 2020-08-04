@@ -136,6 +136,7 @@ GEM
     io-like (0.3.1)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
+    jp_prefecture (0.10.0)
     jquery-rails (4.4.0)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -337,6 +338,7 @@ DEPENDENCIES
   devise-i18n-views
   dotenv-rails
   jbuilder (~> 2.5)
+  jp_prefecture
   jquery-rails
   kaminari
   kaminari-bootstrap

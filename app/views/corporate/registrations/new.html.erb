@@ -27,7 +27,7 @@
 
     <div class="form-group">
       <%= f.label :住所 %>
-      <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "form-control" %>
+      <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "form-control", collection: JpPrefecture::Prefecture.all, :value_method => :name %>
     </div>
 
     <div class="form-group">
