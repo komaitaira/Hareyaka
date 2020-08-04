@@ -18,6 +18,8 @@
 //= require summernote-init
 //= require activestorage
 //= require turbolinks
+//= require chartkick
+//= require Chart.bundle
 //= require_tree .
 
 

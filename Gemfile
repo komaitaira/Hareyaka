@@ -78,6 +78,7 @@ gem 'kaminari-bootstrap'
 gem 'jquery-rails'
 gem 'bootstrap'
 gem 'summernote-rails'
+gem "chartkick"
 
 gem 'dotenv-rails'
 group :production do
