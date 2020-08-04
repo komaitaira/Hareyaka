@@ -1,6 +1,6 @@
 class Corporate::RoomsController < ApplicationController
   def index
-    @rooms = current_company.rooms
+    @rooms = current_company.rooms.joins(:messages).includes(:messages).order("messages.created_at DESC")
   end
   
   def show

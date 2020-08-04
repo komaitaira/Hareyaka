@@ -6,9 +6,9 @@ class Notification < ApplicationRecord
   # 通知を送った側の名前を取得
   def sender_name
     if sender_class == "user"
-      User.find(receiver_id).full_name
+      User.find(sender_id).full_name
     else
-      Company.find(receiver_id).company_name
+      Company.find(sender_id).company_name
     end
   end
 

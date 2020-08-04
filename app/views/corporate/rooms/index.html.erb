@@ -1,6 +1,7 @@
 <% @rooms.each do |room| %>
   <%= link_to corporate_room_path(room.id) do %>
-    <%= room.user.full_name %>
-    
+    <%= attachment_image_tag room.user, :profile_image, size:'30x30', fallback: "no_image.png" %>
+    <h4><%= room.user.full_name %></h4>
+    <%= most_new_message(room) %>
   <% end %>
 <% end %>

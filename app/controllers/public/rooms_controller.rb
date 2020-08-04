@@ -2,7 +2,7 @@ class Public::RoomsController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @rooms = current_user.rooms
+    @rooms = current_user.rooms.joins(:messages).includes(:messages).order("messages.created_at DESC")
   end
   
   # 基本的にDMを始めるのは必ず個人会員なので個人会員側のみcreate定義
