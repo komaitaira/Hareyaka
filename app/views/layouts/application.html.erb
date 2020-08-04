@@ -4,17 +4,24 @@
     <title>Hareyaka</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/f9d805bcc9.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <%# ヘッダー %>
     <%= render 'layouts/header' %>
+
+    <%# body %>
     <div class="body">
-      <p id="notice"><%= notice %></p>
-      <%= yield %>
+      <div class="container">
+        <p id="notice"><%= notice %></p>
+        <%= yield %>
+      </div>
     </div>
+
+    <%# フッター %>
     <%= render 'layouts/footer' %>
   </body>
 </html>

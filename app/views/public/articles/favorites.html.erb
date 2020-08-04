@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-sm-4">
+    <%= render 'public/shared/sidebar' %>
+  </div>
+
+  <div class="col-sm-8">
+    <div class="title">
+      <h4 class="text-center">お気に入り(全 <%= current_user.favorites.count %> 件)</h4>
+    </div>
+    <hr class="titleHr">
+
+    <%= render 'article_list', articles: @favorite_articles %>
+
+    <div class="row text-center">
+      <%= paginate @favorite_articles %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-sm-4">
+    <%= render 'public/shared/sidebar' %>
+  </div>
+
+  <div class="col-sm-8">
+    <div class="title">
+      <h4 class="text-center">記事詳細</h4>
+    </div>
+    <hr class="titleHr">
+
+    <div id="article_contents_<%= @article.id %>">
+      <%= render 'public/shared/detail', article: @article %>
+    </div>
+    <div class="row article-body">
+      <div class="col-sm-12">
+        <p><%= @article.body.html_safe %></p>
+        <p class="text-right"><%= link_to "この記事の話をもっと聞きたい！", company_path(@article.company_id) %></p>
+      </div>
+    </div>
+  </div>
+</div>

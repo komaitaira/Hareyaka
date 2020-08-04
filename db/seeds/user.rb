@@ -13,7 +13,7 @@ User.create!(
       password: "aoyama",
       password_confirmation: "aoyama",
       is_active: true,
-      profile_image_id: open("./db/images/青山和久.jpg")
+      # profile_image_id: open("./db/images/青山和久.jpg")
     },
 
     {
@@ -29,7 +29,7 @@ User.create!(
       password: "okazaki",
       password_confirmation: "okazaki",
       is_active: true,
-      profile_image_id: open("./db/images/岡崎瞳.png")
+      # profile_image_id: open("./db/images/岡崎瞳.png")
     }
   ]
 )

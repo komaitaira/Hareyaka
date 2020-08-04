@@ -1,0 +1,28 @@
+<div class="article-title">
+  <h3 class="text-center"><%= article.title %></h3>
+  <p class="col-xs-6 text-left">ジャンル：<%= article.genre.genre_name %></p>
+  <p class="col-xs-6 text-right"><%= article.created_at.strftime('%Y/%m/%d') %></p>
+</div>
+<div class="row article-image">
+  <%= attachment_image_tag article, :image, class: "col-sm-12", fallback: "no_image.png" %>
+</div>
+<div class="row article-company-favorite">
+  <p class="col-xs-6 text-left">投稿者：　
+    <%= article.company.company_name %>
+  </p>
+  <p class="col-xs-6 text-right">お気に入り
+  <% if user_signed_in? %>
+    <% if article.favorited_by?(current_user) %>
+      <%= link_to article_favorites_path(article.id), method: :delete, remote: true do %>
+        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+        <%= article.favorites.count %>
+      <% end %>
+    <% else %>
+      <%= link_to article_favorites_path(article.id), method: :post, remote: true do %>
+        <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+        <%= article.favorites.count %>
+      <% end %>
+    <% end %> 
+  <% end %>
+  </p>      
+</div>

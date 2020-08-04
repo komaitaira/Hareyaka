@@ -1,2 +1,46 @@
-<h1>Corporate::Companies#show</h1>
-<p>Find me in app/views/corporate/companies/show.html.erb</p>
+<div class="row">
+  <div class="col-xs-12">
+    <%= attachment_image_tag @company, :background_image, size: '1100x200', fallback: "no_image.png" %>
+    <h3>企業登録情報</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-6">
+    <table class='table'>
+      <tr>
+        <th>プロフィール画像</th>
+        <td><%= attachment_image_tag @company, :profile_image, size: '400x200', fallback: "no_image.png" %></td>
+      </tr>
+      <tr>
+        <th>企業名</th>
+        <td><%= @company.company_name %></td>
+      </tr>
+      <tr>
+        <th>フリガナ</th>
+        <td><%= @company.kana_company_name %></td>
+      </tr>
+      <tr>
+        <th>郵便番号</th>
+        <td><%= @company.postal_code %></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td><%= @company.address %></td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><%= @company.phone_number %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @company.email %></td>
+      </tr>
+    </table>
+    <%= link_to '編集する', edit_corporate_company_path(@company), class:"data-disable-with", class:"btn btn-default col-xs-6" %>
+    <%= link_to 'パスワードを変更する', edit_company_registration_path(@company), class:"data-disable-with", class:"btn btn-default col-xs-6" %>
+  </div>
+  <div class="col-xs-6">
+    <p><%= @company.introduction %></p>
+  </div>
+</div>

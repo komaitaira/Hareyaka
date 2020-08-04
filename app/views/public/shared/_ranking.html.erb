@@ -1,0 +1,15 @@
+<h4 class="text-center">人気記事ランキング</h4>
+<% all_ranks.each.with_index(1) do |article, i| %>
+  <div class="favorite-ranking">
+    <h4>第<%= i %>位</h4>
+    <%= link_to article_path(article.id) do %>
+      <h4><%= article.title %></h4>
+    <% end %>
+    <p>投稿者： <%= article.company.company_name %></p>
+    <p>ジャンル： <%= article.genre.genre_name %></p>
+    <p>お気に入り
+      <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+      <%= article.favorites.count %>
+    </p>
+  </div>
+<% end %>

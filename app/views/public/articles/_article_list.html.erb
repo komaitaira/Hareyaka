@@ -1,0 +1,11 @@
+<% articles.each do |article| %>
+  <div id="article_contents_<%= article.id %>">
+    <%= render 'public/shared/detail', article: article %>
+  </div>
+  <div class="row article-body">
+    <div class="col-sm-12">
+      <%= strip_tags(article.body.to_s).truncate(200) %>
+      <p class="text-right"><%= link_to "続きを読む", article_path(article.id) %></p>
+    </div>
+  </div>
+<% end %>

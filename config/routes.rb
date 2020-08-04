@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'home#top'
   get 'about/vision' => 'home#vision'
   get 'about/solution' => 'home#solution'
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
     resources :companies, only: [:index, :show, :edit, :update]
-    resources :genres, only: [:index, :create, :update]
+    resources :genres, only: [:index, :edit, :create, :update]
     resources :articles, only: [:index, :show, :edit, :update]
   end
 
@@ -25,12 +26,17 @@ Rails.application.routes.draw do
     registrations: 'corporate/registrations'
   }
   namespace :corporate do
-    get 'mypage' => 'companies#show'
-    get 'mypage/edit' => 'companies#edit'
-    patch 'mypage' => 'companies#update'
     get 'unsubscribe' => 'companies#unsubscribe'
     put 'unsubscribe' => 'companies#hide'
+    delete 'destroy_all_notifications' => 'notifications#destroy_all'
+    resources :companies, only: [:show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      get :followers, on: :member # フォロワーのみがDM受信対象
+    end
+    resources :rooms, only: [:index, :show] # indexがあればいいかも。corporate側は基本的に参照のみなのでcreateは不要
+    resources :messages, only: [:create]
     resources :articles
+    resources :notifications, only: :index
   end
 
   #個人会員側ルーティング
@@ -40,14 +46,22 @@ Rails.application.routes.draw do
     registrations: 'public/registrations'
   }
   scope module: :public do
-    get 'mypage' => 'users#show'
-    get 'mypage/edit' => 'users#edit'
-    patch 'mypage' => 'users#update'
     get 'unsubscribe' => 'users#unsubscribe'
     put 'unsubscribe' => 'users#hide'
-    resources :companies, only: [:show]
+    get 'favorites' => 'articles#favorites'
+    delete 'destroy_all_notifications' => 'notifications#destroy_all'
+    # get 'contact/:company_id' => 'contacts#contact', as: 'contact'
+    resources :users, only: [:show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      get :follows, on: :member
+      # resource :contacts, only: [:create]
+    end
+    resources :rooms, only: [:index, :create, :show]
+    resources :messages, only: [:create]
+    resources :companies, only: [:index, :show] # :showにDM開始ボタン表示
     resources :articles, only: [:index, :show] do
       resource :favorites, only: [:create, :destroy]
     end
+    resources :notifications, only: :index
   end
 end

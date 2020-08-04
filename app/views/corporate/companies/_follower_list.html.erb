@@ -1,0 +1,21 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th></th>
+      <th>氏名</th>
+      <th>フリガナ</th>
+      <th>メールアドレス</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% followers.each do |follower| %>
+      <tr>
+        <td><%= attachment_image_tag follower, :profile_image, size: '50x50', fallback: "no_image.png" %></td>
+        <td><%= follower.full_name %></td>
+        <td><%= follower.kana_full_name %></td>
+        <td><%= follower.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

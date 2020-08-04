@@ -15,8 +15,8 @@ Company.create!(
                     掲載されている記事についてはもちろんのこと、それ以外のお金の不安や悩み、誠心誠意で対応いたします。
                     お気軽にご連絡ください。",
       is_active: true,
-      profile_image_id: open("./db/images/三菱USJ銀行.jpeg"),
-      background_image_id: open("./db/images/三菱USJ銀行背景.jpeg")
+      # profile_image_id: open("./db/images/三菱USJ銀行.jpeg"),
+      # background_image_id: open("./db/images/三菱USJ銀行背景.jpeg")
     },
 
     {
@@ -33,8 +33,8 @@ Company.create!(
                     健康に関する悩みはお任せください！弊社では特定健康保険食品を豊富に取り揃えております。
                     掲載記事についてはもちろん、健康についてのご相談、それ以外のこと、なんでもお聞きしますので安心してご連絡ください。",
       is_active: true,
-      profile_image_id: open("./db/images/ヨントリーホールディングス.png"),
-      background_image_id: open("./db/images/ヨントリーホールディングス背景.jpg")
+      # profile_image_id: open("./db/images/ヨントリーホールディングス.png"),
+      # background_image_id: open("./db/images/ヨントリーホールディングス背景.jpg")
     }
   ]
 )

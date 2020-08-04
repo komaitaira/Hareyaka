@@ -1,0 +1,21 @@
+<div class="genre-list-bar">
+  <h4 class="text-center">ジャンルで探す</h4>
+  <table class="table table-bordered table-hover text-center">
+    <tbody>
+      <tr>
+        <td>
+          <%= link_to "全記事を表示", articles_path %>
+        </td>
+      </tr>
+      <% genres.each do |genre| %>
+        <% if genre.is_active == true %>
+          <tr>
+            <td>
+              <%= link_to genre.genre_name, articles_path(genre_id: genre.id) %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

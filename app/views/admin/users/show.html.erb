@@ -1,2 +1,42 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="row-xs-12">
+  <h3><%= @user.full_name %> の会員情報詳細</h3>
+</div>
+
+<div class="row-xs-12">
+  <table class='table col-xs-12'>
+    <tr>
+      <th>プロフィール画像</th>
+      <td><%= attachment_image_tag @user, :profile_image, size: '200x200', fallback: "no_image.png" %></td>
+    </tr>
+    <tr>
+      <th>顧客ID</th>
+      <th><%= @user.id %> <%= @user.is_active == true ? "有効" : "退会済み" %></th>
+    <tr>
+    <tr>
+      <th>氏名</th>
+      <td><%= @user.full_name %></td>
+    </tr>
+    <tr>
+      <th>フリガナ</th>
+      <td><%= @user.kana_full_name %></td>
+    </tr>
+    <tr>
+      <th>郵便番号</th>
+      <td><%= @user.postal_code %></td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td><%= @user.address %></td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td><%= @user.phone_number %></td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= @user.email %></td>
+    </tr>
+  </table>
+  <%= link_to '編集する', edit_admin_user_path(@user), class:"data-disable-with", class:"btn btn-default col-xs-6" %>
+  <%= link_to '会員一覧へ戻る', admin_users_path, class:"data-disable-with", class:"btn btn-default col-xs-6" %>
+</div>

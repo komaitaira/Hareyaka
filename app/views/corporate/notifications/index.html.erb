@@ -1,0 +1,16 @@
+<h3 class="text-center">通知</h3>
+<%= link_to corporate_destroy_all_notifications_path, method: :delete, "data-confirm" => "確認していないメッセージがあります。本当に削除しますか？" do %>
+  <i class="fas fa-trash-alt" style="color: black;">全削除</i>
+<% end %>
+<%= link_to corporate_rooms_path do %>
+  <i class="far fa-envelope" style="color: black;">DM一覧</i>
+<% end %>
+<hr>
+<% if @notifications.exists? %>
+  <div class="companies-index">
+    <%= render 'notification_list', notifications: @notifications %>
+    <%= paginate @notifications %>
+  </div>
+<% else %>
+  <p>通知はありません</p>
+<% end %>

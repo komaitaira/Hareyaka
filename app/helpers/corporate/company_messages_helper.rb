@@ -1,0 +1,2 @@
+module Corporate::CompanyMessagesHelper
+end

@@ -1,2 +1,62 @@
-<h1>Corporate::Companies#edit</h1>
-<p>Find me in app/views/corporate/companies/edit.html.erb</p>
+<div class="row-xs-12">
+  <h3 class="col-xs-12">登録情報編集</h3>
+</div>
+
+<div class="row">
+  <%= form_for(@company, url: corporate_company_path) do |f| %>
+    <div class="col-xs-6">
+      <div class="form-group">
+        <%= f.label :企業名 %>
+        <%= f.text_field :company_name, autofocus: true, autocomplete: "company_name", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :フリガナ %>
+        <%= f.text_field :kana_company_name, autofocus: true, autocomplete: "kana_company_name", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :メールアドレス %>
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :郵便番号（ハイフンなし）%>
+        <%= f.text_field :postal_code, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :住所 %>
+        <%= f.text_field :address, autofocus: true, class: "form-control", collection: JpPrefecture::Prefecture.all, :value_method => :name %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :電話番号（ハイフンなし）%>
+        <%= f.text_field :phone_number, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit '変更を保存する',　class:"data-disable-with", class: "btn btn-success col-xs-12" %>　　
+        <%= link_to 'マイページへ戻る', corporate_company_path(@company), class:"btn btn-default col-xs-12" %>
+        <%= link_to '退会する', corporate_unsubscribe_path, class:"btn btn-default col-xs-12" %>
+      </div>
+    </div>
+
+    <div class="col-xs-6">
+      <div class="form-group">
+        <%= f.label :背景画像 %>
+        <%= f.attachment_field :background_image %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :プロフィール画像  %>
+        <%= f.attachment_field :profile_image %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :会員へのメッセージ %> <p>500文字以内でご入力ください</p>
+        <%= f.text_area :introduction, autofocus: true, class: "form-control", size: "100*500" %>
+      </div>
+    </div>
+  <% end %>
+</div>

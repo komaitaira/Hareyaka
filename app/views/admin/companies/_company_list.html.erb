@@ -1,0 +1,21 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th>企業ID</th>
+      <th>企業名</th>
+      <th>メールアドレス</th>
+      <th>企業ステータス</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% companies.each do |company| %>
+      <tr>
+        <td><%= company.id %></td>
+        <td><%= link_to company.company_name, admin_company_path(company.id) %></td>
+        <td><%= company.email %></td>
+        <td><%= company.is_active == true ? "有効" : "退会済み" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

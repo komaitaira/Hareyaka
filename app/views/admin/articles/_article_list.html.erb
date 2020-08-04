@@ -1,0 +1,23 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th>投稿日時</th>
+      <th>投稿者</th>
+      <th>記事タイトル</th>
+      <th>ジャンル</th>
+      <th>掲載ステータス</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% articles.each do |article| %>
+      <tr>
+        <td><%= article.created_at.strftime('%Y/%m/%d/  %H:%M') %></td>
+        <td><%= link_to article.company.company_name, admin_company_path(article.company_id) %></td>
+        <td><%= link_to article.title, admin_article_path(article.id) %></td>
+        <td><%= article.genre.genre_name %></td>
+        <td><%= article.is_active == true ? "掲載中" : "掲載停止中" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
