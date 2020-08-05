@@ -1,19 +1,25 @@
 <header>
   <div class="container">
-    <nav class="nav navbar-nav navbar-left">
-      <%= link_to 'Hareyaka', root_path, class: "logo" %>
-    </nav>
-    <ul class="nav navbar-nav navbar-right">
+
+    <% if admin_signed_in? %>
       <%# 管理者ログインの場合 %>
-      <% if admin_signed_in? %>
+      <ul class="nav navbar-nav navbar-left">
+        <li><%= link_to 'Hareyaka', admin_articles_path, class: "logo" %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
         <li>管理者ログイン中です</li>
         <li><%= link_to '会員一覧', admin_users_path %></li>
         <li><%= link_to '記事一覧', admin_articles_path %></li>
         <li><%= link_to 'ジャンル一覧', admin_genres_path %></li>
         <li><%= link_to '企業一覧', admin_companies_path %></li>
         <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+      </ul>
+    <% elsif company_signed_in? %>
       <%# 法人ログインの場合 %>
-      <% elsif company_signed_in? %>
+      <ul class="nav navbar-nav navbar-left">
+        <li><%= link_to 'Hareyaka', corporate_articles_path, class: "logo" %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
         <li>ようこそ、<%= current_company.company_name %>　様</li>
         <li><%= link_to 'マイページ', corporate_company_path(current_company) %></li>
         <li><%= link_to '記事一覧', corporate_articles_path %></li>
@@ -24,28 +30,41 @@
         <% end %>
         <li><%= link_to "DM通知", corporate_notifications_path %></li>
         <li><%= link_to 'ログアウト', destroy_company_session_path, method: :delete %></li>
+      </ul>
+    <% elsif user_signed_in? %>
       <%# 個人会員ログインの場合 %>
-      <% elsif user_signed_in? %>
+      <ul class="nav navbar-nav navbar-left">
+        <li><%= link_to 'Hareyaka', vision_path, class: "logo" %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
         <li>ようこそ、<%= current_user.full_name %> さん!</li>
         <li><%= link_to 'マイページ', user_path(current_user) %></li>
         <li><%= link_to '記事一覧', articles_path %></li>
         <li><%= link_to 'お気に入り', favorites_path %></li>
         <li><%= link_to '専門家', companies_path %></li>
         <li><%= link_to "フォロー企業", follows_user_path(current_user.id) %></li>
+        <li><%= link_to 'DM一覧', rooms_path %></li>
         <% if user_unchecked_notifications.any? %>
           <i class="fas fa-circle" style="color: gold;"></i>
         <% end %>
         <li><%= link_to "DM通知", notifications_path %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+      </ul>
+    <% else %>
       <%# ログインしていない場合 %>
-      <% else %>
-        <li><%= link_to 'Hareyakaについて', about_vision_path %></li>
-        <li><%= link_to '記事一覧', articles_path %></li>
-        <li><%= link_to '新規登録', new_user_registration_path %></li>
-        <li><%= link_to 'ログイン', new_user_session_path %></li>
-        <li><%= link_to '(法人)新規登録', new_company_registration_path %></li>
-        <li><%= link_to '(法人)ログイン', new_company_session_path %></li>
+      <% if  controller.action_name != 'top' %>
+        <ul class="nav navbar-nav navbar-left">
+          <li><%= link_to 'Hareyaka', top_path, class: "logo" %></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to '記事一覧', articles_path %></li>
+          <li><%= link_to '新規登録', new_user_registration_path %></li>
+          <li><%= link_to 'ログイン', new_user_session_path %></li>
+          <li><%= link_to '(法人)新規登録', new_company_registration_path %></li>
+          <li><%= link_to '(法人)ログイン', new_company_session_path %></li>
+        </ul>
       <% end %>
-    </ul>
+    <% end %>
+
   </div>
 </header>
