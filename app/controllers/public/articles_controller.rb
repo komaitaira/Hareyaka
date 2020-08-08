@@ -15,6 +15,11 @@ class Public::ArticlesController < ApplicationController
     # user.rbにfavorite_articlesアソシエーション記述。中間テーブルfavoritesを仲介し、current_userに結びつくお気に入り記事を取得
     @favorite_articles = current_user.favorite_articles
     .page(params[:page])
+
+    # userのお気に入り記事のgenre_nameの配列を取得
+    array = @favorite_articles.joins(:genre).pluck(:genre_name)
+    # genre_nameとその個数のハッシュを取得し、@genredataに代入
+    @genredata = array.group_by(&:itself).map{ |genre_name, value| [genre_name, value.count] }.to_h
   end
 
   private

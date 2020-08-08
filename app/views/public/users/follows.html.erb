@@ -1,16 +1,33 @@
 <div class="row">
-  <div class="col-sm-4">
-    <%= render 'public/shared/sidebar' %>
+  <div class="col-sm-12">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <%= link_to "会員登録情報", user_path(current_user), class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "お気に入り(全#{current_user.favorites.count}件)", favorites_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "フォロー企業(全#{current_user.followings.count}件)", follows_user_path(current_user), class: "nav-link active" %>
+      </li>
+    </ul>
   </div>
+</div>
 
-  <div class="col-sm-8">
-    <div class="title">
-      <h4 class="text-center">フォロー企業(全 <%= current_user.followings.count %> 件)</h4>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-header">企業をフォローしましょう！</h6>
+        <p class="card-text">
+          フォローリストから企業詳細ページへ進み、あなたの悩みや気になる記事についてメッセージを送りましょう！<br>
+          その道のプロフェッショナルがあなたのお悩みにお応えします！
+        </p>
+      </div>
     </div>
-    <hr class="titleHr">
-
+  </div>
+  <div class="col-sm-8">
     <%= render 'public/companies/company_list', companies: @follows %>
-
     <div class="row text-center">
       <%= paginate @follows %>
     </div>
