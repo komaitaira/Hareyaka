@@ -3,13 +3,11 @@
   <div class="favorite-ranking">
     <h4>第<%= i %>位</h4>
     <%= link_to article_path(article.id) do %>
-      <h4><%= article.title %></h4>
+      <h5><%= article.title %></h5>
     <% end %>
-    <p>投稿者： <%= article.company.company_name %></p>
-    <p>ジャンル： <%= article.genre.genre_name %></p>
-    <p>お気に入り
-      <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-      <%= article.favorites.count %>
-    </p>
+    <span class="badge badge-info">ジャンル</span><%= article.genre.genre_name %><br>
+    <span class="badge badge-info">投稿者</span><%= article.company.company_name %><br>
+    <span class="badge badge-info">投稿日</span><%= article.created_at.strftime('%Y/%m/%d') %><br>
+    <span>お気に入り<i class="fas fa-heart" style="color: #e82a2a;"><%= article.favorites.count %></i></span>
   </div>
 <% end %>

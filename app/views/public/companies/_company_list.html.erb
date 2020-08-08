@@ -1,10 +1,10 @@
 <% companies.each do |company| %>
   <div class="row">
-    <div class="col-sm-3">
-      <%= attachment_image_tag company, :profile_image, class: "col-sm-12", fallback: "no_image.png" %>
+    <div class="col-md-3">
+      <%= attachment_image_tag company, :profile_image, class: "img-fluid rounded-circle", fallback: "no_image.png" %>
     </div>
-    <div class="col-sm-9">
-      <h4><%= link_to company.company_name, company_path(company.id) %></h4>
+    <div class="col-md-9">
+      <h5><%= link_to company.company_name, company_path(company.id) %></h5>
       <p><%= truncate(company.introduction, length: 100) %></p>
       <div id="follow_button_<%= company.id %>">
         <%= render 'public/shared/follow_button', company: company %>

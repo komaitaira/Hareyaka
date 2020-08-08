@@ -5,10 +5,6 @@ class Public::UsersController < ApplicationController
   before_action :set_ransack
   
   def show
-    # userのお気に入り記事のgenre_nameの配列を取得
-    array = @user.favorite_articles.joins(:genre).pluck(:genre_name)
-    # genre_nameとその個数のハッシュを取得し、@genredataに代入
-    @genredata = array.group_by(&:itself).map{ |genre_name, value| [genre_name, value.count] }.to_h
   end
 
   def edit
@@ -70,6 +66,6 @@ class Public::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:last_name, :first_name, :kana_last_name, :kana_first_name, :postal_code, :address, :phone_number, :email, :profile_image)
+    params.require(:user).permit(:last_name, :first_name, :kana_last_name, :kana_first_name, :postal_code, :address, :phone_number, :email, :profile_image, :introduction)
   end
 end

@@ -1,41 +1,43 @@
 <div class="row">
   <div class="col-sm-12">
-    <h3>会員登録情報</h3>
-  </div>
-
-  <div class="col-sm-4">
-    <%= attachment_image_tag @user, :profile_image, class: "col-sm-12", fallback: "no_image.png" %>
-    <%# 円グラフ表示 %>
-    <%= pie_chart @genredata %>
-  </div>
-  <div class="col-sm-8">
-    <table class='table'>
-      <tr>
-        <th>氏名</th>
-        <td><%= @user.full_name %></td>
-      </tr>
-      <tr>
-        <th>フリガナ</th>
-        <td><%= @user.kana_full_name %></td>
-      </tr>
-      <tr>
-        <th>郵便番号</th>
-        <td><%= @user.postal_code %></td>
-      </tr>
-      <tr>
-        <th>住所</th>
-        <td><%= @user.address %></td>
-      </tr>
-      <tr>
-        <th>電話番号</th>
-        <td><%= @user.phone_number %></td>
-      </tr>
-      <tr>
-        <th>メールアドレス</th>
-        <td><%= @user.email %></td>
-      </tr>
-    </table>
-    <%= link_to '編集する', edit_user_path(@user), class:"data-disable-with", class:"btn btn-default col-sm-6" %>
-    <%= link_to 'パスワードを変更する', edit_user_registration_path(@user), class:"data-disable-with", class:"btn btn-default col-sm-6" %>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <%= link_to "会員登録情報", user_path(@user), class: "nav-link active" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "お気に入り(全#{@user.favorites.count}件)", favorites_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "フォロー企業(全#{@user.followings.count}件)", follows_user_path(current_user), class: "nav-link" %>
+      </li>
+    </ul>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-sm-4">
+    <%= attachment_image_tag @user, :profile_image, class: "img-fluid rounded-circle", fallback: "no_image.png" %>
+  </div>
+
+  <div class="col-sm-8">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title">【氏名】</h6>
+        <p class="card-text"><%= "#{@user.full_name} (#{@user.kana_full_name})" %></p>
+        <h6 class="card-title">【住所】</h6>
+        <p class="card-text"><%= "#{@user.postal_code} #{@user.address}" %></p>
+        <h6 class="card-title">【電話番号】</h6>
+        <p class="card-text"><%= @user.phone_number %></p>
+        <h6 class="card-title">【メールアドレス】</h6>
+        <p class="card-text"><%= @user.email %></p>
+        <h6 class="card-title">【自己紹介文】</h6>
+        <p class="card-text"><%= @user.introduction %></p>
+        <%= link_to '編集する', edit_user_path(@user), class: "btn btn-info" %>
+        <%= link_to 'パスワードを変更する', edit_user_registration_path(@user), class: "btn btn-outline-info" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    

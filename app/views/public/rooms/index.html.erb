@@ -1,7 +1,27 @@
-<% @rooms.each do |room| %>
-  <%= link_to room_path(room.id) do %>
-    <%= attachment_image_tag room.company, :profile_image, size:'30x30', fallback: "no_image.png" %>
-    <h4><%= room.company.company_name %></h4>
-    <%= most_new_message(room) %>
-  <% end %>
-<% end %>
+<div class="row">
+  <div class="col-md-12">
+    <h4 class="text-center">DM一覧</h4>
+  </div>
+</div>
+
+<hr class="titleHr">
+<div class="row">
+  <div class="offset-md-1 col-md-10 offset-md-1">
+    <% @rooms.each do |room| %>
+      <div class="opponent-face">
+        <%= attachment_image_tag room.company, :profile_image, class: "img-fluid rounded-circle", fallback: "no_image.png" %>
+      </div>
+      <div class="content">
+        <%= room.company.company_name %>
+        <%= strip_tags(most_new_message(room)).truncate(70) %>
+        <div class="show-message">
+          <%= link_to room_path(room.id) do %>
+            <span class="badge badge-info"><i class="fas fa-envelope"></i>メッセージを見る</span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+

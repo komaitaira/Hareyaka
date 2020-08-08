@@ -1,9 +1,5 @@
 <div class="row">
-  <div class="col-sm-4">
-    <%= render 'public/shared/sidebar' %>
-  </div>
-
-  <div class="col-sm-8">
+  <div class="offset-sm-1 col-sm-10 offset-sm-1">
     <div class="title">
       <h4 class="text-center">記事詳細</h4>
     </div>
@@ -12,11 +8,14 @@
     <div id="article_contents_<%= @article.id %>">
       <%= render 'public/shared/detail', article: @article %>
     </div>
+    <button type="button" class="btn hear-more">
+      <%= link_to "この記事の話をもっと聞きたい！", company_path(@article.company_id) %>
+    </button>
     <div class="row article-body">
-      <div class="col-sm-12">
-        <p><%= @article.body.html_safe %></p>
-        <p class="text-right"><%= link_to "この記事の話をもっと聞きたい！", company_path(@article.company_id) %></p>
-      </div>
+      <p><%= @article.body.html_safe %></p>
     </div>
+    <button type="button" class="btn hear-more">
+      <%= link_to "この記事の話をもっと聞きたい！", company_path(@article.company_id) %>
+    </button>
   </div>
 </div>
