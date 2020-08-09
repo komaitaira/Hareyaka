@@ -1,16 +1,31 @@
-<h3 class="text-center">通知</h3>
-<%= link_to corporate_destroy_all_notifications_path, method: :delete, "data-confirm" => "確認していないメッセージがあります。本当に削除しますか？" do %>
-  <i class="fas fa-trash-alt" style="color: black;">全削除</i>
-<% end %>
-<%= link_to corporate_rooms_path do %>
-  <i class="far fa-envelope" style="color: black;">DM一覧</i>
-<% end %>
-<hr>
-<% if @notifications.exists? %>
-  <div class="companies-index">
-    <%= render 'notification_list', notifications: @notifications %>
-    <%= paginate @notifications %>
+<div class="row">
+  <div class="col-sm-12">
+    <h4 class="text-center">通知</h4>
+    <% if @notifications.exists? %>
+      <%= link_to corporate_destroy_all_notifications_path, method: :delete, "data-confirm" => "確認していないメッセージがあります。本当に削除しますか？" do %>
+        <i class="fas fa-trash-alt">全削除</i>
+      <% end %>
+    <% else %>
+      <%= link_to corporate_notifications_path, "data-confirm" => "通知がありません。" do %>
+        <i class="fas fa-trash-alt">全削除</i>
+      <% end %>
+    <% end %>
+    <%= link_to corporate_rooms_path do %>
+      <i class="fas fa-envelope">DM一覧</i>
+    <% end %>
   </div>
-<% else %>
-  <p>通知はありません</p>
-<% end %>
+</div>
+
+<hr class="titleHr">
+<div class="row">
+  <div class="col-sm-12 offset-md-3 col-md-7 offset-md-2">
+    <% if @notifications.exists? %>
+      <div class="notifications">
+        <%= render 'notification_list', notifications: @notifications %>
+        <%= paginate @notifications %>
+      </div>
+    <% else %>
+      <p class="text-center">新着メッセージはありません</p>
+    <% end %>
+  </div>
+</div>

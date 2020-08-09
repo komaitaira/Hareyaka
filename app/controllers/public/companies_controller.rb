@@ -1,15 +1,20 @@
 class Public::CompaniesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_search_genre, only:[:index]
-  before_action :set_ranking, only:[:index]
+  before_action :set_ranking, only:[:index, :show]
   before_action :set_ransack, only:[:index]
 
   def index
     @companies = Company.all.page(params[:page])
   end
-  
+
   def show
     @company = Company.find(params[:id])
+    # @all_ranksの記事の中から@companyの記事のみ取り出す
+    @company_ranks = @all_ranks.select do |all_rank|
+      all_rank.company_id == @company.id
+    end
+    # current_userと@companyとのroomがあるかどうかで分岐
     @currentUserEntry = Room.where(user_id: current_user.id)
     @companyEntry = Room.where(company_id: @company.id)
     @currentUserEntry.each do |cu|
@@ -29,11 +34,11 @@ class Public::CompaniesController < ApplicationController
   def set_search_genre
     if params[:genre_id].present?
       # genre_idが与えられている場合、genre_idに合致する記事を探す
-      @articles = Article.where(genre_id: params[:genre_id])
+      @articles = Article.where(is_active: true).joins(:genre).where(genres: {is_active: true}).where(genre_id: params[:genre_id])
       .page(params[:page]).reverse_order
     else
-      # ジャンルが有効になっている記事のみ探す
-      @articles = Article.joins(:genre).where(genres: {is_active: true})
+      # 掲載ステータスが有効かつジャンルが有効になっている記事のみ探す
+      @articles = Article.where(is_active: true).joins(:genre).where(genres: {is_active: true})
       .page(params[:page]).reverse_order
     end
     @genres = Genre.all
@@ -46,7 +51,7 @@ class Public::CompaniesController < ApplicationController
 
   def set_ransack
     # 検索フォーム表示のため@searchを定義
-    @search = Article.ransack(params[:q])
+    @search = Article.where(is_active: true).joins(:genre).where(genres: {is_active: true}).where(genre_id: params[:genre_id]).ransack(params[:q])
     # params[:q]がviewから渡されてきた場合、resultを返す
     if params[:q].present?
       @q_articles = @search.result.page(params[:page]).reverse_order

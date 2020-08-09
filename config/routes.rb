@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
-  root 'home#top'
-  get 'about/vision' => 'home#vision'
-  get 'about/solution' => 'home#solution'
-  get 'about/challenge' => 'home#challenge'
+  root 'public/articles#index'
+  get 'top' => 'home#top'
+  get 'vision' => 'home#vision'
+  get 'solution' => 'home#solution'
+  get 'challenge' => 'home#challenge'
   get 'thanks' => 'home#thanks'
 
   #管理者側ルーティング
@@ -50,11 +51,9 @@ Rails.application.routes.draw do
     put 'unsubscribe' => 'users#hide'
     get 'favorites' => 'articles#favorites'
     delete 'destroy_all_notifications' => 'notifications#destroy_all'
-    # get 'contact/:company_id' => 'contacts#contact', as: 'contact'
     resources :users, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get :follows, on: :member
-      # resource :contacts, only: [:create]
     end
     resources :rooms, only: [:index, :create, :show]
     resources :messages, only: [:create]

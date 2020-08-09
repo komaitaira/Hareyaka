@@ -1,0 +1,17 @@
+<div class="row article-image">
+  <%= attachment_image_tag article, :image, class: "col-sm-12", fallback: "no_image.png" %>
+</div>
+
+<div class="article-info">
+  <span class="badge badge-info">ジャンル</span><%= article.genre.genre_name %>
+  <span class="badge badge-info">投稿者</span><%= article.company.company_name %>
+  <span class="badge badge-info">投稿日</span><%= article.created_at.strftime('%Y/%m/%d') %>
+</div>
+
+<span>
+  <i class="fas fa-heart" style="color: #e82a2a;"><%= article.favorites.count %></i>
+</span>
+
+<div class="article-title">
+  <h4 class="text-center"><%= article.title %></h4>
+</div>

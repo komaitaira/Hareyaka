@@ -1,17 +1,13 @@
-<div class="row">
-  <div class="unsubscribe">
-    <div class="col-xs-offset-1 col-xs-10 col-xs-offset-1">
-      <h3 class="text-center">本当に退会しますか？</h3>
-    </div>
-    <div class="col-xs-offset-1 col-xs-10 col-xs-offset-1">
-      <p class="text-center">
-        退会すると、会員登録情報やお気に入り記事等が閲覧できなくなります。<br>
-        退会する場合は、「退会する」をクリックしてください。
-      </p>
-      <p class="text-center">
-        <%= link_to "退会する", unsubscribe_path, method: :put, class: "btn btn-danger", "data-confirm" => "本当に退会しますか？" %>
-        <%= link_to "退会しない", user_path(@user), class: "btn btn-default" %>
-      </p>
-    </div>
-  </div>
+<div class="row unsubscribe">
+  <div class="offset-md-2 col-md-8 offset-md-2">
+    <h3 class="text-center">本当に退会しますか？</h3>
+    <p class="text-center">
+      退会すると、会員登録情報やお気に入り記事等が閲覧できなくなります。<br>
+      退会する場合は、「退会する」をクリックしてください。
+    </p>
+    <p class="text-center">
+      <%= link_to "退会する", unsubscribe_path, method: :put, class: "btn btn-danger", "data-confirm" => "本当に退会しますか？" %>
+      <%= link_to "退会しない", user_path(@user), class: "btn btn-outline-secondary" %>
+    </p>
+  </div>  
 </div>

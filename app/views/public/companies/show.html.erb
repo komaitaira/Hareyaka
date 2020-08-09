@@ -1,15 +1,44 @@
 <div class="row">
   <div class="col-sm-12">
-    <%= attachment_image_tag @company, :background_image, size: '1135x200', fallback: "no_image.png" %>
-    <h3 class="text-center"><%= @company.company_name %></h3>
+    <%= attachment_image_tag @company, :background_image, class: "company-header", fallback: "background-noimage.jpg" %>
+    <h4 class="text-center"><%= @company.company_name %></h4>
+
+    <%# フォローボタン、チャットボタン表示 %>
+    <% if @isRoom == true %>
+      <p class="text-right">
+        <span id="follow_button_<%= @company.id %>">
+          <%= render 'public/shared/follow_button', company: @company %>
+        </span>
+        <a href="/rooms/<%= @roomId %>" class="btn enter-dm">DMへ進む</a>
+      </p>
+    <% else %>
+      <%= form_for @room do |f| %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :company_id, value: @company.id %>
+        <p class="text-right">
+          <span id="follow_button_<%= @company.id %>">
+            <%= render 'public/shared/follow_button', company: @company %>
+          </span>
+          <%= f.submit "DMを始める", class: "btn enter-dm" %>
+        </p>
+      <% end %>
+    <% end %>
     <hr class="titleHr">
   </div>
 </div>
 
 <div class="row">
   <div class="col-sm-6">
-    <h4>企業情報</h4>
-    <table class='table'>
+    <div class="recommend">
+      <h5>この企業のおすすめ記事3選</h5>
+      <%= render 'public/articles/article_list', articles: @company_ranks %>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <h5>企業情報</h5>
+    <hr class="titleHr">
+    <table class='table table-borderless table-sm'>
       <tr>
         <th>郵便番号</th>
         <td><%= @company.postal_code %></td>
@@ -27,30 +56,10 @@
         <td><%= @company.email %></td>
       </tr>
     </table>
-    <div class="recommend">
-      <h4>この企業のおすすめ記事</h4>
-    </div>
-  </div>
 
-  <div class="col-sm-6">
-    <h4>企業紹介</h4>
+    <h5>企業紹介文</h5>
     <hr class="titleHr">
     <p><%= @company.introduction %></p>
     <hr class="titleHr">
-    <span id="follow_button_<%= @company.id %>">
-      <%= render 'public/shared/follow_button', company: @company %>
-    </span>
-    <%# チャットボタン表示 %>
-    <% if @company.followed_by?(current_user)  %>
-      <% if @isRoom == true %>
-        <p class="company-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary">DMへ進む</a>
-      <% else %>
-        <%= form_for @room do |f| %>
-          <%= f.hidden_field :user_id, value: current_user.id %>
-          <%= f.hidden_field :company_id, value: @company.id %>
-          <%= f.submit "DMを始める", class:"btn btn-primary user-show-chat"%>
-        <% end %>
-      <% end %>
-    <% end %>
   </div>
 </div>

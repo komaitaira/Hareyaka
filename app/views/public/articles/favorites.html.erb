@@ -1,16 +1,45 @@
 <div class="row">
+  <div class="col-sm-12">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <%= link_to "会員登録情報", user_path(current_user), class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "お気に入り(全#{current_user.favorites.count}件)", favorites_path, class: "nav-link active" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "フォロー企業(全#{current_user.followings.count}件)", follows_user_path(current_user), class: "nav-link" %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
   <div class="col-sm-4">
-    <%= render 'public/shared/sidebar' %>
+    <p>
+      <button 
+        type="button"
+        class="btn btn-outline-info"
+        data-toggle="popover"
+        title="新しい発見があるかも"
+        data-content="最も割合が多いジャンルはあなたがそれまで思っていた悩みや興味のジャンルに合致しますか？このグラフは自分では気づかなかった新しい自己の発見に役立ちます。是非活用してみましょう！"
+        data-placement="top">
+        あなたがお気に入りした記事のジャンル割合
+      </button>
+    </p>
+    
+    <script>
+      $(function () {
+          $('[data-toggle="popover"]').popover();
+        }
+      );
+    </script>
+    <%# 円グラフ表示 %>
+    <%= pie_chart @genredata %>
   </div>
 
   <div class="col-sm-8">
-    <div class="title">
-      <h4 class="text-center">お気に入り(全 <%= current_user.favorites.count %> 件)</h4>
-    </div>
-    <hr class="titleHr">
-
     <%= render 'article_list', articles: @favorite_articles %>
-
     <div class="row text-center">
       <%= paginate @favorite_articles %>
     </div>

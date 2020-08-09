@@ -1,25 +1,36 @@
 <div class="row">
-  <div class="col-xs-12">
-    <%= attachment_image_tag @company, :background_image, size: '1100x200', fallback: "no_image.png" %>
-    <h3>企業登録情報</h3>
+  <div class="col-sm-12">
+    <%= attachment_image_tag @company, :background_image, class: "company-header", fallback: "background-noimage.jpg" %>
+    <span class="badge badge-danger">個人会員掲載ページ</span>
+    <h4 class="text-center"><%= @company.company_name %></h4>
+    <p class="text-right">
+      <%= link_to '編集する', edit_corporate_company_path(@company), class:"btn btn-info" %>
+    <%= link_to 'パスワードを変更する', edit_company_registration_path(@company), class:"btn btn-outline-info" %>
+    </p>
+    <hr class="titleHr">
   </div>
 </div>
 
 <div class="row">
-  <div class="col-xs-6">
-    <table class='table'>
-      <tr>
-        <th>プロフィール画像</th>
-        <td><%= attachment_image_tag @company, :profile_image, size: '400x200', fallback: "no_image.png" %></td>
-      </tr>
-      <tr>
-        <th>企業名</th>
-        <td><%= @company.company_name %></td>
-      </tr>
-      <tr>
-        <th>フリガナ</th>
-        <td><%= @company.kana_company_name %></td>
-      </tr>
+  <div class="col-sm-6">
+    <div class="recommend">
+      <h5>この企業のおすすめ記事3選</h5>
+      <strong class="admin-comment">お気に入り数が多いものを3つ抜粋して掲載します。</strong>
+      <% @company_ranks.each do |article| %>
+        <%= render 'corporate/articles/article_detail', article: article %>
+        <div class="article-body">
+          <%= strip_tags(article.body.to_s).truncate(150) %>
+          <p class="text-right"><%= link_to "続きを読む", corporate_article_path(article.id) %></p>
+        </div>
+        <hr class="articleHr">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <h5>企業情報</h5>
+    <hr class="titleHr">
+    <table class='table table-borderless table-sm'>
       <tr>
         <th>郵便番号</th>
         <td><%= @company.postal_code %></td>
@@ -37,10 +48,11 @@
         <td><%= @company.email %></td>
       </tr>
     </table>
-    <%= link_to '編集する', edit_corporate_company_path(@company), class:"data-disable-with", class:"btn btn-default col-xs-6" %>
-    <%= link_to 'パスワードを変更する', edit_company_registration_path(@company), class:"data-disable-with", class:"btn btn-default col-xs-6" %>
-  </div>
-  <div class="col-xs-6">
+
+    <h5>企業紹介文</h5>
+    <strong class="admin-comment">自社についての紹介文を記載します（事業内容や取り扱い商品、自社の特徴など）。その他、個人会員様へのメッセージを是非ご記載ください。</strong>
+    <hr class="titleHr">
     <p><%= @company.introduction %></p>
+    <hr class="titleHr">
   </div>
 </div>

@@ -1,17 +1,18 @@
 <div class="row">
-  <h3>ジャンル情報編集</h3>
-  <%= form_for(@genre, url: admin_genre_path) do |f| %>
-    <div class="col-xs-12">
-      
-      <div class="form-group row">
-        <div class="col-xs-6">
-          <%= f.label :ジャンル有効ステータス %><br>
-          <%= f.radio_button :is_active, true %>
-          <%= f.label :is_active, "有効", {value: :is_active, style: "display: inline-block;"} %>
-          <%= f.radio_button :is_active, false %>
-          <%= f.label :is_active, "無効", {value: :is_active, style: "display: inline-block;"} %>
-        </div>
-      </div>
+  <div class="offset-md-3 col-md-6 offset-md-3">
+    <h4>ジャンル情報編集</h4>
+  </div>
+</div>
+
+<%= form_for(@genre, url: admin_genre_path) do |f| %>
+  
+  <div class="form-group row">
+    <div class="offset-md-3 col-md-6 offset-md-3">
+      <%= f.label :ジャンル有効ステータス %><br>
+      <%= f.radio_button :is_active, true %>
+      <%= f.label :is_active, "有効", {value: :is_active, style: "display: inline-block;"} %>
+      <%= f.radio_button :is_active, false %>
+      <%= f.label :is_active, "無効", {value: :is_active, style: "display: inline-block;"} %>
 
       <div class="form-group">
         <%= f.label :ジャンル名  %>
@@ -19,9 +20,9 @@
       </div>
 
       <div class="actions">
-        <%= f.submit '変更を保存する',　class: "data-disable-with", class: "btn btn-success col-xs-12" %>
+        <%= f.submit '変更を保存する', class: "btn btn-info" %>
       </div>
-
     </div>
-  <% end %>
-</div>
+  </div>
+
+<% end %>
