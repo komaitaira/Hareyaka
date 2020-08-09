@@ -1,42 +1,60 @@
-<div class="row-xs-12">
-  <h3><%= @company.company_name %> の企業情報詳細</h3>
+<div class="row">
+  <div class="col-sm-12">
+    <%= attachment_image_tag @company, :background_image, class: "company-header", fallback: "background-noimage.jpg" %>
+    <h4 class="text-center"><%= @company.company_name %></h4>
+    <p class="text-right">
+      <%= link_to '編集する', edit_admin_company_path(@company), class:"btn btn-info" %>
+      <%= link_to '企業一覧へ戻る', admin_companies_path, class:"btn btn-outline-info" %>
+    </p>
+    <p class="text-right">
+      <span class="badge badge-primary">法人会員掲載ページ</span>企業ID <%= @company.id %> 会員ステータス【<%= @company.is_active == true ? "有効" : "退会済み" %>】
+    </p>
+    <hr class="titleHr">
+  </div>
 </div>
 
-<div class="row-xs-12">
-  <table class='table col-xs-12'>
-    <tr>
-      <th>プロフィール画像</th>
-      <td><%= attachment_image_tag @company, :profile_image, size: '400x200', fallback: "no_image.png" %></td>
-    </tr>
-    <tr>
-      <th>企業ID</th>
-      <th><%= @company.id %> <%= @company.is_active == true ? "有効" : "退会済み" %></th>
-    <tr>
-    <tr>
-      <th>企業名</th>
-      <td><%= @company.company_name %></td>
-    </tr>
-    <tr>
-      <th>フリガナ</th>
-      <td><%= @company.kana_company_name %></td>
-    </tr>
-    <tr>
-      <th>郵便番号</th>
-      <td><%= @company.postal_code %></td>
-    </tr>
-    <tr>
-      <th>住所</th>
-      <td><%= @company.address %></td>
-    </tr>
-    <tr>
-      <th>電話番号</th>
-      <td><%= @company.phone_number %></td>
-    </tr>
-    <tr>
-      <th>メールアドレス</th>
-      <td><%= @company.email %></td>
-    </tr>
-  </table>
-  <%= link_to '編集する', edit_admin_company_path(@company), class: "data-disable-with", class:"btn btn-default col-xs-6" %>
-  <%= link_to '企業一覧へ戻る', admin_companies_path, class: "data-disable-with", class:"btn btn-default col-xs-6" %>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="recommend">
+      <h5>この企業のおすすめ記事3選</h5>
+      <strong class="admin-comment">お気に入り数が多いものを3つ抜粋して掲載します。</strong>
+      <% @company_ranks.each do |article| %>
+        <%= render 'corporate/articles/article_detail', article: article %>
+        <div class="article-body">
+          <%= strip_tags(article.body.to_s).truncate(150) %>
+          <p class="text-right"><%= link_to "続きを読む",admin_article_path(article.id) %></p>
+        </div>
+        <hr class="articleHr">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <h5>企業情報</h5>
+    <hr class="titleHr">
+    <table class='table table-borderless table-sm'>
+      <tr>
+        <th>郵便番号</th>
+        <td><%= @company.postal_code %></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td><%= @company.address %></td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><%= @company.phone_number %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @company.email %></td>
+      </tr>
+    </table>
+
+    <h5>企業紹介文</h5>
+    <strong class="admin-comment">自社についての紹介文を記載します（事業内容や取り扱い商品、自社の特徴など）。その他、個人会員様へのメッセージを是非ご記載ください。</strong>
+    <hr class="titleHr">
+    <p><%= @company.introduction %></p>
+    <hr class="titleHr">
+  </div>
 </div>

@@ -6,22 +6,24 @@
 
 <hr class="titleHr">
 <div class="row">
-  <div class="offset-md-1 col-md-10 offset-md-1">
-    <% @rooms.each do |room| %>
-      <div class="opponent-face">
-        <%= attachment_image_tag room.company, :profile_image, class: "img-fluid rounded-circle", fallback: "no_image.png" %>
-      </div>
-      <div class="content">
-        <%= room.company.company_name %>
-        <%= strip_tags(most_new_message(room)).truncate(70) %>
-        <div class="show-message">
-          <%= link_to room_path(room.id) do %>
-            <span class="badge badge-info"><i class="fas fa-envelope"></i>メッセージを見る</span>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
+  <div class="col-sm-12 offset-md-1 col-md-10">
+    <table class='table table-borderless'>
+      <tbody>
+        <% @rooms.each do |room| %>
+          <tr>
+            <td><%= attachment_image_tag room.company, :profile_image, class: "img-fluid notification-face", fallback: "no_image.png" %></td>
+            <td><%= room.company.company_name %></td>
+            <td>
+              <p style="font-size: small"><%= strip_tags(most_new_message(room)).truncate(45) %></p>
+            </td>
+            <td>
+              <%= link_to room_path(room.id) do %>
+                <span class="badge badge-info"><i class="fas fa-envelope"></i>メッセージを見る</span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
-
-

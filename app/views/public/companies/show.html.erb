@@ -2,6 +2,27 @@
   <div class="col-sm-12">
     <%= attachment_image_tag @company, :background_image, class: "company-header", fallback: "background-noimage.jpg" %>
     <h4 class="text-center"><%= @company.company_name %></h4>
+
+    <%# フォローボタン、チャットボタン表示 %>
+    <% if @isRoom == true %>
+      <p class="text-right">
+        <span id="follow_button_<%= @company.id %>">
+          <%= render 'public/shared/follow_button', company: @company %>
+        </span>
+        <a href="/rooms/<%= @roomId %>" class="btn enter-dm">DMへ進む</a>
+      </p>
+    <% else %>
+      <%= form_for @room do |f| %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :company_id, value: @company.id %>
+        <p class="text-right">
+          <span id="follow_button_<%= @company.id %>">
+            <%= render 'public/shared/follow_button', company: @company %>
+          </span>
+          <%= f.submit "DMを始める", class: "btn enter-dm" %>
+        </p>
+      <% end %>
+    <% end %>
     <hr class="titleHr">
   </div>
 </div>
@@ -36,22 +57,9 @@
       </tr>
     </table>
 
-    <h5>企業紹介</h5>
+    <h5>企業紹介文</h5>
     <hr class="titleHr">
     <p><%= @company.introduction %></p>
     <hr class="titleHr">
-    <span id="follow_button_<%= @company.id %>">
-      <%= render 'public/shared/follow_button', company: @company %>
-    </span>
-    <%# チャットボタン表示 %>
-    <% if @isRoom == true %>
-      <a href="/rooms/<%= @roomId %>" class="btn enter-dm">DMへ進む</a>
-    <% else %>
-      <%= form_for @room do |f| %>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.hidden_field :company_id, value: @company.id %>
-        <%= f.submit "DMを始める", class: "btn enter-dm"%>
-      <% end %>
-    <% end %>
   </div>
 </div>

@@ -1,11 +1,11 @@
 <div class="row">
-  <div class="col-xs-4">
+  <div class="col-md-3">
     <%= render 'admin/shared/search_article', search: @search %>
   </div>
 
   <% if @q_articles %>
-    <div class="col-xs-8">
-      <h3>記事一覧</h3>
+    <div class="col-md-9">
+      <h4>記事一覧</h4>
       <% if @q_articles.empty? %>
         <%# 検索該当なしの場合 %>
         <p class="top-empty-message">条件に合う記事が見つかりませんでした</p>

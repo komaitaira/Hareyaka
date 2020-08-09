@@ -2,6 +2,12 @@ class Corporate::CompaniesController < ApplicationController
   before_action :set_current_company, except: [:followers]
 
   def show
+    # Articleモデルからcreate_all_ranks(article.rbに定義)で検索してきた結果を@all_ranksに代入
+    @all_ranks = Article.create_all_ranks
+    # @all_ranksの記事の中から@companyの記事のみ取り出す
+    @company_ranks = @all_ranks.select do |all_rank|
+      all_rank.company_id == @company.id
+    end
   end
 
   def edit
