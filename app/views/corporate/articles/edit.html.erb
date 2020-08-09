@@ -1,10 +1,10 @@
 <div class="row">
-  <h3 class="col-xs-12">記事情報編集</h3>
+  <h4 class="col-md-12">記事情報編集</h4>
 </div>
 
-<div class="row">
-  <%= form_for(@article, url: corporate_article_path) do |f| %>
-    <div class="col-xs-12">     
+<%= form_for(@article, url: corporate_article_path) do |f| %>
+  <div class="row">
+    <div class="col-md-4">     
       <div class="form-group">
         <%= f.label :記事トップ画像 %>
         <%= f.attachment_field :image %>
@@ -19,21 +19,23 @@
         <%= f.label :掲載ステータス %><br>
         <%= f.select :is_active, [["掲載中", true], ["掲載停止中", false]], include_blank: "--選択してください--" %>
       </div>
+    </div>
 
+    <div class="col-md-8">
       <div class="form-group">
         <%= f.label :記事タイトル %>
         <%= f.text_field :title, autofocus: true, class: "form-control" %>
       </div>
 
-      <div class="form-group">
-        <%= f.label :記事内容 %>
-        <%= f.text_area :body, autofocus: true, class: "form-control" %>
+      <div class="field">
+        <%= f.label :記事内容（文字の大きさ、色など自由に変更できます。また写真やリンクの添付も可能です） %>
+        <%= f.text_area :body, 'data-provider': :summernote %>
       </div>
 
-      <div class="actions">
-        <%= f.submit '変更を保存する',　class: "data-disable-with", class: "btn btn-success col-xs-6" %>
-        <%= link_to '記事情報詳細へ戻る', corporate_article_path(@article.id), class:"btn btn-default col-xs-6" %>
+      <div class="actions text-right" style="margin-top: 20px;">
+        <%= f.submit '変更を保存する',　class: "data-disable-with", class: "btn btn-info" %>
+        <%= link_to '記事情報詳細へ戻る', corporate_article_path(@article.id), class:"btn btn-outline-info" %>
       </div>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>

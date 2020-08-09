@@ -1,6 +1,6 @@
 <div class="row">
   <div class="offset-sm-2 col-sm-8 offset-sm-2">
-    <h3>パスワード変更</h3>
+    <h4>パスワード変更</h4>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
@@ -33,8 +33,8 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "編集内容を保存する",　class:"data-disable-with", class:"btn btn-info" %>
-        <%= link_to "マイページに戻る", user_path(resource), class:"btn btn-outline-info" %>
+        <%= f.submit "変更を保存する",　class:"data-disable-with", class: "btn btn-info" %>
+        <%= link_to "マイページへ戻る", user_path(resource), class: "btn btn-outline-info" %>
       </div>
     <% end %>
   </div>

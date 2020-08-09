@@ -1,7 +1,7 @@
-<h4 class="text-center">人気記事ランキング</h4>
+<h5 class="text-center">人気記事ランキング</h5>
 <% all_ranks.each.with_index(1) do |article, i| %>
   <div class="favorite-ranking">
-    <h4>第<%= i %>位</h4>
+    <h5>第<%= i %>位</h5>
     <%= link_to article_path(article.id) do %>
       <h5><%= article.title %></h5>
     <% end %>

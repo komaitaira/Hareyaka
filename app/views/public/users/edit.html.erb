@@ -4,7 +4,7 @@
 
     <%= form_for(@user, url: user_path) do |f| %>
       <div class="form-group">
-        <%= f.label :プロフィール画像  %>
+        <%= f.label :プロフィール画像  %><br>
         <%= f.attachment_field :profile_image %>
       </div>
 
@@ -55,9 +55,9 @@
 
       <div class="actions">
         <p>
-        <%= f.submit "編集内容を保存する", class:"btn btn-info" %>
-        <%= link_to "マイページに戻る", user_path(@user), class:"btn btn-outline-info" %>
-        <%= link_to '退会する', unsubscribe_path, class:"btn btn-outline-danger" %>
+          <%= f.submit '変更を保存する', class: "btn btn-info" %>
+          <%= link_to 'マイページへ戻る', user_path(@user), class: "btn btn-outline-info" %>
+          <%= link_to '退会する', unsubscribe_path, class: "btn btn-outline-danger" %>
         </p>
       </div>
     <% end %>

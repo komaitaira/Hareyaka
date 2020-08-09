@@ -1,6 +1,6 @@
-<div class="row company-name">
+<div class="row">
   <div class="col-md-12">
-    <h4 class="text-center"><%= @room.company.company_name %></h4>
+    <h5 class="text-center"><%= @room.company.company_name %></h5>
     <%= link_to company_path(@room.company_id) do %>
       <i class="fas fa-angle-left"> 企業詳細</i>
     <% end %>
@@ -17,14 +17,12 @@
       <% if m.attribute_present?(:user_id) %>
 
         <div class="user-dm">
-          <div class="self-face">
-            <%= attachment_image_tag m.user, :profile_image, class: "img-fluid rounded-circle", fallback: "no_image.png" %>
-          </div>
+          <%= attachment_image_tag m.user, :profile_image, class: "img-fluid self-face", fallback: "no_image.png" %>
           <div class="self-hukidashi card offset-md-4 col-md-6 offset-sm-2 col-sm-6">
             <div class="card-body message">
-              <p class="text-right">
+              <p>
                 <strong><%= m.message %></strong><br>
-                <%= m.created_at.strftime("%Y-%m-%d %H:%M") %>
+                <span style="float: right;"><%= m.created_at.strftime("%Y-%m-%d %H:%M") %></span>
               </p>
             </div>
           </div>
@@ -32,12 +30,10 @@
       <% elsif m.attribute_present?(:company_id) %>
 
         <div class="company-dm">
-          <div class="opponent-face">
-            <%= attachment_image_tag m.company, :profile_image, class: "img-fluid rounded-circle", fallback: "no_image.png" %>
-          </div>
+          <%= attachment_image_tag m.company, :profile_image, class: "img-fluid opponent-face", fallback: "no_image.png" %>
           <div class="opponent-hukidashi card col-md-6 col-sm-6">
             <div class="card-body message">
-              <p class="text-left">
+              <p>
                 <strong><%= m.message %></strong><br>
                 <%= m.created_at.strftime("%Y-%m-%d %H:%M") %>
               </p>

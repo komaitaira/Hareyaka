@@ -1,7 +1,29 @@
-<% @rooms.each do |room| %>
-  <%= link_to corporate_room_path(room.id) do %>
-    <%= attachment_image_tag room.user, :profile_image, size:'30x30', fallback: "no_image.png" %>
-    <h4><%= room.user.full_name %></h4>
-    <%= most_new_message(room) %>
-  <% end %>
-<% end %>
+<div class="row">
+  <div class="col-sm-12">
+    <h4 class="text-center">DM一覧</h4>
+  </div>
+</div>
+
+<hr class="titleHr">
+<div class="row">
+  <div class="col-sm-12 offset-md-1 col-md-10">
+    <table class='table table-borderless'>
+      <tbody>
+        <% @rooms.each do |room| %>
+          <tr>
+            <td><%= attachment_image_tag room.user, :profile_image, class: "img-fluid notification-face", fallback: "no_image.png" %></td>
+            <td><%= room.user.full_name %></td>
+            <td>
+              <p style="font-size: small"><%= strip_tags(most_new_message(room)).truncate(45) %></p>
+            </td>
+            <td>
+              <%= link_to corporate_room_path(room.id) do %>
+                <span class="badge badge-info"><i class="fas fa-envelope"></i>メッセージを見る</span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

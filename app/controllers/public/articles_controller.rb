@@ -26,11 +26,11 @@ class Public::ArticlesController < ApplicationController
   def set_search_genre
     if params[:genre_id].present?
       # genre_idが与えられている場合、genre_idに合致する記事を探す
-      @articles = Article.where(genre_id: params[:genre_id])
+      @articles = Article.where(is_active: true).joins(:genre).where(genres: {is_active: true}).where(genre_id: params[:genre_id])
       .page(params[:page]).reverse_order
     else
-      # ジャンルが有効になっている記事のみ探す
-      @articles = Article.joins(:genre).where(genres: {is_active: true})
+      # 掲載ステータスが有効かつジャンルが有効になっている記事のみ探す
+      @articles = Article.where(is_active: true).joins(:genre).where(genres: {is_active: true})
       .page(params[:page]).reverse_order
     end
     @genres = Genre.all
@@ -43,7 +43,7 @@ class Public::ArticlesController < ApplicationController
 
   def set_ransack
     # 検索フォーム表示のため@searchを定義
-    @search = Article.ransack(params[:q])
+    @search = Article.where(is_active: true).joins(:genre).where(genres: {is_active: true}).where(genre_id: params[:genre_id]).ransack(params[:q])
     # params[:q]がviewから渡されてきた場合、resultを返す
     if params[:q].present?
       @q_articles = @search.result.page(params[:page]).reverse_order

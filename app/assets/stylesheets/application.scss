@@ -43,6 +43,26 @@ a{
   color: #17a2b8;
 }
 
+.unsubscribe{
+  padding-top: 150px;
+}
+
+.thanks{
+  padding-top: 200px;
+}
+
+.my-image{
+  width: 155px;
+  height: 155px;
+  border-radius: 50%;
+}
+
+.company-image{
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+}
+
 #user-badge{
   display: inline-block;
   width: 18px;
@@ -107,29 +127,22 @@ a{
   margin-bottom: 10px;
 }
 
+.follower-face{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
 .notification-face{
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   margin-right: 10px;
   float: left;
 }
 
-.notification-list{
-  margin-top: 20px;
-  width: 100%;
-  height: 50px;
-  display: inline-block;
-  text-align: center;
-}
-
-.notification-message{
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
 body{
-  margin-top: 100px;
+  margin-top: 90px;
 }
 
 .wrapper{
@@ -182,19 +195,21 @@ footer{
 .hear-more{
   background-image: linear-gradient(260deg, #00c4c4, #0d93e0);
   border-radius: 50px;
-  margin: 0 0 0 auto;
-  a{
-    color: #fff;
-  }
+  color: #fff;
 }
 
 .enter-dm{
   color: #fff;
   background-image: linear-gradient(260deg, #00c4c4, #0d93e0);
   border-radius: 50px;
+  width: 240px;
 }
 
 
 .favorite-ranking{
   margin: 20px 0 20px 0;
+}
+
+.admin-comment{
+  color: #e67d0e;
 }
