@@ -1,8 +1,8 @@
 class Public::ArticlesController < ApplicationController
-  before_action :authenticate_user!, except:[:index, :show]
-  before_action :set_search_genre
-  before_action :set_ranking
-  before_action :set_ransack
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_search_genre, only: [:index]
+  before_action :set_ranking, only: [:index]
+  before_action :set_ransack, only: [:index]
 
   def index
   end
@@ -43,7 +43,7 @@ class Public::ArticlesController < ApplicationController
 
   def set_ransack
     # 検索フォーム表示のため@searchを定義
-    @search = Article.where(is_active: true).joins(:genre).where(genres: {is_active: true}).where(genre_id: params[:genre_id]).ransack(params[:q])
+    @search = Article.where(is_active: true).joins(:genre).where(genres: {is_active: true}).ransack(params[:q])
     # params[:q]がviewから渡されてきた場合、resultを返す
     if params[:q].present?
       @q_articles = @search.result.page(params[:page]).reverse_order

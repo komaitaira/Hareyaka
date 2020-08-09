@@ -10,6 +10,14 @@ class Company < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :following
   has_many :articles
   has_many :notifications, dependent: :destroy
+
+  validates :company_name, presence: true
+  validates :kana_company_name, presence: true
+  validates :postal_code, presence: true
+  validates :address, presence: true
+  validates :phone_number, presence: true
+  validates :is_active, presence: true
+
   attachment :profile_image
   attachment :background_image
 
