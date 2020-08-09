@@ -1,5 +1,5 @@
 class Public::MessagesController < ApplicationController
-  before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_user!
 
   def create
     if Room.where(user_id: current_user.id, id: params[:message][:room_id]).present?

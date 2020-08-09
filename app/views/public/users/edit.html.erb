@@ -3,6 +3,7 @@
     <h3>登録情報編集</h3>
 
     <%= form_for(@user, url: user_path) do |f| %>
+      <%= render 'public/shared/error_messages', resource: @user %>
       <div class="form-group">
         <%= f.label :プロフィール画像  %><br>
         <%= f.attachment_field :profile_image %>

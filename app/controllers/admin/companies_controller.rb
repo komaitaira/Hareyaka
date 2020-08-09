@@ -1,4 +1,5 @@
 class Admin::CompaniesController < ApplicationController
+  before_action :authenticate_admin!
   before_action :set_company, only:[:show, :edit, :update]
 
   def index

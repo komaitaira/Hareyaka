@@ -1,4 +1,6 @@
 class Public::NotificationsController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     #Notificationモデルの中で通知を受け取った側のid(receiver_id)と、class(receiver_class)の配列を取得
     @notifications = Notification.where(
