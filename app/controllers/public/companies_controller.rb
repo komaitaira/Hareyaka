@@ -51,7 +51,7 @@ class Public::CompaniesController < ApplicationController
 
   def set_ransack
     # 検索フォーム表示のため@searchを定義
-    @search = Article.where(is_active: true).joins(:genre).where(genres: {is_active: true}).where(genre_id: params[:genre_id]).ransack(params[:q])
+    @search = Article.where(is_active: true).joins(:genre).where(genres: {is_active: true}).ransack(params[:q])
     # params[:q]がviewから渡されてきた場合、resultを返す
     if params[:q].present?
       @q_articles = @search.result.page(params[:page]).reverse_order

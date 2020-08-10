@@ -1,5 +1,5 @@
 class Corporate::MessagesController < ApplicationController
-  before_action :authenticate_company!, only: [:create]
+  before_action :authenticate_company!
 
   def create
     if Room.where(company_id: current_company.id, id: params[:message][:room_id]).present?

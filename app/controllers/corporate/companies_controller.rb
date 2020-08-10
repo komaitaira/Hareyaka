@@ -1,4 +1,5 @@
 class Corporate::CompaniesController < ApplicationController
+  before_action :authenticate_company!
   before_action :set_current_company, except: [:followers]
 
   def show

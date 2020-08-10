@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-sm-12">
+  <div class="col-md-12">
     <ul class="nav nav-tabs">
       <li class="nav-item">
         <%= link_to "会員登録情報", user_path(current_user), class: "nav-link" %>
@@ -15,7 +15,7 @@
 </div>
 
 <div class="row">
-  <div class="col-sm-4">
+  <div class="col-md-3">
     <p>
       <button 
         type="button"
@@ -38,7 +38,7 @@
     <%= pie_chart @genredata %>
   </div>
 
-  <div class="col-sm-8">
+  <div class="col-md-9">
     <%= render 'article_list', articles: @favorite_articles %>
     <div class="row text-center">
       <%= paginate @favorite_articles %>

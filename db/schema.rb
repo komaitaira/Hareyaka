@@ -103,8 +103,8 @@ ActiveRecord::Schema.define(version: 2020_08_07_031414) do
   end
 
   create_table "rooms", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "company_id"
+    t.integer "user_id", null: false
+    t.integer "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_rooms_on_company_id"

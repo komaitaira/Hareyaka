@@ -11,6 +11,15 @@ class User < ApplicationRecord
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
   has_many :followings, through: :active_relationships, source: :follower
   has_many :notifications, dependent: :destroy
+  
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :kana_last_name, presence: true
+  validates :kana_first_name, presence: true
+  validates :postal_code, presence: true
+  validates :address, presence: true
+  validates :phone_number, presence: true
+  validates :is_active, presence: true
   attachment :profile_image
 
   def full_name

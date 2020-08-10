@@ -1,4 +1,5 @@
 class Admin::ArticlesController < ApplicationController
+  before_action :authenticate_admin!
   before_action :set_article, only:[:show, :edit, :update]
   
   def index

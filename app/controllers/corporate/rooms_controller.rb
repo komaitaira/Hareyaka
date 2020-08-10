@@ -1,4 +1,6 @@
 class Corporate::RoomsController < ApplicationController
+  before_action :authenticate_company!
+  
   def index
     @rooms = current_company.rooms.joins(:messages).includes(:messages).order("messages.created_at DESC")
   end
