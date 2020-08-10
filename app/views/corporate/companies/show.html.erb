@@ -16,14 +16,7 @@
     <div class="recommend">
       <h5>この企業のおすすめ記事3選</h5>
       <strong class="admin-comment">お気に入り数が多いものを3つ抜粋して掲載します。</strong>
-      <% @company_ranks.each do |article| %>
-        <%= render 'corporate/articles/article_detail', article: article %>
-        <div class="article-body">
-          <%= strip_tags(article.body.to_s).truncate(150) %>
-          <p class="text-right"><%= link_to "続きを読む", corporate_article_path(article.id) %></p>
-        </div>
-        <hr class="articleHr">
-      <% end %>
+      <%= render 'public/shared/ranking', all_ranks: @company_ranks %>
     </div>
   </div>
 
