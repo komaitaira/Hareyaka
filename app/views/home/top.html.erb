@@ -1,12 +1,33 @@
-<div class="container">
-  <div class="top">
+<div class="row">
+  <div class="col-md-3 col-lg-2">
+    <%= render 'top_sidebar' %>
+  </div>
+
+  <div class="col-md-9 col-lg-10">
+    <div class="carousel slide carousel-fade" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <%= image_tag 'Hareyaka.jpg', style: "width: 100%;" %>
+        </div>
+        <div class="carousel-item">
+          <%= image_tag 'solution.jpg', style: "width: 100%;" %>
+        </div>
+        <div class="carousel-item">
+          <%= image_tag 'challenge.jpg', style: "width: 100%;" %>
+        </div>
+      </div>
+    </div>
     <h1 class="text center">もっとあなたらしく。</h1>
     <h3>Hareyakaは様々な悩みを持つ人とそれを解決するプロをつなげるサービスです</h3>
-    <%= link_to 'Hareyakaについて', vision_path %>
-    <%= link_to '記事一覧', articles_path %>
-    <%= link_to '新規登録', new_user_registration_path %>
-    <%= link_to 'ログイン', new_user_session_path %>
-    <%= link_to '(法人)新規登録', new_company_registration_path %>
-    <%= link_to '(法人)ログイン', new_company_session_path %>
+    <p>大小あれども、人は何かしらの悩みを持っているものです。</p>
+    <p>Hareyakaはそんな多くの人の助けになるような情報を提供します。</p>
+    <h3>あなたの悩みを解決します</h3>
+    <p>気になる記事を見つけたら、その記事を提供する会社へコンタクトを取る事もできます。</p>
+    <p>その道のプロフェッショナルが、あなたの悩みをカウンセリングします。</p>
+    <h3>踏み出そう</h3>
+    <p>カウンセリングに納得したら、その会社のサービスを体験してみましょう。</p>
+    <p>きっとあなたの心はHareyakaに。</p>
   </div>
 </div>
+
+
