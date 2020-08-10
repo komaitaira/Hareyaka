@@ -1,10 +1,16 @@
 <% articles.each do |article| %>
-  <div id="article_contents_<%= article.id %>">
-    <%= render 'public/shared/detail', article: article %>
+  <div class="article-content shadow-sm col-md-6 col-lg-4">
+    <div id="article_contents_<%= article.id %>">
+      <%= render 'public/shared/detail', article: article %>
+    </div>
+    <div class="article-text">
+      <%= strip_tags(article.body.to_s).truncate(70) %>
+      <p class="text-right"><%= link_to "続きを読む", article_path(article.id) %></p>
+    </div>
   </div>
-  <div class="article-body">
-    <%= strip_tags(article.body.to_s).truncate(150) %>
-    <p class="text-right"><%= link_to "続きを読む", article_path(article.id) %></p>
-  </div>
-  <hr class="articleHr">
 <% end %>
+
+
+
+
+

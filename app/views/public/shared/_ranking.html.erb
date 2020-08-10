@@ -1,13 +1,13 @@
-<h5 class="text-center">人気記事ランキング</h5>
+<hr class="titleHr">
 <% all_ranks.each.with_index(1) do |article, i| %>
-  <div class="favorite-ranking">
-    <h5>第<%= i %>位</h5>
-    <%= link_to article_path(article.id) do %>
-      <h5><%= article.title %></h5>
-    <% end %>
-    <span class="badge badge-info">ジャンル</span><%= article.genre.genre_name %><br>
-    <span class="badge badge-info">投稿者</span><%= article.company.company_name %><br>
-    <span class="badge badge-info">投稿日</span><%= article.created_at.strftime('%Y/%m/%d') %><br>
-    <span>お気に入り<i class="fas fa-heart" style="color: #e82a2a;"><%= article.favorites.count %></i></span>
+  <h6>第<%= i %>位</h6>
+  <div class="favorite-ranking shadow-lg col-md-12">
+    <div id="article_contents_<%= article.id %>">
+      <%= render 'public/shared/detail', article: article %>
+    </div>
+    <div class="article-text">
+      <%= strip_tags(article.body.to_s).truncate(70) %>
+      <p class="text-right"><%= link_to "続きを読む", article_path(article.id) %></p>
+    </div>
   </div>
 <% end %>
