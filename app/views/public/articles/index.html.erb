@@ -1,38 +1,49 @@
-<%= render 'public/shared/search_genre', genres: @genres %>
-
-<div class="row">
-  <div class="col-md-4 col-lg-3">
-    <%= render 'public/shared/sidebar' %>
-  </div>
-
-  <div class="col-md-8 col-lg-9">
-    <div class="title">
-      <h5 class="text-center">記事一覧</h5>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-lg-12">
+      <%= render 'public/shared/search_genre', genres: @genres %>
     </div>
-    <hr class="titleHr">
-
-    <% if @q_articles %>
-      <% if @q_articles.empty? %>
-        <%# 検索該当なしの場合 %>
-        <p class="alert alert-info" role="alert">条件に合致する記事が見つかりませんでした。</p>
-      <% else %>
-        <%# 検索該当ありの場合 %>
-        <p class="alert alert-success" role="alert"><%="入力内容で検索した結果 #{@q_articles.total_count} 件の記事がヒットしました。" %></p>
-        <%= render 'article_list', articles: @q_articles %>
-        <p class="text-center">
-          <%= paginate @q_articles, class: "paginate" %>
-        </p>
-      <% end %>
-    <% elsif @articles %>   
-      <% if @articles.count > 0 %>
-        <%# 記事一覧 %>
-        <%= render 'article_list', articles: @articles %>
-        <p class="text-center">
-          <%= paginate @articles, class: "paginate" %>
-        </p>
-      <% else %>
-        <p class="alert alert-info" role="alert">現在掲載している記事はありません。</p>
-      <% end %>    
-    <% end %>
   </div>
 </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-lg-3">
+      <%= render 'public/shared/sidebar' %>
+    </div>
+    <div class="col-md-8 col-lg-9">
+      <div class="title">
+        <h6 class="text-center">掲載記事一覧</h6>
+      </div>
+      <hr class="titleHr">
+      <% if @q_articles %>
+        <% if @q_articles.empty? %>
+          <%# 検索該当なしの場合 %>
+          <p class="alert alert-info" role="alert">条件に合致する記事が見つかりませんでした。</p>
+        <% else %>
+          <%# 検索該当ありの場合 %>
+          <p class="alert alert-success" role="alert"><%="入力内容で検索した結果 #{@q_articles.total_count} 件の記事がヒットしました。" %></p>
+          <%= render 'article_list', articles: @q_articles %>
+          <div class="pagenation">
+            <p class="text-center">
+              <%= paginate @q_articles %>
+            </p>
+          </div>
+        <% end %>
+      <% elsif @articles %>   
+        <% if @articles.count > 0 %>
+          <%# 記事一覧 %>
+          <%= render 'article_list', articles: @articles %>
+          <div class="pagenation offset-sm-3 col-sm-6 offset-md-3 col-md-6 offset-lg-5 col-lg-4">
+            <p class="text-center" >
+              <%= paginate @articles %>
+            </p>
+          </div>
+        <% else %>
+          <p class="alert alert-info" role="alert">現在掲載している記事はありません。</p>
+        <% end %>    
+      <% end %>
+    </div>
+  </div>
+</div>
+

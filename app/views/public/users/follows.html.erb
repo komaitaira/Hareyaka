@@ -1,35 +1,39 @@
-<div class="row">
-  <div class="col-sm-12">
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <%= link_to "会員登録情報", user_path(current_user), class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "お気に入り(全#{current_user.favorites.count}件)", favorites_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "フォロー企業(全#{current_user.followings.count}件)", follows_user_path(current_user), class: "nav-link active" %>
-      </li>
-    </ul>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <%= link_to "会員登録情報", user_path(current_user), class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "お気に入り(全#{current_user.favorites.count}件)", favorites_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "フォロー企業(全#{current_user.followings.count}件)", follows_user_path(current_user), class: "nav-link active" %>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-sm-4 col-md-4">
-    <div class="card">
-      <div class="card-body">
-        <h6 class="card-header">企業をフォローしましょう！</h6>
-        <p class="card-text">
-          フォローリストから企業詳細ページへ進み、あなたの悩みや気になる記事についてメッセージを送りましょう！<br>
-          その道のプロフェッショナルがあなたのお悩みにお応えします！
-        </p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-lg-3"  style="margin-bottom: 20px;">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-header">企業をフォローしましょう！</h6>
+          <p class="card-text">
+            フォローリストから企業詳細ページへ進み、あなたの悩みや気になる記事についてメッセージを送りましょう！<br>
+            その道のプロフェッショナルがあなたのお悩みにお応えします！
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-sm-8 col-md-8">
-    <%= render 'public/companies/company_list', companies: @follows %>
-    <div class="row text-center">
-      <%= paginate @follows %>
+    <div class="col-md-8 col-lg-9">
+      <%= render 'public/companies/company_list', companies: @follows %>
+      <div class="text-center">
+        <%= paginate @follows %>
+      </div>
     </div>
   </div>
 </div>

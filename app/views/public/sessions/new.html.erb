@@ -1,28 +1,30 @@
-<div class="row">
-  <div class="offset-sm-2 col-sm-8 offset-sm-2">
-    <h3>個人会員の方はこちらからログイン</h3>
-    <h6 style="color: grey;">※法人会員の方はヘッダーの（法人）ログインからお進みください</h6>
-    <% if flash[:danger] %>
-      <p class="text-red"><%= flash[:danger] %></p>
-    <% end %>
+<div class="container">
+  <div class="row">
+    <div class="offset-sm-2 col-sm-8 offset-sm-2">
+      <h3>個人会員の方はこちらからログイン</h3>
+      <h6 style="color: grey;">※法人会員の方はヘッダーの（法人）ログインからお進みください</h6>
+      <% if flash[:danger] %>
+        <p class="text-red"><%= flash[:danger] %></p>
+      <% end %>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="form-group">
-        <%= f.label :メールアドレス, class: "col-xs-3" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-      </div>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-group">
+          <%= f.label :メールアドレス, class: "col-xs-3" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        </div>
 
-      <div class="form-group">
-        <%= f.label :パスワード, class: "col-xs-3" %>
-        <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
-      </div>
+        <div class="form-group">
+          <%= f.label :パスワード, class: "col-xs-3" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+        </div>
 
-      <div class="actions">
-        <p><%= f.submit "ログイン", class: "btn btn-info col-sm-12" %></p>
-      </div>
-    <% end %>
+        <div class="actions">
+          <p><%= f.submit "ログイン", class: "btn btn-info col-sm-12" %></p>
+        </div>
+      <% end %>
 
-    <h5>登録がお済みでない方</h5>
-    <p><%= render "public/shared/links" %>から新規登録を行ってください</p>
+      <h5>登録がお済みでない方</h5>
+      <p><%= render "public/shared/links" %>から新規登録を行ってください</p>
+    </div>
   </div>
 </div>

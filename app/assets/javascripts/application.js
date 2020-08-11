@@ -46,3 +46,11 @@ $(function() {
     });
 	});
 });
+
+$(function() {
+  $('#box1').hide().fadeIn(2000);
+});
+
+$(function() {
+  $('#box2').hide().fadeIn(2000);
+});

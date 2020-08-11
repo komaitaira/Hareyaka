@@ -1,14 +1,12 @@
-<div class="row genre-list">
-  <div class="col-sm-12">
-    <ul class="nav justify-content-center">
-      <li class="nav-item">
-        <% genres.each do |genre| %>
-          <% if genre.is_active == true %>
-            <%= link_to genre.genre_name, articles_path(genre_id: genre.id), class: "genre-item" %>
-          <% end %>
+<div class="genre-list">
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <% genres.each do |genre| %>
+        <% if genre.is_active == true %>
+          <%= link_to genre.genre_name, articles_path(genre_id: genre.id), class: "genre-item" %>
         <% end %>
-        <%= link_to "全記事を表示", articles_path, class: "all-genre-item" %>
-      </li>
-    </ul>
-  </div>
+      <% end %>
+      <%= link_to "全記事を表示", articles_path, class: "all-genre-item" %>
+    </li>
+  </ul>
 </div>

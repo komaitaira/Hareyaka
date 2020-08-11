@@ -17,9 +17,13 @@
     <%# body %>
     <div class="body">
       <div class="container">
-        <p id="notice"><%= notice %></p>
-        <%= yield %>
+        <div class="row">
+          <div class="col-lg-12">
+            <p id="notice"><%= notice %></p>
+          </div>
+        </div>
       </div>
+      <%= yield %>
     </div>
 
     <%# フッター %>
