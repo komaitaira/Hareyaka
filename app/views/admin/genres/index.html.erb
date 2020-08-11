@@ -1,50 +1,52 @@
-<div class="row">
-  <div class="col-md-3 offset-md-1">
-    <h4>ジャンル新規登録</h4>
-    <%= form_for(@genre, url: admin_genres_path) do |f| %>
-      <div class="col-md-12">
-        
-        <div class="form-group row">
-          <div class="col-md-12">
-            <%= f.label :ジャンル有効ステータス %><br>
-            <%= f.radio_button :is_active, true %>
-            <%= f.label :is_active, "有効", {value: :is_active, style: "display: inline-block;"} %>
-            <%= f.radio_button :is_active, false %>
-            <%= f.label :is_active, "無効", {value: :is_active, style: "display: inline-block;"} %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 offset-md-1">
+      <h4>ジャンル新規登録</h4>
+      <%= form_for(@genre, url: admin_genres_path) do |f| %>
+        <div class="col-md-12">
+          
+          <div class="form-group row">
+            <div class="col-md-12">
+              <%= f.label :ジャンル有効ステータス %><br>
+              <%= f.radio_button :is_active, true %>
+              <%= f.label :is_active, "有効", {value: :is_active, style: "display: inline-block;"} %>
+              <%= f.radio_button :is_active, false %>
+              <%= f.label :is_active, "無効", {value: :is_active, style: "display: inline-block;"} %>
+            </div>
           </div>
+
+          <div class="form-group">
+            <%= f.label :ジャンル名  %>
+            <%= f.text_field :genre_name, autofocus: true, autocomplete: "genre_name", class: "form-control" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit 'ジャンルを新規登録する',　class: "data-disable-with", class: "btn btn-primary col-md-12" %>
+          </div>
+
         </div>
+      <% end %>
+    </div>
 
-        <div class="form-group">
-          <%= f.label :ジャンル名  %>
-          <%= f.text_field :genre_name, autofocus: true, autocomplete: "genre_name", class: "form-control" %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit 'ジャンルを新規登録する',　class: "data-disable-with", class: "btn btn-primary col-md-12" %>
-        </div>
-
-      </div>
-    <% end %>
-  </div>
-
-  <div class="col-md-7">
-    <h4>ジャンル一覧</h4>
-    <table class='table'>
-      <thead>
-        <tr>
-          <th>ジャンル名</th>
-          <th>有効ステータス</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @genres.each do |genre| %>
+    <div class="col-md-7">
+      <h4>ジャンル一覧</h4>
+      <table class='table'>
+        <thead>
           <tr>
-            <td><%= link_to genre.genre_name, edit_admin_genre_path(genre.id) %></td>
-            <td><%= genre.is_active == true ? "有効" : "無効" %></td>
+            <th>ジャンル名</th>
+            <th>有効ステータス</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>  
+        </thead>
+
+        <tbody>
+          <% @genres.each do |genre| %>
+            <tr>
+              <td><%= link_to genre.genre_name, edit_admin_genre_path(genre.id) %></td>
+              <td><%= genre.is_active == true ? "有効" : "無効" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>  
+  </div>
 </div>

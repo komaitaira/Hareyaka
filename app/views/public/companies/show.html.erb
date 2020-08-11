@@ -1,8 +1,8 @@
+<%= attachment_image_tag @company, :background_image, class: "company-header", fallback: "business.jpg" %>
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <%= attachment_image_tag @company, :background_image, class: "company-header", fallback: "background-noimage.jpg" %>
-      <h4 class="text-center"><%= @company.company_name %></h4>
+      <h1 class="text-center"><%= @company.company_name %></h1>
 
       <%# フォローボタン、チャットボタン表示 %>
       <% if @isRoom == true %>

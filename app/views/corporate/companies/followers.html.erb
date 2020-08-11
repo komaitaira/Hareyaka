@@ -1,27 +1,29 @@
-<div class="row">
-  <div class="col-md-3">
-    <%= render 'corporate/shared/search_follower', search: @search %>
-    <h4 style="margin-top: 20px;">CSV出力をする</h4>
-    <strong class="admin-comment">右記に記載のフォロワー一覧をCSV出力することができます。個人会員様からのDMを受け取った際などにご活用ください。</strong>
-    <div class="csv-btn-wrap" style="margin-top: 20px;">
-      <%= link_to "CSVエクスポート", followers_corporate_company_path(format: :csv), class: "btn btn-primary col-md-12" %>
-    </div>
-  </div>
-
-  <% if @q_followers %>
-    <div class="col-md-9">
-      <h4>フォロワー会員</h4>
-      <% if @q_followers.empty? %>
-        <%# 検索該当なしの場合 %>
-        <p class="alert alert-info" role="alert">条件に合致する会員が見つかりませんでした</p>
-      <% else %>
-        <%# 検索該当ありの場合 %>
-        <p><%="全#{@q_followers.total_count}件中" + "(#{@q_followers.count}件表示)" %></p>
-        <%= render 'follower_list', followers: @q_followers %>
-        <div class="row text-center">
-          <%= paginate @q_followers, class: "paginate" %>
-        </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 col-lg-3">
+      <%= render 'corporate/shared/search_follower', search: @search %>
+      <h4 style="margin-top: 20px;">CSV出力をする</h4>
+      <strong class="admin-comment">右記に記載のフォロワー一覧をCSV出力することができます。個人会員様からのDMを受け取った際などにご活用ください。</strong>
+      <%= link_to followers_corporate_company_path(format: :csv), style: "margin-top: 20px;" do %>
+        <i class="fas fa-download">CSVエクスポート</i>
       <% end %>
     </div>
-  <% end %>
+
+    <% if @q_followers %>
+      <div class="col-md-9 col-lg-9">
+        <h4>フォロワー会員</h4>
+        <% if @q_followers.empty? %>
+          <%# 検索該当なしの場合 %>
+          <p class="alert alert-info" role="alert">条件に合致する会員が見つかりませんでした</p>
+        <% else %>
+          <%# 検索該当ありの場合 %>
+          <p><%="全#{@q_followers.total_count}件中" + "(#{@q_followers.count}件表示)" %></p>
+          <%= render 'follower_list', followers: @q_followers %>
+          <div class="row text-center">
+            <%= paginate @q_followers, class: "paginate" %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>

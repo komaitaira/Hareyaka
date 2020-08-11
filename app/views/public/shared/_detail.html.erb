@@ -23,6 +23,7 @@
 
 <div class="article-title">
   <% if controller.controller_name == 'articles' && controller.action_name == 'show' %>
+    <span class="article-info"><%= article.company.company_name %></span>
     <h1 class="card-title text-center"><%= article.title %></h1>
   <% else %>
     <h6 class="card-title text-center"><%= article.title.truncate(15) %></h6>

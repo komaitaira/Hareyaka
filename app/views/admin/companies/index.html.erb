@@ -1,23 +1,24 @@
-<div class="row">
-  <div class="col-md-3">
-    <%= render 'admin/shared/search_company', search: @search %>
-  </div>
-
-  <% if @q_companies %>
-    <div class="col-md-9">
-      <h4>企業一覧</h4>
-      <% if @q_companies.empty? %>
-        <%# 検索該当なしの場合 %>
-        <p class="top-empty-message">条件に合う企業が見つかりませんでした</p>
-      <% else %>
-        <%# 検索該当ありの場合 %>
-        <p><%="全#{@q_companies.total_count}件中" + "(#{@q_companies.count}件表示)" %></p>
-        <%= render 'company_list', companies: @q_companies %>
-        <div class="row text-center">
-          <%= paginate @q_companies, class: "paginate" %>
-        </div>
-      <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'admin/shared/search_company', search: @search %>
     </div>
-  <% end %>
 
+    <% if @q_companies %>
+      <div class="col-md-9">
+        <h4>企業一覧</h4>
+        <% if @q_companies.empty? %>
+          <%# 検索該当なしの場合 %>
+          <p class="top-empty-message">条件に合う企業が見つかりませんでした</p>
+        <% else %>
+          <%# 検索該当ありの場合 %>
+          <p><%="全#{@q_companies.total_count}件中" + "(#{@q_companies.count}件表示)" %></p>
+          <%= render 'company_list', companies: @q_companies %>
+          <div class="row text-center">
+            <%= paginate @q_companies, class: "paginate" %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>

@@ -1,34 +1,42 @@
-<div class="row">
-  <div class="col-sm-12">
-    <h4 class="text-center"><%= @user.full_name %> の会員情報詳細</h4>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h4 class="text-center"><%= @user.full_name %> の会員情報詳細</h4>
+    </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-sm-12 offset-md-1 col-md-3" style="margin-bottom: 20px;">
-    <%= attachment_image_tag @user, :profile_image, class: "img-fluid my-image", fallback: "no_image.png" %>
+<div class="container">
+  <div class="row">
+    <div class="offset-sm-4 col-sm-4 offset-md-5 col-md-5" style="margin-bottom: 20px;">
+      <%= attachment_image_tag @user, :profile_image, class: "img-fluid my-image", fallback: "no_image.png" %>
+    </div>
   </div>
+</div>
 
-  <div class="col-sm-12 col-md-7">
-    <div class="card">
-      <div class="card-body">
-        <p><span class="badge badge-danger">個人会員掲載ページ</span></p>
-        <h6 class="card-title">【会員ID】</h6>
-        <p class="card-text"><%= @user.id %></p>
-        <h6 class="card-title">【会員ステータス】</h6>
-        <p class="card-text"><%= @user.is_active == true ? "有効" : "退会済み" %></p>
-        <h6 class="card-title">【氏名】</h6>
-        <p class="card-text"><%= "#{@user.full_name} (#{@user.kana_full_name})" %></p>
-        <h6 class="card-title">【住所】</h6>
-        <p class="card-text"><%= "#{@user.postal_code} #{@user.address}" %></p>
-        <h6 class="card-title">【電話番号】</h6>
-        <p class="card-text"><%= @user.phone_number %></p>
-        <h6 class="card-title">【メールアドレス】</h6>
-        <p class="card-text"><%= @user.email %></p>
-        <h6 class="card-title">【自己紹介文】</h6>
-        <p class="card-text"><%= @user.introduction %></p>
-        <%= link_to '編集する', edit_admin_user_path(@user), class: "btn btn-info" %>
-        <%= link_to '会員一覧へ戻る', admin_users_path, class: "btn btn-outline-info" %>
+<div class="container">
+  <div class="row">
+    <div class="offset-sm-1 col-sm-10 offset-md-2 col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <p><span class="badge badge-danger">個人会員掲載ページ</span></p>
+          <h6 class="card-title">【会員ID】</h6>
+          <p class="card-text"><%= @user.id %></p>
+          <h6 class="card-title">【会員ステータス】</h6>
+          <p class="card-text"><%= @user.is_active == true ? "有効" : "退会済み" %></p>
+          <h6 class="card-title">【氏名】</h6>
+          <p class="card-text"><%= "#{@user.full_name} (#{@user.kana_full_name})" %></p>
+          <h6 class="card-title">【住所】</h6>
+          <p class="card-text"><%= "#{@user.postal_code} #{@user.address}" %></p>
+          <h6 class="card-title">【電話番号】</h6>
+          <p class="card-text"><%= @user.phone_number %></p>
+          <h6 class="card-title">【メールアドレス】</h6>
+          <p class="card-text"><%= @user.email %></p>
+          <h6 class="card-title">【自己紹介文】</h6>
+          <p class="card-text"><%= @user.introduction %></p>
+          <%= link_to '編集する', edit_admin_user_path(@user), class: "btn btn-info" %>
+          <%= link_to '会員一覧へ戻る', admin_users_path, class: "btn btn-outline-info" %>
+        </div>
       </div>
     </div>
   </div>
