@@ -1,28 +1,31 @@
-<div class="row">
-  <div class="offset-md-3 col-md-6 offset-md-3">
-    <h4>ジャンル情報編集</h4>
+<div class="container">
+  <div class="row">
+    <div class="offset-md-3 col-md-6 offset-md-3">
+      <h4>ジャンル情報編集</h4>
+    </div>
   </div>
 </div>
 
-<%= form_for(@genre, url: admin_genre_path) do |f| %>
-  
-  <div class="form-group row">
-    <div class="offset-md-3 col-md-6 offset-md-3">
-      <%= f.label :ジャンル有効ステータス %><br>
-      <%= f.radio_button :is_active, true %>
-      <%= f.label :is_active, "有効", {value: :is_active, style: "display: inline-block;"} %>
-      <%= f.radio_button :is_active, false %>
-      <%= f.label :is_active, "無効", {value: :is_active, style: "display: inline-block;"} %>
+<div class="container">
+  <%= form_for(@genre, url: admin_genre_path) do |f| %>
+    <%= render "admin/shared/error_messages", resource: @genre %>
+    <div class="form-group row">
+      <div class="offset-md-3 col-md-6 offset-md-3">
+        <%= f.label :ジャンル有効ステータス %><br>
+        <%= f.radio_button :is_active, true %>
+        <%= f.label :is_active, "有効", {value: :is_active, style: "display: inline-block;"} %>
+        <%= f.radio_button :is_active, false %>
+        <%= f.label :is_active, "無効", {value: :is_active, style: "display: inline-block;"} %>
 
-      <div class="form-group">
-        <%= f.label :ジャンル名  %>
-        <%= f.text_field :genre_name, autofocus: true, autocomplete: "genre_name", class: "form-control" %>
-      </div>
+        <div class="form-group">
+          <%= f.label :ジャンル名  %>
+          <%= f.text_field :genre_name, autofocus: true, autocomplete: "genre_name", class: "form-control" %>
+        </div>
 
-      <div class="actions">
-        <%= f.submit '変更を保存する', class: "btn btn-info" %>
+        <div class="actions">
+          <%= f.submit '変更を保存する', class: "btn btn-info" %>
+        </div>
       </div>
     </div>
-  </div>
-
-<% end %>
+  <% end %>
+</div>

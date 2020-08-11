@@ -1,21 +1,22 @@
-<div class="row">
-  <div class="offset-sm-1 col-sm-10 offset-sm-1">
-    <div class="title">
-      <h4 class="text-center">記事詳細</h4>
-    </div>
-    <hr class="titleHr">
+<%= render 'public/shared/search_genre', genres: @genres %>
 
-    <div id="article_contents_<%= @article.id %>">
-      <%= render 'public/shared/detail', article: @article %>
+<div class="container">
+  <div class="row">
+    <div class="offset-sm-1 col-sm-10 offset-sm-1">
+      <div class="title">
+        <h6 class="text-center">掲載記事詳細</h6>
+      </div>
+      <hr class="titleHr">
+
+      <div id="article_contents_<%= @article.id %>">
+        <%= render 'public/shared/detail', article: @article %>
+      </div>
+      <div class="row article-body">
+        <p><%= @article.body.html_safe %></p>
+      </div>
+      <p class="text-right">
+        <%= link_to "この記事の話をもっと聞きたい！", company_path(@article.company_id), class: "btn hear-more" %>
+      </p>
     </div>
-    <p class="text-right">
-      <%= link_to "この記事の話をもっと聞きたい！", company_path(@article.company_id), class: "btn hear-more" %>
-    </p>
-    <div class="row article-body">
-      <p><%= @article.body.html_safe %></p>
-    </div>
-    <p class="text-right">
-      <%= link_to "この記事の話をもっと聞きたい！", company_path(@article.company_id), class: "btn hear-more" %>
-    </p>
   </div>
 </div>

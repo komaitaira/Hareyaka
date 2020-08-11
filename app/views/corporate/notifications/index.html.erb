@@ -1,31 +1,35 @@
-<div class="row">
-  <div class="col-sm-12">
-    <h4 class="text-center">通知</h4>
-    <% if @notifications.exists? %>
-      <%= link_to corporate_destroy_all_notifications_path, method: :delete, "data-confirm" => "確認していないメッセージがあります。本当に削除しますか？" do %>
-        <i class="fas fa-trash-alt">全削除</i>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h4 class="text-center">通知</h4>
+      <% if @notifications.exists? %>
+        <%= link_to corporate_destroy_all_notifications_path, method: :delete, "data-confirm" => "確認していないメッセージがあります。本当に削除しますか？" do %>
+          <i class="fas fa-trash-alt">全削除</i>
+        <% end %>
+      <% else %>
+        <%= link_to corporate_notifications_path, "data-confirm" => "通知がありません。" do %>
+          <i class="fas fa-trash-alt">全削除</i>
+        <% end %>
       <% end %>
-    <% else %>
-      <%= link_to corporate_notifications_path, "data-confirm" => "通知がありません。" do %>
-        <i class="fas fa-trash-alt">全削除</i>
+      <%= link_to corporate_rooms_path do %>
+        <i class="fas fa-envelope">DM一覧</i>
       <% end %>
-    <% end %>
-    <%= link_to corporate_rooms_path do %>
-      <i class="fas fa-envelope">DM一覧</i>
-    <% end %>
+    </div>
   </div>
 </div>
 
-<hr class="titleHr">
-<div class="row">
-  <div class="col-sm-12 offset-md-3 col-md-7 offset-md-2">
-    <% if @notifications.exists? %>
-      <div class="notifications">
-        <%= render 'notification_list', notifications: @notifications %>
-        <%= paginate @notifications %>
-      </div>
-    <% else %>
-      <p class="text-center">新着メッセージはありません</p>
-    <% end %>
+<div class="container">
+  <hr class="titleHr">
+  <div class="row">
+    <div class="offset-md-2 col-md-8 offset-md-2">
+      <% if @notifications.exists? %>
+        <div class="notifications">
+          <%= render 'notification_list', notifications: @notifications %>
+          <%= paginate @notifications %>
+        </div>
+      <% else %>
+        <p class="text-center">新着メッセージはありません</p>
+      <% end %>
+    </div>
   </div>
 </div>

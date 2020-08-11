@@ -1,71 +1,74 @@
-<div class="row-md-12">
-  <h4 class="col-md-12">登録情報編集</h4>
-</div>
-
-<%= form_for(@company, url: admin_company_path) do |f| %>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="form-group">
-        <%= f.label :企業名 %>
-        <%= f.text_field :company_name, autofocus: true, autocomplete: "company_name", class: "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :フリガナ %>
-        <%= f.text_field :kana_company_name, autofocus: true, autocomplete: "kana_company_name", class: "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :メールアドレス %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :郵便番号（ハイフンなし）%>
-        <%= f.text_field :postal_code, autofocus: true, class: "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :住所 %>
-        <%= f.text_field :address, autofocus: true, class: "form-control", collection: JpPrefecture::Prefecture.all, :value_method => :name %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :電話番号（ハイフンなし）%>
-        <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "form-control" %>
-      </div>
-    </div>
-
-    <div class="col-md-8">
-      <div class="form-group">
-        <%= f.label :ヘッダー画像 %><br>
-        <%= f.attachment_field :background_image %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :プロフィール画像 %><br>
-        <%= f.attachment_field :profile_image %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :会員ステータス %><br>
-        <%= f.radio_button :is_active, true %>
-        <%= f.label :is_active, "有効", {value: :is_active, style: "display: inline-block;"} %>
-        <%= f.radio_button :is_active, false %>
-        <%= f.label :is_active, "退会済み", {value: :is_active, style: "display: inline-block;"} %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :企業紹介文 %>
-        <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", placeholder: "自己紹介文を入力して下さい", class: "form-control", style: "height: 300px;" %>
-      </div>
-
-      <div class="actions">
-        <p>
-          <%= f.submit '変更を保存する', class: "btn btn-info" %>　　
-          <%= link_to '会員情報詳細へ戻る', admin_company_path(@company), class: "btn btn-outline-info" %>
-        </p>
-      </div>
-    </div>
+<div class="container">
+  <div class="row-md-12">
+    <h4 class="col-md-12">登録情報編集</h4>
   </div>
-<% end %>
+
+  <%= form_for(@company, url: admin_company_path) do |f| %>
+    <%= render "admin/shared/error_messages", resource: @company %>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :企業名 %>
+          <%= f.text_field :company_name, autofocus: true, autocomplete: "company_name", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :フリガナ %>
+          <%= f.text_field :kana_company_name, autofocus: true, autocomplete: "kana_company_name", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :メールアドレス %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :郵便番号（ハイフンなし）%>
+          <%= f.text_field :postal_code, autofocus: true, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :住所 %>
+          <%= f.text_field :address, autofocus: true, class: "form-control", collection: JpPrefecture::Prefecture.all, :value_method => :name %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :電話番号（ハイフンなし）%>
+          <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <div class="form-group">
+          <%= f.label :ヘッダー画像 %><br>
+          <%= f.attachment_field :background_image %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :プロフィール画像 %><br>
+          <%= f.attachment_field :profile_image %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :会員ステータス %><br>
+          <%= f.radio_button :is_active, true %>
+          <%= f.label :is_active, "有効", {value: :is_active, style: "display: inline-block;"} %>
+          <%= f.radio_button :is_active, false %>
+          <%= f.label :is_active, "退会済み", {value: :is_active, style: "display: inline-block;"} %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :企業紹介文 %>
+          <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", placeholder: "自己紹介文を入力して下さい", class: "form-control", style: "height: 300px;" %>
+        </div>
+
+        <div class="actions">
+          <p>
+            <%= f.submit '変更を保存する', class: "btn btn-info" %>　　
+            <%= link_to '会員情報詳細へ戻る', admin_company_path(@company), class: "btn btn-outline-info" %>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

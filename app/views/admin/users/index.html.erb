@@ -1,23 +1,24 @@
-<div class="row">
-  <div class="col-md-3">
-    <%= render 'admin/shared/search_user', search: @search %>
-  </div>
-
-  <% if @q_users %>
-    <div class="col-md-9">
-      <h4>会員一覧</h4>
-      <% if @q_users.empty? %>
-        <%# 検索該当なしの場合 %>
-        <p class="top-empty-message">条件に合う会員が見つかりませんでした</p>
-      <% else %>
-        <%# 検索該当ありの場合 %>
-        <p><%="全#{@q_users.total_count}件中" + "(#{@q_users.count}件表示)" %></p>
-        <%= render 'user_list', users: @q_users %>
-        <div class="row text-center">
-          <%= paginate @q_users, class: "paginate" %>
-        </div>
-      <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 col-lg-3">
+      <%= render 'admin/shared/search_user', search: @search %>
     </div>
-  <% end %>
 
+    <% if @q_users %>
+      <div class="col-md-9 col-lg-9">
+        <h4>会員一覧</h4>
+        <% if @q_users.empty? %>
+          <%# 検索該当なしの場合 %>
+          <p class="top-empty-message">条件に合う会員が見つかりませんでした</p>
+        <% else %>
+          <%# 検索該当ありの場合 %>
+          <p><%="全#{@q_users.total_count}件中" + "(#{@q_users.count}件表示)" %></p>
+          <%= render 'user_list', users: @q_users %>
+          <div class="row text-center">
+            <%= paginate @q_users, class: "paginate" %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>

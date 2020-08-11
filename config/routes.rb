@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
 
-  root 'public/articles#index'
-  get 'top' => 'home#top'
-  get 'vision' => 'home#vision'
-  get 'solution' => 'home#solution'
-  get 'challenge' => 'home#challenge'
+  # root 'public/articles#index'
+  root 'home#top'
+  get 'individual' => 'home#individual'
+  get 'corporate' => 'home#corporate'
   get 'thanks' => 'home#thanks'
 
   #管理者側ルーティング

@@ -2,13 +2,10 @@ class HomeController < ApplicationController
   def top
   end
 
-  def vision
+  def individual
   end
 
-  def solution
-  end
-
-  def challenge
+  def corporate
   end
 
   def thanks
