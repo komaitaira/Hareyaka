@@ -1,3 +1,9 @@
 <footer>
-  <p>Hareyaka</p>
+  <nav class="navbar">
+    <%= image_tag 'footer_logo.png', class: "footer-logo" %>
+    <div class="guide-link">
+      <span class="text-right"><%=link_to "個人会員の皆様へ", individual_path, style: "color: #e9eef1;" %></span>
+      <span class="text-right"><%=link_to "法人会員の皆様へ", corporate_path, style: "color: #e9eef1;" %></span>
+    </div>
+  </nav>
 </footer>

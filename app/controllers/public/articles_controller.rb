@@ -1,6 +1,6 @@
 class Public::ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_search_genre, only: [:index]
+  before_action :set_search_genre, only: [:index, :show]
   before_action :set_ranking, only: [:index]
   before_action :set_ransack, only: [:index]
 
@@ -27,11 +27,11 @@ class Public::ArticlesController < ApplicationController
     if params[:genre_id].present?
       # genre_idが与えられている場合、genre_idに合致する記事を探す
       @articles = Article.where(is_active: true).joins(:genre).where(genres: {is_active: true}).where(genre_id: params[:genre_id])
-      .page(params[:page]).reverse_order
+      .page(params[:page]).order(updated_at: "DESC")
     else
       # 掲載ステータスが有効かつジャンルが有効になっている記事のみ探す
       @articles = Article.where(is_active: true).joins(:genre).where(genres: {is_active: true})
-      .page(params[:page]).reverse_order
+      .page(params[:page]).order(updated_at: "DESC")
     end
     @genres = Genre.all
   end
@@ -46,7 +46,7 @@ class Public::ArticlesController < ApplicationController
     @search = Article.where(is_active: true).joins(:genre).where(genres: {is_active: true}).ransack(params[:q])
     # params[:q]がviewから渡されてきた場合、resultを返す
     if params[:q].present?
-      @q_articles = @search.result.page(params[:page]).reverse_order
+      @q_articles = @search.result.page(params[:page]).order(updated_at: "DESC")
     end
   end
 end

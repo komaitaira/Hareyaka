@@ -1,33 +1,62 @@
-<div class="row">
-  <div class="col-md-3 col-lg-2">
-    <%= render 'top_sidebar' %>
-  </div>
+<div id="box1">
+  <%= image_tag 'logo.png', class: "top-logo" %>
+</div>
 
-  <div class="col-md-9 col-lg-10">
-    <div class="carousel slide carousel-fade" data-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <%= image_tag 'Hareyaka.jpg', style: "width: 100%;" %>
-        </div>
-        <div class="carousel-item">
-          <%= image_tag 'solution.jpg', style: "width: 100%;" %>
-        </div>
-        <div class="carousel-item">
-          <%= image_tag 'challenge.jpg', style: "width: 100%;" %>
-        </div>
-      </div>
+<div class="container">
+  <div class="row box2">
+    <div class="col-sm-12 col-md-12 text-center">
+      <h1 id="top-message">もっとあなたらしく。</h1>
+      <h5>Hareyakaは様々な悩みを持つ人とそれを解決するプロをつなげるサービスです。</h5>
     </div>
-    <h1 class="text center">もっとあなたらしく。</h1>
-    <h3>Hareyakaは様々な悩みを持つ人とそれを解決するプロをつなげるサービスです</h3>
-    <p>大小あれども、人は何かしらの悩みを持っているものです。</p>
-    <p>Hareyakaはそんな多くの人の助けになるような情報を提供します。</p>
-    <h3>あなたの悩みを解決します</h3>
-    <p>気になる記事を見つけたら、その記事を提供する会社へコンタクトを取る事もできます。</p>
-    <p>その道のプロフェッショナルが、あなたの悩みをカウンセリングします。</p>
-    <h3>踏み出そう</h3>
-    <p>カウンセリングに納得したら、その会社のサービスを体験してみましょう。</p>
-    <p>きっとあなたの心はHareyakaに。</p>
   </div>
 </div>
 
+<div class="container">
+  <div class="row top-content">
+    <div class="col-sm-12 col-md-12 col-lg-6">
+      <%= image_tag 'article.jpg', class: "vision" %>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-6">
+      <div class="explanation">
+        <h3 class="explanation-title text-center">Hareyakaとは</h3>
+        <p class="text-center">大小あれども、人は何かしらの悩みを</p>
+        <p class="text-center">持っているものです。</p>
+        <p class="text-center">Hareyakaはそんな多くの人の助けに</p>
+        <p class="text-center">なるような「<strong>情報</strong>」を提供します。</p>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="container">
+  <div class="row top-content">
+    <div class="col-sm-12 col-md-12 col-lg-6">
+      <div class="explanation">
+        <h3 class="explanation-title text-center">あなたの悩みを解決します</h3>
+        <p class="text-center">気になる記事を見つけたら</p>
+        <p class="text-center">その記事を提供する会社へ「<strong>コンタクト</strong>」を取りましょう。</p>
+        <p class="text-center">その道のプロフェッショナルが</p>
+        <p class="text-center">あなたの悩みをカウンセリングします。</p>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-6">
+      <%= image_tag 'communication.png', class: "vision" %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row top-content">
+    <div class="col-sm-12 col-md-12 col-lg-6">
+      <%= image_tag 'reach.jpg', class: "vision" %>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-6">
+      <div class="explanation">
+        <h3 class="explanation-title text-center">踏み出そう</h3>
+        <p class="text-center">カウンセリングに納得したら</p>
+        <p class="text-center">是非その会社のサービスを「<strong>体験</strong>」してみましょう。</p>
+        <p class="text-center">きっとあなたの心はHareyakaに。</p>
+      </div>
+    </div>
+  </div>
+</div>

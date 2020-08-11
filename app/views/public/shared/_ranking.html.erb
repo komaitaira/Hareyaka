@@ -1,13 +1,20 @@
 <hr class="titleHr">
 <% all_ranks.each.with_index(1) do |article, i| %>
-  <h6>第<%= i %>位</h6>
-  <div class="favorite-ranking shadow-lg col-md-12">
+  <% if i == 1 %>
+    <i class="fas fa-bookmark" style="color: gold;"><%= i %></i>
+  <% elsif i == 2 %>
+    <i class="fas fa-bookmark" style="color: silver;"><%= i %></i>
+  <% elsif i == 3 %>
+    <i class="fas fa-bookmark" style="color: orange;"><%= i %></i>
+  <% end %>
+  <div class="favorite-ranking card shadow-lg col-md-12 col-lg-12">
     <div id="article_contents_<%= article.id %>">
       <%= render 'public/shared/detail', article: article %>
     </div>
     <div class="article-text">
-      <%= strip_tags(article.body.to_s).truncate(70) %>
-      <p class="text-right"><%= link_to "続きを読む", article_path(article.id) %></p>
+      <%= strip_tags(article.body.to_s).truncate(70) %><br>
+      <span class="article-info"><%= article.company.company_name %></span>
+      <p style="float: right;"><%= link_to "続きを読む", article_path(article.id) %></p>
     </div>
   </div>
 <% end %>
