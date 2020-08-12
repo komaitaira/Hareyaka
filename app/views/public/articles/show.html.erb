@@ -11,7 +11,7 @@
       <div id="article_contents_<%= @article.id %>">
         <%= render 'public/shared/detail', article: @article %>
       </div>
-      <div class="row article-body">
+      <div class="article-body">
         <p><%= @article.body.html_safe %></p>
       </div>
       <p class="text-right">
