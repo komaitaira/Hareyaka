@@ -4,7 +4,7 @@ class CreateArticles < ActiveRecord::Migration[5.2]
       t.integer :company_id, null: false
       t.integer :genre_id, null: false
       t.string :title, null: false
-      t.text :body, null: false
+      t.text :body, null: false, limit: 4294967295
       t.string :image_id
       t.boolean :is_active, null: false, default: true
 

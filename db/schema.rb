@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_08_07_031414) do
     t.integer "company_id", null: false
     t.integer "genre_id", null: false
     t.string "title", null: false
-    t.text "body", null: false
+    t.text "body", limit: 4294967295, null: false
     t.string "image_id"
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
