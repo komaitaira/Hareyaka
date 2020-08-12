@@ -10,10 +10,10 @@ class Public::CompaniesController < ApplicationController
 
   def show
     @company = Company.find(params[:id])
-    # @all_ranksの記事の中から@companyの記事のみ取り出す
-    @company_ranks = @all_ranks.select do |all_rank|
-      all_rank.company_id == @company.id
-    end
+    # @companyに紐づくお気に入りが最も多いものを取得。(articleとgenreのis_activeがそれぞれtrueのものを限定)
+    article_ids = @company.articles.joins(:favorites).joins(:genre).where(articles: { is_active: true }).where(genres: { is_active: true }).pluck(:id)
+    @company_ranks = Article.limit(1).find(article_ids)
+
     # current_userと@companyとのroomがあるかどうかで分岐
     @currentUserEntry = Room.where(user_id: current_user.id)
     @companyEntry = Room.where(company_id: @company.id)

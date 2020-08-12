@@ -9,12 +9,9 @@ class Admin::CompaniesController < ApplicationController
   end
 
   def show
-    # Articleモデルからcreate_all_ranks(article.rbに定義)で検索してきた結果を@all_ranksに代入
-    @all_ranks = Article.create_all_ranks
-    # @all_ranksの記事の中から@companyの記事のみ取り出す
-    @company_ranks = @all_ranks.select do |all_rank|
-      all_rank.company_id == @company.id
-    end
+    # @companyに紐づくお気に入りが最も多いものを取得。(articleとgenreのis_activeがそれぞれtrueのものを限定)
+    article_ids = @company.articles.joins(:favorites).joins(:genre).where(articles: { is_active: true }).where(genres: { is_active: true }).pluck(:id)
+    @company_ranks = Article.limit(1).find(article_ids)
   end
 
   def edit

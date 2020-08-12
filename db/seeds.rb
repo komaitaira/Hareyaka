@@ -14,7 +14,7 @@ require './db/seeds/article.rb'
 # 管理者
 Admin.create!(
   id: 1,
-  email: 'admin@email.com',
+  email: 'admin@example.com',
   password: 'adminadmin',
   password_confirmation: 'adminadmin'
   )
