@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-sm-12">
       <span class="badge badge-danger">個人会員掲載ページ</span>
-      <h1 class="text-center company-name"><%= @company.company_name %></h1>
+      <h1 class="text-center company-name"><strong><%= @company.company_name %></strong></h1>
       <p class="text-right">
         <%= link_to '編集する', edit_corporate_company_path(@company), class:"btn btn-info" %>
       <%= link_to 'パスワードを変更する', edit_company_registration_path(@company), class:"btn btn-outline-info" %>
