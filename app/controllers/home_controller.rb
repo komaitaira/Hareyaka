@@ -2,10 +2,7 @@ class HomeController < ApplicationController
   def top
   end
 
-  def individual
-  end
-
-  def corporate
+  def guide
   end
 
   def thanks

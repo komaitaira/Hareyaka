@@ -70,7 +70,7 @@ header{
 }
 
 .box2{
-  margin-bottom: 200px;
+  margin-bottom: 400px;
 }
 
 .top-content{
@@ -88,6 +88,31 @@ header{
 
 .vision{
   width: 100%;
+}
+
+.greeting-sentence{    
+  padding: 20px 0;
+}
+
+.guide-content{
+  padding: 20px;
+
+  .guide-title{
+    margin-bottom: 60px;
+    background-color: #eff8f7;
+  }
+
+  .guide-body{
+    margin-bottom: 60px;
+  }
+
+  .guide-explanation{
+    margin-bottom: 60px;
+  }
+
+  .guide-image{
+    width: 100%;
+  }
 }
 
 .genre-item{

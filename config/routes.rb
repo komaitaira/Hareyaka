@@ -2,8 +2,7 @@ Rails.application.routes.draw do
 
   # root 'public/articles#index'
   root 'home#top'
-  get 'individual' => 'home#individual'
-  get 'corporate' => 'home#corporate'
+  get 'guide' => 'home#guide'
   get 'thanks' => 'home#thanks'
 
   #管理者側ルーティング

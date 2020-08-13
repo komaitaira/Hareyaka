@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <h1 class="text-center"><%= @company.company_name %></h1>
+      <h1 class="text-center"><strong><%= @company.company_name %></strong></h1>
       <p class="text-right">
         <%= link_to '編集する', edit_admin_company_path(@company), class:"btn btn-info" %>
         <%= link_to '企業一覧へ戻る', admin_companies_path, class:"btn btn-outline-info" %>
