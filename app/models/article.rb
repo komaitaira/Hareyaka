@@ -5,7 +5,7 @@ class Article < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 75 }
   validates :body, presence: true
-  validates :is_active, presence: true
+  # validates :is_active, presence: true
   attachment :image
 
   # scope :where_article_genre_active, -> { where(is_active: true).joins(:genre).where(genres: { is_active: true }) }
