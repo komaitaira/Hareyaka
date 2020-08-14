@@ -24,7 +24,7 @@
           <%# 検索該当ありの場合 %>
           <p class="alert alert-success" role="alert"><%="入力内容で検索した結果 #{@q_articles.total_count} 件の記事がヒットしました。" %></p>
           <%= render 'article_list', articles: @q_articles %>
-          <div class="pagenation">
+          <div class="pagenation offset-sm-3 col-sm-6 offset-md-4 col-md-4 offset-lg-4 col-lg-4">
             <p class="text-center">
               <%= paginate @q_articles %>
             </p>
@@ -34,7 +34,7 @@
         <% if @articles.count > 0 %>
           <%# 記事一覧 %>
           <%= render 'article_list', articles: @articles %>
-          <div class="pagenation offset-sm-3 col-sm-6 offset-md-3 col-md-6 offset-lg-5 col-lg-4">
+          <div class="pagenation offset-sm-3 col-sm-6 offset-md-4 col-md-4 offset-lg-4 col-lg-4">
             <p class="text-center" >
               <%= paginate @articles %>
             </p>

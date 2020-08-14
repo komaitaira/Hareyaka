@@ -31,8 +31,10 @@
     </div>
     <div class="col-md-8 col-lg-9">
       <%= render 'public/companies/company_list', companies: @follows %>
-      <div class="text-center">
-        <%= paginate @follows %>
+      <div class="pagenation offset-sm-3 col-sm-6 offset-md-4 col-md-4 offset-lg-4 col-lg-4">
+        <div class="text-center">
+          <%= paginate @follows %>
+        </div>
       </div>
     </div>
   </div>

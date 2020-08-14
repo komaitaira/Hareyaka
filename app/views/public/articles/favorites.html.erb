@@ -44,11 +44,11 @@
 
     <div class="col-md-9">
       <%= render 'article_list', articles: @favorite_articles %>
-      <div class="row text-center">
-        <%= paginate @favorite_articles %>
+      <div class="pagenation offset-sm-3 col-sm-6 offset-md-4 col-md-4 offset-lg-4 col-lg-4">
+        <div class="text-center">
+          <%= paginate @favorite_articles %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-
