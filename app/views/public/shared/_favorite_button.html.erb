@@ -1,0 +1,11 @@
+<% if user_signed_in? %>
+  <% if article.favorited_by?(current_user) %>
+    <%= link_to article_favorites_path(article.id), method: :delete, remote: true do %>
+      <span class="favorite-button"><i class="fas fa-heart" style="color: #e82a2a;"></i></span>
+    <% end %>
+  <% else %>
+    <%= link_to article_favorites_path(article.id), method: :post, remote: true do %>
+      <span class="favorite-button"><i class="far fa-heart" style="color: #e82a2a;"></i></span>
+    <% end %>
+  <% end %>
+<% end %>

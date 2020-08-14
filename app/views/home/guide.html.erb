@@ -8,6 +8,7 @@
 </div>
 <div class="container">
   <div class="row">
+    <%# サイドバー %>
     <div class="greeting col-12 col-sm-12 col-md-4">
       <h6 class="greeting-sentence">はじめまして。</h6>
       <h6 class="greeting-sentence">Hareyakaをご覧頂きありがとうございます。</h6>
@@ -20,13 +21,29 @@
         していただけると幸いです。
       </h6>
     </div>
+
+    <%# ガイド本文 %>
     <div class="col-12　col-sm-12 col-md-8">
       <div class="individual">
         <h4 class="text-center">個人会員の皆様へ</h4>
         <hr class="titleHr">
+        
+        <%# コンテンツ1 %>
         <div class="guide-content">
           <div class="guide-title">
-            <h5><strong>1）マイページを編集しよう</strong></h5>
+            <h5><strong>1）はじめに</strong></h5>
+          </div>
+          <div class="guide-body">
+            <p>Hareyakaは、会員制のサイトです。</p>
+            <p>記事の閲覧はログインが不要ですが、記事のお気に入り/企業のフォロー・DM等のサービスのご利用にはログインが必要です。</p>
+            <p>はじめてのご利用の際はまず上部ヘッダーから新規会員登録をよろしくお願いします。</p>
+          </div>
+        </div>
+        
+        <%# コンテンツ2 %>
+        <div class="guide-content">
+          <div class="guide-title">
+            <h5><strong>2）マイページを編集しよう</strong></h5>
           </div>
           <div class="guide-body">
             <p>Hareyakaは企業とのコミュニケーションをとることができるサービスです。</p>
@@ -37,34 +54,38 @@
           <p><strong>【自己紹介文の作成方法】</strong></p>
           <div class="guide-explanation">
             <p>・ログイン後、画面右上のマイページをクリックします。</p>
-            <img class="guide-image" src="/assets/mypage-link-bdf7e385eb70480d41fc1c564ba6b966a2c191b4310d6df55447944ac7af6457.jpg">
+            <%= image_tag 'mypage-link.jpg', class: "guide-image" %>
           </div>
           <div class="guide-explanation">
             <p>・会員登録情報が表示されますので、一番下の"編集する"をクリックします。</p>
-            <img class="guide-image" src="/assets/mypage-bb082e795f2e5f1a6f3bac2169e19fcb1cf055ef2e0adbcbcaceb4fedc59895e.jpg">
+            <%= image_tag 'mypage.jpg', class: "guide-image" %>
           </div>
           <div class="guide-explanation">
             <p>
               ・登録情報編集フォームが表示されますので、一番下の自己紹介文の欄に文章を入力し、"変更を保存する"をクリックします。これでマイページの編集は完了です！
             </p>
-            <img class="guide-image" src="/assets/modify-69af666e5975451d499f8ee47d6daf09443ec1127a4c49336eddec481ed529fe.jpg">
+            <%= image_tag 'modify.jpg', class: "guide-image" %>
           </div>
         </div>
+        
+        <%# コンテンツ3 %>
         <div class="guide-content">
           <div class="guide-title">
-            <h5><strong>2）記事を読んでみる</strong></h5>
+            <h5><strong>3）記事を読んでみる</strong></h5>
           </div>
           <div class="guide-body">
             <p>様々な企業がそれぞれ専門とする分野についての記事を掲載しています。</p>
             <p>是非いろいろな記事を読んでみましょう！</p>
           </div>
           <div class="guide-explanation">
-            <img class="guide-image" src="/assets/article-list-ff30749602429a5e4617067e6141d45002972d2452531fb908a9d8a57ceaf02c.jpg">
+            <%= image_tag 'article-list.jpg', class: "guide-image" %>
           </div>
         </div>
+        
+        <%# コンテンツ4 %>
         <div class="guide-content">
           <div class="guide-title">
-            <h5><strong>3）記事のお気に入り、会社のフォローをしよう</strong></h5>
+            <h5><strong>4）記事のお気に入り、会社のフォローをしよう</strong></h5>
           </div>
           <div class="guide-body">
             <p>気になる記事や会社があったら、お気に入り/フォローをしましょう。</p>
@@ -75,12 +96,14 @@
             <p>マイページのお気に入り欄で、お気に入り記事のジャンル割合を確認できます。</p>
             <p>割合が多いものは、実は自分では気づかなかった悩みの元かもしれません。</p>
             <p>定期的に確認してみましょう！</p>
-            <img class="guide-image" src="/assets/pie-chart-00d6332607a0d2784cde43421f72be8f00acfe7024bcdfbd015415f8b0ac9a1b.jpg">
+            <%= image_tag 'pie-chart.jpg', class: "guide-image" %>
           </div>
         </div>
+        
+        <%# コンテンツ5 %>
         <div class="guide-content">
           <div class="guide-title">
-            <h5><strong>4）会社へDMを送ろう</strong></h5>
+            <h5><strong>5）会社へDMを送ろう</strong></h5>
           </div>
           <div class="guide-body">
             <p>記事について聞きたいことや、相談したい悩みがあれば会社にメッセージを送りましょう。</p>
@@ -89,21 +112,23 @@
           <p><strong>【DMの方法】</strong></p>
           <div class="guide-explanation">
             <p>・ログイン後、記事詳細の一番下にある"この記事の話をもっと聞きたい！"をクリックします。</p>
-            <img class="guide-image" src="/assets/hear-more-11e5d1e3f5a419b498743ef839defb763ff56f96a900396991d0ea1e44569235.jpg">
+            <%= image_tag 'hear-more.jpg', class: "guide-image" %>
           </div>
           <div class="guide-explanation">
             <p>・企業詳細ページが表示されますので、"DMを始める"をクリックします。</p>
             <p>・先ほどの記事詳細ページ以外にも、専門家リストやフォローリストからも企業詳細ページへ遷移可能です。</p>
-            <img class="guide-image" src="/assets/dm-721a659ec1d65446393ee904fa4762beb8240f35b95abc3458f5ad044d20d9fb.jpg">
+            <%= image_tag 'dm.jpg', class: "guide-image" %>
           </div>
           <div class="guide-explanation">
             <p>クリックするとDM送信フォームが表示されますので、お悩みやご相談を入力し送信しましょう。これでDMの送信は完了です！</p>
             <p>企業からの返信はヘッダー右上のDM通知欄に表示されます。返信が来るまでお待ちください。</p>
           </div>
         </div>
+        
+        <%# コンテンツ6 %>
         <div class="guide-content">
           <div class="guide-title">
-            <h5><strong>5）最後に</strong></h5>
+            <h5><strong>6）最後に</strong></h5>
           </div>
           <div class="guide-body">
             <p>いかがでしたでしょうか。</p>
@@ -112,6 +137,8 @@
           </div>
         </div>
       </div>
+
+    <%# ここまでガイド本文 %>
     </div>
   </div>
 </div>
