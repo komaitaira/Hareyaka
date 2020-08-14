@@ -4,26 +4,26 @@
     <div class="col-sm-12">
       <span class="badge badge-danger">個人会員掲載ページ</span>
       <h1 class="text-center company-name"><strong><%= @company.company_name %></strong></h1>
+      <hr class="titleHr">
       <p class="text-right">
         <%= link_to '編集する', edit_corporate_company_path(@company), class:"btn btn-info" %>
       <%= link_to 'パスワードを変更する', edit_company_registration_path(@company), class:"btn btn-outline-info" %>
       </p>
-      <hr class="titleHr">
     </div>
   </div>
 </div>
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-12 col-md-6">
       <div class="recommend">
         <h5>この企業のおすすめ記事</h5>
         <strong class="admin-comment">お気に入り数が多いものを1つ抜粋して掲載します。</strong>
-        <%= render 'public/shared/ranking', all_ranks: @company_ranks %>
+        <%= render 'corporate/shared/ranking', all_ranks: @company_ranks %>
       </div>
     </div>
 
-    <div class="col-sm-6">
+    <div class="col-sm-12 col-md-6">
       <h5>企業情報</h5>
       <hr class="titleHr">
       <table class='table table-borderless table-sm'>

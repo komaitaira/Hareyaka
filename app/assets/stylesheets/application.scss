@@ -124,15 +124,16 @@ header{
 }
 
 .article-content{
-  position: relative;
-  display: flex;
-  flex-direction: column;
   background-color: #fff;
   background-clip: border-box;
   float: left; 
   font-size: small;
-  margin-top: 30px;
+  margin-top: 25px;
   height: 380px;
+}
+
+.article-title{
+  clear: both;
 }
 
 .aticle-image-top{
@@ -333,6 +334,15 @@ footer{
 .favorite-ranking{
   margin-bottom: 10px;
   font-size: small;
+  display: inline-block;
+}
+
+.favorite-count{
+  float: left;
+}
+
+.favorite-button{
+  float: right;
 }
 
 .article_search_form{
