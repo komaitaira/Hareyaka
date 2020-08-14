@@ -3,29 +3,17 @@
 
 <%= attachment_image_tag article, :image, class: "img-fluid aticle-image-top", fallback: "article.jpg" %>
 
-<div class="article-favorite">
-  <span>
-    <% if user_signed_in? %>
-      <% if article.favorited_by?(current_user) %>
-        <%= link_to article_favorites_path(article.id), method: :delete, remote: true do %>
-          <i class="fas fa-heart" style="color: #e82a2a;"><%= article.favorites.count %></i>
-        <% end %>
-      <% else %>
-        <%= link_to article_favorites_path(article.id), method: :post, remote: true do %>
-          <i class="far fa-heart" style="color: #e82a2a;"><%= article.favorites.count %></i>
-        <% end %>
-      <% end %>
-    <% else %>
-      <i class="fas fa-heart" style="color: #e82a2a;"><%= article.favorites.count %></i>
-    <% end %>
-  </span>
+<span class="favorite-count"><i class="fab fa-gratipay" style="color: #9b9b9b;"><%= article.favorites.count %></i></span>
+
+<div id="favorite_button_<%= article.id %>">
+  <%= render 'public/shared/favorite_button', article: article %>
 </div>
 
 <div class="article-title">
   <% if controller.controller_name == 'articles' && controller.action_name == 'show' %>
-    <span class="article-info"><%= article.company.company_name %></span>
-    <h1 class="card-title text-center"><%= article.title %></h1>
+    <h1 class="card-title text-center"><strong><%= article.title %></strong></h1>
+    <p class="article-info text-center"><strong><%= article.company.company_name %></strong></p>
   <% else %>
-    <h6 class="card-title text-center"><%= article.title.truncate(15) %></h6>
+    <h6 class="card-title text-center"><strong><%= article.title.truncate(15) %></strong></h6>
   <% end %>
 </div>

@@ -3,12 +3,9 @@
 
 <%= attachment_image_tag article, :image, class: "img-fluid aticle-image-top", fallback: "article.jpg" %>
 
-<span>
-  <i class="fas fa-heart" style="color: #e82a2a;"><%= article.favorites.count %></i>
-</span>
-
-<span class="article-info"><%= article.company.company_name %></span>
+<span class="favorite-count"><i class="fab fa-gratipay" style="color: #9b9b9b;"><%= article.favorites.count %></i></span>
 
 <div class="article-title">
-  <h1 class="card-title text-center"><%= article.title %></h1>
+  <h1 class="card-title text-center"><strong><%= article.title %></strong></h1>
+  <p class="article-info text-center"><strong><%= article.company.company_name %></strong></p>
 </div>

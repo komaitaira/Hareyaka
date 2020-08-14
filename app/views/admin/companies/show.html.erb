@@ -3,6 +3,7 @@
   <div class="row">
     <div class="col-sm-12">
       <h1 class="text-center"><strong><%= @company.company_name %></strong></h1>
+      <hr class="titleHr">
       <p class="text-right">
         <%= link_to '編集する', edit_admin_company_path(@company), class:"btn btn-info" %>
         <%= link_to '企業一覧へ戻る', admin_companies_path, class:"btn btn-outline-info" %>
@@ -10,29 +11,21 @@
       <p class="text-right">
         <span class="badge badge-primary">法人会員掲載ページ</span>企業ID <%= @company.id %> 会員ステータス【<%= @company.is_active == true ? "有効" : "退会済み" %>】
       </p>
-      <hr class="titleHr">
     </div>
   </div>
 </div>
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-12 col-md-6">
       <div class="recommend">
         <h5>この企業のおすすめ記事</h5>
         <strong class="admin-comment">お気に入り数が多いものを1つ抜粋して掲載します。</strong>
-        <% @company_ranks.each do |article| %>
-          <%= render 'corporate/articles/article_detail', article: article %>
-          <div class="article-body">
-            <%= strip_tags(article.body.to_s).truncate(150) %>
-            <p class="text-right"><%= link_to "続きを読む",admin_article_path(article.id) %></p>
-          </div>
-          <hr class="articleHr">
-        <% end %>
+        <%= render 'admin/shared/ranking', all_ranks: @company_ranks %>
       </div>
     </div>
 
-    <div class="col-sm-6">
+    <div class="col-sm-12 col-md-6">
       <h5>企業情報</h5>
       <hr class="titleHr">
       <table class='table table-borderless table-sm'>

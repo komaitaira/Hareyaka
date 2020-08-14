@@ -8,6 +8,7 @@
 </div>
 <div class="container">
   <div class="row">
+    <%# サイドバー %>
     <div class="greeting col-12 col-sm-12 col-md-4">
       <h6 class="greeting-sentence">はじめまして。</h6>
       <h6 class="greeting-sentence">Hareyakaをご覧頂きありがとうございます。</h6>
@@ -20,13 +21,29 @@
         していただけると幸いです。
       </h6>
     </div>
+
+    <%# ガイド本文 %>
     <div class="col-12　col-sm-12 col-md-8">
       <div class="individual">
         <h4 class="text-center">個人会員の皆様へ</h4>
         <hr class="titleHr">
+        
+        <%# コンテンツ1 %>
         <div class="guide-content">
           <div class="guide-title">
-            <h5><strong>1）マイページを編集しよう</strong></h5>
+            <h5><strong>1）はじめに</strong></h5>
+          </div>
+          <div class="guide-body">
+            <p>Hareyakaは、会員制のサイトです。</p>
+            <p>記事の閲覧はログインが不要ですが、記事のお気に入り/企業のフォロー・DM等のサービスのご利用にはログインが必要です。</p>
+            <p>はじめてのご利用の際はまず上部ヘッダーから新規会員登録をよろしくお願いします。</p>
+          </div>
+        </div>
+        
+        <%# コンテンツ2 %>
+        <div class="guide-content">
+          <div class="guide-title">
+            <h5><strong>2）マイページを編集しよう</strong></h5>
           </div>
           <div class="guide-body">
             <p>Hareyakaは企業とのコミュニケーションをとることができるサービスです。</p>
@@ -50,9 +67,11 @@
             <%= image_tag 'modify.jpg', class: "guide-image" %>
           </div>
         </div>
+        
+        <%# コンテンツ3 %>
         <div class="guide-content">
           <div class="guide-title">
-            <h5><strong>2）記事を読んでみる</strong></h5>
+            <h5><strong>3）記事を読んでみる</strong></h5>
           </div>
           <div class="guide-body">
             <p>様々な企業がそれぞれ専門とする分野についての記事を掲載しています。</p>
@@ -62,9 +81,11 @@
             <%= image_tag 'article-list.jpg', class: "guide-image" %>
           </div>
         </div>
+        
+        <%# コンテンツ4 %>
         <div class="guide-content">
           <div class="guide-title">
-            <h5><strong>3）記事のお気に入り、会社のフォローをしよう</strong></h5>
+            <h5><strong>4）記事のお気に入り、会社のフォローをしよう</strong></h5>
           </div>
           <div class="guide-body">
             <p>気になる記事や会社があったら、お気に入り/フォローをしましょう。</p>
@@ -78,9 +99,11 @@
             <%= image_tag 'pie-chart.jpg', class: "guide-image" %>
           </div>
         </div>
+        
+        <%# コンテンツ5 %>
         <div class="guide-content">
           <div class="guide-title">
-            <h5><strong>4）会社へDMを送ろう</strong></h5>
+            <h5><strong>5）会社へDMを送ろう</strong></h5>
           </div>
           <div class="guide-body">
             <p>記事について聞きたいことや、相談したい悩みがあれば会社にメッセージを送りましょう。</p>
@@ -101,9 +124,11 @@
             <p>企業からの返信はヘッダー右上のDM通知欄に表示されます。返信が来るまでお待ちください。</p>
           </div>
         </div>
+        
+        <%# コンテンツ6 %>
         <div class="guide-content">
           <div class="guide-title">
-            <h5><strong>5）最後に</strong></h5>
+            <h5><strong>6）最後に</strong></h5>
           </div>
           <div class="guide-body">
             <p>いかがでしたでしょうか。</p>
@@ -112,6 +137,8 @@
           </div>
         </div>
       </div>
+
+    <%# ここまでガイド本文 %>
     </div>
   </div>
 </div>

@@ -8,9 +8,8 @@
       </div>
       <hr class="titleHr">
 
-      <div id="article_contents_<%= @article.id %>">
-        <%= render 'public/shared/detail', article: @article %>
-      </div>
+      <%= render 'public/shared/detail', article: @article %>
+
       <div class="article-body">
         <p><%= @article.body.html_safe %></p>
       </div>

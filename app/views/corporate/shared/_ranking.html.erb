@@ -28,7 +28,7 @@
     <div class="article-text">
       <%= strip_tags(article.body.to_s).truncate(70) %><br>
       <span class="article-info"><%= article.company.company_name %></span>
-      <p style="float: right;"><%= link_to "続きを読む", article_path(article.id) %></p>
+      <p style="float: right;"><%= link_to "続きを読む", corporate_article_path(article.id) %></p>
     </div>
   </div>
 <% end %>
