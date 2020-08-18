@@ -10,6 +10,8 @@ require './db/seeds/user.rb'
 require './db/seeds/company.rb'
 require './db/seeds/genre.rb'
 require './db/seeds/article.rb'
+require './db/seeds/room.rb'
+require './db/seeds/message.rb'
 
 # 管理者
 Admin.create!(
