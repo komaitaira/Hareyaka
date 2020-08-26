@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'home#top'
   get 'guide' => 'home#guide'
   get 'thanks' => 'home#thanks'
+  get 'applying' => 'home#applying'
 
   #管理者側ルーティング
   devise_for :admins, controllers: {

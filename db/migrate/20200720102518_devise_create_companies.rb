@@ -41,6 +41,7 @@ class DeviseCreateCompanies < ActiveRecord::Migration[5.2]
       t.string :background_image_id
       t.text :introduction
       t.boolean :is_active, null: false, default: true
+      t.boolean :approved, null: false, default: false
 
       t.timestamps null: false
     end

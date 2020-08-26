@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2020_08_07_031414) do
     t.string "background_image_id"
     t.text "introduction"
     t.boolean "is_active", default: true, null: false
+    t.boolean "approved", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_companies_on_email", unique: true

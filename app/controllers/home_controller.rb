@@ -7,4 +7,7 @@ class HomeController < ApplicationController
 
   def thanks
   end
+
+  def applying
+  end
 end

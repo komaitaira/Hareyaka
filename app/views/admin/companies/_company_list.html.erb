@@ -4,6 +4,7 @@
       <th>企業ID</th>
       <th>企業名</th>
       <th>メールアドレス</th>
+      <th>申請ステータス</th>
       <th>企業ステータス</th>
     </tr>
   </thead>
@@ -14,6 +15,7 @@
         <td><%= company.id %></td>
         <td><%= link_to company.company_name, admin_company_path(company.id) %></td>
         <td><%= company.email %></td>
+        <td><%= company.approved == true ? "承認済" : "申請中" %></td>
         <td><%= company.is_active == true ? "有効" : "退会済み" %></td>
       </tr>
     <% end %>
