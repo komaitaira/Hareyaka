@@ -2,7 +2,7 @@
   <table class='table table-borderless table-sm'>
     <tbody>
       <tr>
-        <td style="width: 135px;"><%= attachment_image_tag company, :profile_image, class: "img-fluid company-image", fallback: "no_image.png" %></td>
+        <td style="width: 135px;"><%= image_tag "https://hareyaka-image-resize-bucket.s3-ap-northeast-1.amazonaws.com/store/" + company.profile_image_id + "-thumbnail.", class: "img-fluid company-image", fallback: "no_image.png" %></td>
         <td>
           <h6><%= link_to company.company_name, company_path(company.id) %></h6>
           <p style="font-size: small;"><%= truncate(company.introduction, length: 100) %></p>

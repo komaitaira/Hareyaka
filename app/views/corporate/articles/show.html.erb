@@ -15,7 +15,7 @@
         <strong class="admin-comment">※上記の掲載状況は法人会員画面のみの表示です。変更する場合は記事情報編集ページからお手続きください。</strong>
       </div>
 
-      <%= render 'corporate/articles/article_detail', article: @article, article_url: @article_url %>
+      <%= render 'corporate/articles/article_detail', article: @article %>
 
       <div class="article-body">
         <p><%= @article.body.html_safe %></p>
