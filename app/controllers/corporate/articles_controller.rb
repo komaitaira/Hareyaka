@@ -3,7 +3,6 @@ class Corporate::ArticlesController < ApplicationController
   before_action :set_article, only:[:show, :edit, :update, :destroy]
 
   def index
-    # @articles = Article.page(params[:page])
     @search = current_company.articles.ransack(params[:q])
     @q_articles = @search.result.page(params[:page]).reverse_order
   end
@@ -23,6 +22,8 @@ class Corporate::ArticlesController < ApplicationController
   end
 
   def show
+    # 参照先のS3オブジェクトURLを作成
+    @article_url = "https://hareyaka-image-resize-bucket.s3-ap-northeast-1.amazonaws.com/store/" + @article.image_id + "-thumbnail."
   end
 
   def edit
@@ -30,6 +31,7 @@ class Corporate::ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
+      sleep(6) # S3への画像反映のタイムラグを考慮して6秒待機
       redirect_to corporate_article_path(@article.id), notice: "記事情報の更新が完了しました。"
     else
       render :edit

@@ -1,7 +1,7 @@
 <span class="article-info"><%= article.genre.genre_name %></span>
 <span class="article-info" style="float: right;"><%= article.created_at.strftime('%Y/%m/%d') %></span>
 
-<%= attachment_image_tag article, :image, class: "img-fluid aticle-image-top", fallback: "article.jpg" %>
+<%= image_tag article_url, class: "img-fluid aticle-image-top", fallback: "article.jpg" %>
 
 <span class="favorite-count"><i class="fab fa-gratipay" style="color: #9b9b9b;"><%= article.favorites.count %></i></span>
 
