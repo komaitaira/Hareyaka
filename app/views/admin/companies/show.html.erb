@@ -9,7 +9,7 @@
         <%= link_to '企業一覧へ戻る', admin_companies_path, class:"btn btn-outline-info" %>
       </p>
       <p class="text-right">
-        <span class="badge badge-primary">法人会員掲載ページ</span>企業ID <%= @company.id %> 会員ステータス【<%= @company.is_active == true ? "有効" : "退会済み" %>】
+        <span class="badge badge-primary">法人会員掲載ページ</span>企業ID【<%= @company.id %>】申請ステータス【<%= @company.approved == true ? "承認済" : "申請中" %>】会員ステータス【<%= @company.is_active == true ? "有効" : "退会済み" %>】
       </p>
     </div>
   </div>

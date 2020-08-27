@@ -48,7 +48,15 @@
           <%= f.label :プロフィール画像 %><br>
           <%= f.attachment_field :profile_image %>
         </div>
-
+        
+        <div class="form-group">
+          <%= f.label :申請ステータス %><br>
+          <%= f.radio_button :approved, true %>
+          <%= f.label :approved, "承認済", {value: :approved, style: "display: inline-block;"} %>
+          <%= f.radio_button :approved, false %>
+          <%= f.label :approved, "申請中", {value: :approved, style: "display: inline-block;"} %>
+        </div>
+        
         <div class="form-group">
           <%= f.label :会員ステータス %><br>
           <%= f.radio_button :is_active, true %>

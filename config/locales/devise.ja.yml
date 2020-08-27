@@ -1,0 +1,4 @@
+ja:
+  devise:
+    registrations:
+      signed_up_but_needs_admin_approval: "登録申請ありがとうございます。法人会員専用ページは運営にて申請が承認がされた後に閲覧可能になります。承認済メールが届くまで今しばらくお待ちください。"

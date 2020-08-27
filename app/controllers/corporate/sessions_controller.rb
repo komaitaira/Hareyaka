@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Corporate::SessionsController < Devise::SessionsController
-  # before_action :configure_sign_in_params, only: [:create]
+  before_action :reject_unapproved_company, only: [:create]
   before_action :reject_inactive_company, only: [:create]
 
   # GET /resource/sign_in
@@ -36,6 +36,18 @@ class Corporate::SessionsController < Devise::SessionsController
     root_path
   end
 
+  # 登録未承認の場合、ログイン画面へリダイレクト
+  def reject_unapproved_company
+    @company = Company.find_by(email: params[:company][:email])
+    if @company
+      if @company.valid_password?(params[:company][:password]) && !@company.approved
+        flash[:danger] = '登録申請が未承認です。申し訳ございませんが、承認済メールが届くまで今しばらくお待ちください。'
+        redirect_to new_company_session_path
+      end
+    end
+  end
+
+  # 退会済みの場合、ログイン画面へリダイレクト
   def reject_inactive_company
     @company = Company.find_by(email: params[:company][:email])
     if @company

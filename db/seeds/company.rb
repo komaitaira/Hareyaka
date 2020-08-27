@@ -15,6 +15,7 @@ Company.create!(
                     掲載記事についてはもちろん、健康についてのご相談、それ以外のこと、なんでもお聞きしますので安心してご連絡ください。",
       profile_image: open("./db/images/yontory-face.png"),
       background_image: open("./db/images/yontory-bg.jpg"),
+      approved: true,
       is_active: true
     },
 
@@ -34,6 +35,7 @@ Company.create!(
                     お気軽にご連絡ください。",
       profile_image: open("./db/images/mitsubishi-face.png"),
       background_image: open("./db/images/mitsubishi-bg.jpg"),
+      approved: true,
       is_active: true
     },
 
@@ -55,6 +57,7 @@ Company.create!(
                     掲載記事についてはもちろん、美容についてのご相談、それ以外のこと、なんでもお聞きしますので安心してご連絡ください。",
       profile_image: open("./db/images/kose-face.jpg"),
       background_image: open("./db/images/kose-bg.jpg"),
+      approved: true,
       is_active: true
     },
 
@@ -77,6 +80,7 @@ Company.create!(
                     また、ご興味がある方は是非ジムへ御来店くださいませ。",
       profile_image: open("./db/images/bronze-face.png"),
       background_image: open("./db/images/bronze-bg.jpg"),
+      approved: true,
       is_active: true
     },
 
@@ -97,6 +101,7 @@ Company.create!(
                     多くのお客様にご満足いただけるよう邁進していく所存でございますので、お気軽にご連絡ください！",
       profile_image: open("./db/images/infura-face.png"),
       background_image: open("./db/images/infura-bg.jpg"),
+      approved: true,
       is_active: true
     },
 
@@ -118,6 +123,7 @@ Company.create!(
                     是非、料理に関するお悩みや掲載されている記事についてご相談がございましたらお気軽にご連絡ください。",
       profile_image: open("./db/images/gourmet-face.png"),
       background_image: open("./db/images/gourmet-bg.jpg"),
+      approved: true,
       is_active: true
     },
 
@@ -140,6 +146,7 @@ Company.create!(
                     ご興味のある方は是非記事をお読み頂き、またお悩みやご相談がある方はDMにて弊社へご連絡くださいませ。",
       profile_image: open("./db/images/second-face.png"),
       background_image: open("./db/images/second-bg.jpg"),
+      approved: true,
       is_active: true
     },
 
@@ -160,6 +167,7 @@ Company.create!(
                     スポーツでの怪我や病気に関するお悩みがございましたら是非ご連絡ください。",
       profile_image: open("./db/images/tmc-face.png"),
       background_image: open("./db/images/tmc-bg.jpg"),
+      approved: true,
       is_active: true
     },
 
@@ -182,6 +190,7 @@ Company.create!(
                     ここに企業紹介文が入りますここに企業紹介文が入りますここに企業紹介文が入りますここに企業紹介文が入ります",
       profile_image: open("./db/images/homemade-face.png"),
       background_image: open("./db/images/homemade-bg.jpg"),
+      approved: true,
       is_active: true
     },
 
@@ -204,6 +213,7 @@ Company.create!(
                     ここに企業紹介文が入りますここに企業紹介文が入りますここに企業紹介文が入りますここに企業紹介文が入ります",
       profile_image: open("./db/images/wannyan-face.png"),
       background_image: open("./db/images/wannyan-bg.jpg"),
+      approved: true,
       is_active: true
     },
 
@@ -226,6 +236,7 @@ Company.create!(
                     ここに企業紹介文が入りますここに企業紹介文が入りますここに企業紹介文が入りますここに企業紹介文が入ります",
       profile_image: open("./db/images/haru-face.png"),
       background_image: open("./db/images/haru-bg.jpg"),
+      approved: true,
       is_active: true
     },
 
@@ -248,6 +259,7 @@ Company.create!(
                     ここに企業紹介文が入りますここに企業紹介文が入りますここに企業紹介文が入りますここに企業紹介文が入ります",
       profile_image: open("./db/images/tcc-face.jpg"),
       background_image: open("./db/images/tcc-bg.jpg"),
+      approved: true,
       is_active: true
     },
 
@@ -270,6 +282,7 @@ Company.create!(
                     ここに企業紹介文が入りますここに企業紹介文が入りますここに企業紹介文が入りますここに企業紹介文が入ります",
       profile_image: open("./db/images/useful-face.jpg"),
       background_image: open("./db/images/useful-bg.jpg"),
+      approved: true,
       is_active: true
     }
   ]
