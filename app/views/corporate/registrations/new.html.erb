@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="offset-sm-2 col-sm-8 offset-sm-2">
-      <h4>新規法人会員登録</h4>
+      <h4>法人会員新規登録（申請）</h4>
+      <h6 style="color: red;">※法人会員の方は運営による承認が必要です。申請が承認がされ次第、本登録となりますのでまずは以下のフォームを入力し登録申請をお願い致します。</h6>
       <h6 style="color: grey;">※個人会員の方はヘッダーの新規登録からお進みください</h6>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "corporate/shared/error_messages", resource: resource %>
@@ -50,7 +51,7 @@
           </div>
 
           <div class="actions">
-            <p><%= f.submit "新規登録", class: "btn btn-info col-sm-12" %></p>
+            <p><%= f.submit "申請する", class: "btn btn-info col-sm-12" %></p>
           </div>
 
           <h5>既に登録済みの法人様</h5>
