@@ -14,10 +14,17 @@
   <div class="row">
     <div class="offset-md-1 col-md-10 offset-md-1 col-sm-12">
       <% @messages.each do |m| %>
+        
+        <%# userのメッセージ %>
         <% if m.attribute_present?(:user_id) %>
-
           <div class="user-dm">
-            <%= image_tag "https://hareyaka-image-resize-bucket.s3-ap-northeast-1.amazonaws.com/store/" + m.user.profile_image_id + "-thumbnail.", class: "img-fluid opponent-face", fallback: "no_image.png" %>
+            <% if Rails.env.production? %>
+              <%# 本番環境での表示 %>
+              <%= image_tag "https://hareyaka-image-resize-bucket.s3-ap-northeast-1.amazonaws.com/store/" + m.user.profile_image_id + "-thumbnail.", class: "img-fluid opponent-face", fallback: "no_image.png" %>
+            <% else %>
+              <%# 開発環境での表示 %>
+              <%= attachment_image_tag m.user, :profile_image, class: "img-fluid opponent-face", fallback: "no_image.png" %>
+            <% end %>
             <div class="opponent-hukidashi card col-md-6 col-sm-6">
               <div class="card-body message">
                 <p>
@@ -27,10 +34,17 @@
               </div>
             </div>
           </div>
-        <% elsif m.attribute_present?(:company_id) %>
 
+        <%# companyのメッセージ %>
+        <% elsif m.attribute_present?(:company_id) %>
           <div class="company-dm">
-            <%= image_tag "https://hareyaka-image-resize-bucket.s3-ap-northeast-1.amazonaws.com/store/" + m.company.profile_image_id + "-thumbnail.", class: "img-fluid self-face", fallback: "no_image.png" %>
+            <% if Rails.env.production? %>
+              <%# 本番環境での表示 %>
+              <%= image_tag "https://hareyaka-image-resize-bucket.s3-ap-northeast-1.amazonaws.com/store/" + m.company.profile_image_id + "-thumbnail.", class: "img-fluid self-face", fallback: "no_image.png" %>
+            <% else %>
+              <%# 開発環境での表示 %>
+              <%= attachment_image_tag m.company, :profile_image, class: "img-fluid self-face", fallback: "no_image.png" %>
+            <% end %>
             <div class="self-hukidashi card offset-md-4 col-md-6 offset-sm-2 col-sm-6">
               <div class="card-body message">
                 <p>
@@ -40,10 +54,11 @@
               </div>
             </div>
           </div>
-
         <% end %>
+
       <% end %>
     </div>
+    <%# 送信フォームの表示 %>
     <div class="offset-md-1 col-md-10 offset-md-1">
       <%= form_for(@message, url: corporate_messages_path) do |f| %>
         <div class="form-group">

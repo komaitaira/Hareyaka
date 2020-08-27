@@ -12,6 +12,8 @@ require './db/seeds/genre.rb'
 require './db/seeds/article.rb'
 require './db/seeds/room.rb'
 require './db/seeds/message.rb'
+require './db/seeds/favorite.rb'
+require './db/seeds/relationship.rb'
 
 # 管理者
 Admin.create!(

@@ -14,7 +14,15 @@
         <tbody>
           <% @rooms.each do |room| %>
             <tr>
-              <td style="margin-right: 100px;"><%= image_tag "https://hareyaka-image-resize-bucket.s3-ap-northeast-1.amazonaws.com/store/" + room.user.profile_image_id + "-thumbnail.", class: "img-fluid notification-face", fallback: "no_image.png" %></td>
+              <td style="margin-right: 100px;">
+                <% if Rails.env.production? %>
+                  <%# 本番環境での表示 %>
+                  <%= image_tag "https://hareyaka-image-resize-bucket.s3-ap-northeast-1.amazonaws.com/store/" + room.user.profile_image_id + "-thumbnail.", class: "img-fluid notification-face", fallback: "no_image.png" %>
+                <% else %>
+                  <%# 開発環境での表示 %>
+                  <%= attachment_image_tag room.user, :profile_image, class: "img-fluid notification-face", fallback: "no_image.png" %>
+                <% end %>
+              </td>
               <td><%= room.user.full_name %></td>
               <td>
                 <p style="font-size: small"><%= strip_tags(most_new_message(room)).truncate(45) %></p>
