@@ -1,16 +1,17 @@
 class Public::CompaniesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only:[:show]
   before_action :set_search_genre, only:[:index]
   before_action :set_ranking, only:[:index, :show]
   before_action :set_ransack, only:[:index]
 
   def index
-    @companies = Company.all.page(params[:page])
+    # 申請が承認済かつ企業ステータスが有効(退会していない状態)のcomapnyの一覧
+    @companies = Company.all.where(approved: true, is_active: true).page(params[:page])
   end
 
   def show
     @company = Company.find(params[:id])
-    # @companyに紐づくお気に入りが最も多いものを取得。(articleとgenreのis_activeがそれぞれtrueのものを限定)
+    # @companyに紐づくお気に入りが最も多いものを表示。(articleとgenreのis_activeがそれぞれtrueのものを限定)
     article_ids = @company.articles.joins(:favorites).joins(:genre).where(articles: { is_active: true }).where(genres: { is_active: true }).pluck(:id)
     @company_ranks = Article.limit(1).find(article_ids)
 

@@ -21,6 +21,16 @@ class Company < ApplicationRecord
   attachment :profile_image
   attachment :background_image
 
+  # approvedがtrueであればログイン可。新規登録時点ではdefaultがfalseなのでログインできない状態にする
+  def active_for_authentication?
+    super && self.approved?
+  end
+
+  # 上記でログインが弾かれた後のメッセージ。文言詳細は config/locales/devise.ja.yml に記載。
+  def inactive_message
+    self.approved? ? super : :needs_admin_approval
+  end
+
   def followed_by?(user)
     passive_relationships.find_by(following_id: user.id).present?
   end
