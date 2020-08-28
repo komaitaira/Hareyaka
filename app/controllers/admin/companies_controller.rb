@@ -19,6 +19,16 @@ class Admin::CompaniesController < ApplicationController
 
   def update
     if @company.update(company_params)
+      # updateによりapprovedがtrueになった場合
+      if @company.approved == true
+        # 通知を受け取った側が管理者のデータかつcheckedがfalseのものを取得しtrueに更新
+        Notification.where(
+          receiver_id: current_admin.id,
+          receiver_class: "admin",
+          checked: false,
+          sender_id: @company.id
+        ).update(checked: true)
+      end
       redirect_to admin_company_path(@company)
     else
       render :edit

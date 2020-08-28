@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h4 class="text-center">法人登録申請一覧</h4>
+      <% if @notifications.exists? %>
+        <%= link_to admin_destroy_all_notifications_path, method: :delete, "data-confirm" => "確認していない登録申請があります。本当に削除しますか？" do %>
+          <i class="fas fa-trash-alt">全削除</i>
+        <% end %>
+      <% else %>
+        <%= link_to admin_notifications_path, "data-confirm" => "登録申請がありません。" do %>
+          <i class="fas fa-trash-alt">全削除</i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <hr class="titleHr">
+  <div class="row">
+    <div class="col-md-12">
+      <% if @notifications.exists? %>
+        <div class="notifications">
+          <%= render 'notification_list', notifications: @notifications %>
+          <%= paginate @notifications %>
+        </div>
+      <% else %>
+        <p class="text-center">現在、新しい登録申請はありません。</p>
+      <% end %>
+    </div>
+  </div>

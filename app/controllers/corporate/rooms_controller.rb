@@ -12,7 +12,8 @@ class Corporate::RoomsController < ApplicationController
       Notification.where(
         receiver_id: current_company.id,
         receiver_class: "company",
-        checked: false
+        checked: false,
+        room_id: @room.id
       ).update_all(checked: true)
       @messages = @room.messages.order(updated_at: "ASC")
       @message = Message.new
