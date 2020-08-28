@@ -63,6 +63,21 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "Hareyaka_#{Rails.env}"
 
+  # 管理者からメール送信。以下を追加
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    port:                 587,
+    address:              'smtp.gmail.com',
+    domain:               'gmail.com',
+    user_name:            ENV['MAILER_ADDRESS'],
+    password:             ENV['MAILER_PASSWORD'],
+    authentication:       'login',
+    enable_starttls_auto: true
+  }
+  # ここまで
+
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.

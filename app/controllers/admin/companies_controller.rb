@@ -28,6 +28,7 @@ class Admin::CompaniesController < ApplicationController
           checked: false,
           sender_id: @company.id
         ).update(checked: true)
+        ApprovalMailer.send_when_admin_approved(@company).deliver #承認メールを送信
       end
       redirect_to admin_company_path(@company)
     else
