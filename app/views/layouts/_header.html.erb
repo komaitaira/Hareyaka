@@ -23,6 +23,14 @@
           <li class="nav-item"><i class="far fa-newspaper"></i><%= link_to '記事一覧', admin_articles_path %></li>
           <li class="nav-item"><i class="fas fa-swatchbook"></i><%= link_to 'ジャンル一覧', admin_genres_path %></li>
           <li class="nav-item"><i class="far fa-building"></i><%= link_to '企業一覧', admin_companies_path %></li>
+          <li class="nav-item">
+            <% if admin_unchecked_notifications.any? %>
+              <i id="company-badge"><%= admin_unchecked_notifications.count %></i>
+            <% else %>
+              <i class="fas fa-bell"></i>
+            <% end %>
+            <%= link_to "法人登録申請", admin_notifications_path %>
+          </li>
           <li class="nav-item"><i class="fas fa-sign-out-alt"></i><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
         </ul>
       </div>

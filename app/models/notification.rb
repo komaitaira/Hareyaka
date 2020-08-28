@@ -1,5 +1,5 @@
 class Notification < ApplicationRecord
-  belongs_to :room
+  belongs_to :room, optional: true
 
   # スコープ(新着順)
   default_scope->{order(created_at: :desc)}

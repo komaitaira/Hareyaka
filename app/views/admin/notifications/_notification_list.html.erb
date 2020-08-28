@@ -1,0 +1,12 @@
+<table class='table table-borderless'>
+  <tbody>
+    <% notifications.each do |notification| %>
+      <tr>
+        <td class="text-center">
+          <%= notification.sender_name %> 様からの<%= link_to '法人登録申請', admin_company_path(notification.sender_id) %>があります。登録内容を確認してください。
+          <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
