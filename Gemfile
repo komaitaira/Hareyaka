@@ -80,7 +80,7 @@ gem 'jquery-rails'
 gem 'bootstrap'
 gem 'summernote-rails'
 gem "chartkick"
-
+gem 'refile-s3'
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  # root 'public/articles#index'
   root 'home#top'
   get 'guide' => 'home#guide'
   get 'thanks' => 'home#thanks'
@@ -12,10 +11,12 @@ Rails.application.routes.draw do
     registrations: 'admin/registrations'
   }
   namespace :admin do
+    delete 'destroy_all_notifications' => 'notifications#destroy_all'
     resources :users, only: [:index, :show, :edit, :update]
     resources :companies, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :articles, only: [:index, :show, :edit, :update]
+    resources :notifications, only: :index
   end
 
   #法人会員側ルーティング

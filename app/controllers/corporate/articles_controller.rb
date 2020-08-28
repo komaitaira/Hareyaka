@@ -3,7 +3,6 @@ class Corporate::ArticlesController < ApplicationController
   before_action :set_article, only:[:show, :edit, :update, :destroy]
 
   def index
-    # @articles = Article.page(params[:page])
     @search = current_company.articles.ransack(params[:q])
     @q_articles = @search.result.page(params[:page]).reverse_order
   end

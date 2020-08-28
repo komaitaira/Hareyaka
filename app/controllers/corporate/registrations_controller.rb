@@ -10,9 +10,16 @@ class Corporate::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create # 登録申請時、管理者へ通知送信
+    super
+    notification = Notification.new(
+      sender_id: Company.last.id,
+      sender_class: "company",
+      receiver_id: Admin.first.id,
+      receiver_class: "admin"
+    )
+    notification.save if notification.valid?
+  end
 
   # GET /resource/edit
   # def edit

@@ -33,7 +33,7 @@ Company.create!(
                     お金に関する悩みの解消のために必要なこととして、これからの時代は資産運用が非常に大切になってきます。
                     掲載されている記事についてはもちろんのこと、それ以外のお金の不安や悩み、誠心誠意で対応いたします。
                     お気軽にご連絡ください。",
-      profile_image: open("./db/images/mitsubishi-face.png"),
+      profile_image: open("./db/images/mitsubishi-face.jpg"),
       background_image: open("./db/images/mitsubishi-bg.jpg"),
       approved: true,
       is_active: true
@@ -78,7 +78,7 @@ Company.create!(
                     弊社ではトレーニングに関する知識はもちろん、先述した他業界への知識が豊富な社員が多くおります。
                     多くのお客様にご満足いただけるよう邁進していく所存でございますので、お気軽にご連絡ください！
                     また、ご興味がある方は是非ジムへ御来店くださいませ。",
-      profile_image: open("./db/images/bronze-face.png"),
+      profile_image: open("./db/images/bronze-face.jpg"),
       background_image: open("./db/images/bronze-bg.jpg"),
       approved: true,
       is_active: true
@@ -99,7 +99,7 @@ Company.create!(
                     現在、プログラミングは全国の小学校で必修科目となり、非常に注目が集まっている昨今では、今後もより一層、市場の拡大が見込まれます。
                     弊社ではプログラミングに関する知識が豊富な社員がたくさんおります。
                     多くのお客様にご満足いただけるよう邁進していく所存でございますので、お気軽にご連絡ください！",
-      profile_image: open("./db/images/infura-face.png"),
+      profile_image: open("./db/images/infura-face.jpg"),
       background_image: open("./db/images/infura-bg.jpg"),
       approved: true,
       is_active: true
