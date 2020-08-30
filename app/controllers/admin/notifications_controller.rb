@@ -5,7 +5,7 @@ class Admin::NotificationsController < ApplicationController
       receiver_id: current_admin.id,
       receiver_class: "admin",
       checked: false
-    ).page(params[:page])
+    )
   end
 
   def destroy_all

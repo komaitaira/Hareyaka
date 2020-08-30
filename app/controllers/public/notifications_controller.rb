@@ -7,7 +7,7 @@ class Public::NotificationsController < ApplicationController
       receiver_id: current_user.id,
       receiver_class: "user",
       checked: false
-    ).page(params[:page])
+    )
   end
 
   def destroy_all
