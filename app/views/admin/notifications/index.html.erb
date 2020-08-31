@@ -22,7 +22,6 @@
       <% if @notifications.exists? %>
         <div class="notifications">
           <%= render 'notification_list', notifications: @notifications %>
-          <%= paginate @notifications %>
         </div>
       <% else %>
         <p class="text-center">現在、新しい登録申請はありません。</p>

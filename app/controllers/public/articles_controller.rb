@@ -14,7 +14,7 @@ class Public::ArticlesController < ApplicationController
   def favorites
     # user.rbにfavorite_articlesアソシエーション記述。中間テーブルfavoritesを仲介し、current_userに結びつくお気に入り記事を取得
     @favorite_articles = current_user.favorite_articles
-    .page(params[:page]).per(30)
+    .page(params[:page])
 
     # userのお気に入り記事のgenre_nameの配列を取得
     array = @favorite_articles.joins(:genre).pluck(:genre_name)
@@ -26,11 +26,11 @@ class Public::ArticlesController < ApplicationController
   def set_search_genre
     if params[:genre_id].present?
       # genre_idが与えられている場合、genre_idに合致する記事を探す
-      @articles = Article.where(is_active: true).joins(:genre).where(genres: {is_active: true}).where(genre_id: params[:genre_id])
+      @articles = Article.all_active.where(genre_id: params[:genre_id])
       .page(params[:page]).order(updated_at: "DESC")
     else
       # 掲載ステータスが有効かつジャンルが有効になっている記事のみ探す
-      @articles = Article.where(is_active: true).joins(:genre).where(genres: {is_active: true})
+      @articles = Article.all_active
       .page(params[:page]).order(updated_at: "DESC")
     end
     @genres = Genre.all
@@ -43,7 +43,7 @@ class Public::ArticlesController < ApplicationController
 
   def set_ransack
     # 検索フォーム表示のため@searchを定義
-    @search = Article.where(is_active: true).joins(:genre).where(genres: {is_active: true}).ransack(params[:q])
+    @search = Article.all_active.ransack(params[:q])
     # params[:q]がviewから渡されてきた場合、resultを返す
     if params[:q].present?
       @q_articles = @search.result.page(params[:page]).order(updated_at: "DESC")

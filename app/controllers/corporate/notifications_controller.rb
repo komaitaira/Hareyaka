@@ -7,7 +7,7 @@ class Corporate::NotificationsController < ApplicationController
       receiver_id: current_company.id,
       receiver_class: "company",
       checked: false
-    ).page(params[:page])
+    )
   end
 
   def destroy_all

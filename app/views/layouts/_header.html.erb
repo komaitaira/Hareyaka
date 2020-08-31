@@ -25,7 +25,7 @@
           <li class="nav-item"><i class="far fa-building"></i><%= link_to '企業一覧', admin_companies_path %></li>
           <li class="nav-item">
             <% if admin_unchecked_notifications.any? %>
-              <i id="company-badge"><%= admin_unchecked_notifications.count %></i>
+              <i id="notification-badge"><%= admin_unchecked_notifications.count %></i>
             <% else %>
               <i class="fas fa-bell"></i>
             <% end %>
@@ -47,7 +47,7 @@
           <li class="nav-item"><i class="fas fa-user-friends"></i><%= link_to "フォロワー会員", followers_corporate_company_path(current_company.id) %></li>
           <li class="nav-item">
             <% if company_unchecked_notifications.any? %>
-              <i id="company-badge"><%= company_unchecked_notifications.count %></i>
+              <i id="notification-badge"><%= company_unchecked_notifications.count %></i>
             <% else %>
               <i class="fas fa-bell"></i>
             <% end %>
@@ -69,7 +69,7 @@
           <li class="nav-item"><i class="fas fa-user-tie"></i><%= link_to '専門家', companies_path %></li>
           <li class="nav-item">
             <% if user_unchecked_notifications.any? %>
-              <i id="user-badge"><%= user_unchecked_notifications.count %></i>
+              <i id="notification-badge"><%= user_unchecked_notifications.count %></i>
             <% else %>
               <i class="fas fa-bell"></i>
             <% end %>

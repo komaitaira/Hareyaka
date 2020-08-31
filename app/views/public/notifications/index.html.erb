@@ -25,7 +25,6 @@
       <% if @notifications.exists? %>
         <div class="notifications">
           <%= render 'notification_list', notifications: @notifications %>
-          <%= paginate @notifications %>
         </div>
       <% else %>
         <p class="text-center">新着メッセージはありません</p>

@@ -15,6 +15,7 @@
 @import "bootstrap";
 @import "summernote-bs4";
 
+// ここからヘッダー
 header{
   margin-bottom: 80px;
 }
@@ -42,13 +43,72 @@ header{
 .nav-tabs{
   margin-bottom: 35px;
 }
+// ここまでヘッダー
 
-.genre-list{
-  padding-bottom: 15px;
-  margin-bottom: 20px;
-  border-bottom: 1px #e9eef1 solid;
+// ここからフッター
+footer{
+  width: 100%;
+  background-image: linear-gradient(260deg, #00c4c4, #1275a0);
+  color: #fff;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  padding: 15px 0 15px 0;
 }
 
+.footer-logo{
+  width: 120px;
+  float: left;
+}
+// ここまでフッター
+
+// body
+.body{
+  margin-bottom: 130px;
+  background-color: #fff;
+  color: #202527;
+}
+
+.wrapper{
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 100px;
+  box-sizing: border-box;
+}
+
+a{
+  color: #17a2b8;
+}
+
+.titleHr{
+  margin-top: 10px;
+  border-top: 1px solid #e9eef1;
+
+}
+
+.company-header{
+  object-fit: cover;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 320px;
+}
+
+.content{
+  margin-top: 10px;
+}
+
+.show-message{
+  float: right;
+  margin-bottom: 10px;
+}
+
+.follower-face{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+// ここからトップページ
 .top-logo{
   width: 400px;
   display: block;
@@ -89,7 +149,9 @@ header{
 .vision{
   width: 100%;
 }
+// ここまでトップページ
 
+// ここからはじめてガイド
 .greeting-sentence{    
   padding: 20px 0;
 }
@@ -114,6 +176,23 @@ header{
     width: 100%;
   }
 }
+// ここまではじめてガイド
+
+// 退会ページ
+.unsubscribe{
+  padding-top: 150px;
+}
+// サンクスページ
+.thanks{
+  padding-top: 200px;
+}
+
+// ここからジャンル表示
+.genre-list{
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  border-bottom: 1px #e9eef1 solid;
+}
 
 .genre-item{
   margin: 10px;
@@ -122,7 +201,9 @@ header{
 .all-genre-item{
   margin-left: 50px;
 }
+// ここまでジャンル表示
 
+// ここから記事表示
 .article-content{
   background-color: #fff;
   background-clip: border-box;
@@ -145,6 +226,35 @@ header{
   color: #787c7b;
 }
 
+.articleHr{
+  margin: 30px 0 30px 0;
+  border-top: 1px solid #e9eef1;
+}
+// ここまで記事表示
+
+// ここからサイドバー
+.article_search_form{
+  margin-bottom: 20px;
+}
+
+.favorite-ranking{
+  margin-bottom: 10px;
+  font-size: small;
+  display: inline-block;
+}
+// ここまでサイドバー
+
+// ここからお気に入り
+.favorite-count{
+  float: left;
+}
+
+.favorite-button{
+  float: right;
+}
+// ここまでお気に入り
+
+// ここからページネーション 
 .pagenation{
   position: absolute;
   bottom: -120px;
@@ -160,25 +270,16 @@ header{
   background-color: #17a2b8;
   border-color: #17a2b8;
 }
+// ここまでページネーション 
 
-a{
-  color: #17a2b8;
-}
-
-.unsubscribe{
-  padding-top: 150px;
-}
-
-.thanks{
-  padding-top: 200px;
-}
-
+// 個人会員マイページprofile_image
 .my-image{
   width: 155px;
   height: 155px;
   border-radius: 50%;
 }
 
+// ここから専門家リスト
 .company-image{
   width: 90px;
   height: 90px;
@@ -187,30 +288,28 @@ a{
   margin-top: 10px;
 }
 
-#user-badge{
-  display: inline-block;
-  width: 18px;
-  height: 18px;
-  border-radius: 18px;
-  background-color: #e82a2a;
+.companyHr{
+  margin-top: 15px;
+  border-top: 1px solid #e9eef1;
+}
+// ここから専門家リスト
+
+// この話をもっと聞きたいボタン
+.hear-more{
+  background-image: linear-gradient(260deg, #00c4c4, #0d93e0);
+  border-radius: 50px;
   color: #fff;
-  text-align: center;
-  line-height: 18px;
-  margin-bottom: 6px;
 }
 
-#company-badge{
-  display: inline-block;
-  width: 18px;
-  height: 18px;
-  border-radius: 18px;
-  background-color: #e82a2a;
+// DM開始ボタン
+.enter-dm{
   color: #fff;
-  text-align: center;
-  line-height: 18px;
-  margin-bottom: 6px;
+  background-image: linear-gradient(260deg, #00c4c4, #0d93e0);
+  border-radius: 50px;
+  width: 240px;
 }
 
+// ここからDM
 .self-hukidashi{
   float: right;
   margin-bottom: 20px;
@@ -241,20 +340,19 @@ a{
 .message{
   font-size: small;
 }
+// ここまでDM
 
-.content{
-  margin-top: 10px;
-}
-
-.show-message{
-  float: right;
-  margin-bottom: 10px;
-}
-
-.follower-face{
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
+// ここから通知
+#notification-badge{
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 18px;
+  background-color: #e82a2a;
+  color: #fff;
+  text-align: center;
+  line-height: 18px;
+  margin-bottom: 6px;
 }
 
 .notification-face{
@@ -265,90 +363,9 @@ a{
   margin-left: 10px;
   float: left;
 }
+// ここまで通知
 
-.body{
-  margin-bottom: 130px;
-  background-color: #fff;
-  color: #202527;
-}
-
-.wrapper{
-  min-height: 100vh;
-  position: relative;
-  padding-bottom: 100px;
-  box-sizing: border-box;
-}
-
-footer{
-  width: 100%;
-  background-image: linear-gradient(260deg, #00c4c4, #1275a0);
-  color: #fff;
-  text-align: center;
-  position: absolute;
-  bottom: 0;
-  padding: 15px 0 15px 0;
-}
-
-.footer-logo{
-  width: 120px;
-  float: left;
-}
-
-.titleHr{
-  margin-top: 10px;
-  border-top: 1px solid #e9eef1;
-
-}
-
-.companyHr{
-  margin-top: 15px;
-  border-top: 1px solid #e9eef1;
-}
-
-.articleHr{
-  margin: 30px 0 30px 0;
-  border-top: 1px solid #e9eef1;
-}
-
-.company-header{
-  object-fit: cover;
-  margin-bottom: 20px;
-  width: 100%;
-  height: 320px;
-}
-
-.hear-more{
-  background-image: linear-gradient(260deg, #00c4c4, #0d93e0);
-  border-radius: 50px;
-  color: #fff;
-}
-
-.enter-dm{
-  color: #fff;
-  background-image: linear-gradient(260deg, #00c4c4, #0d93e0);
-  border-radius: 50px;
-  width: 240px;
-}
-
-
-.favorite-ranking{
-  margin-bottom: 10px;
-  font-size: small;
-  display: inline-block;
-}
-
-.favorite-count{
-  float: left;
-}
-
-.favorite-button{
-  float: right;
-}
-
-.article_search_form{
-  margin-bottom: 20px;
-}
-
+// 管理者コメント
 .admin-comment{
   color: #e67d0e;
 }

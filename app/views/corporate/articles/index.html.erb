@@ -8,9 +8,9 @@
       </div>
     </div>
 
-    <% if @q_articles %>
-      <div class="col-md-9 col-lg-9">
-        <h4>記事一覧</h4>
+    <div class="col-md-9 col-lg-9">
+      <h4>記事一覧</h4>  
+      <% if @q_articles %>
         <% if @q_articles.empty? %>
           <%# 検索該当なしの場合 %>
           <p class="alert alert-info" role="alert">条件に合致する記事が見つかりませんでした</p>
@@ -18,11 +18,13 @@
           <%# 検索該当ありの場合 %>
           <p><%="全#{@q_articles.total_count}件中" + "(#{@q_articles.count}件表示)" %></p>
           <%= render 'article_list', articles: @q_articles %>
-          <div class="row text-center">
-            <%= paginate @q_articles, class: "paginate" %>
+          <div class="pagenation offset-sm-3 col-sm-6 offset-md-4 col-md-4 offset-lg-4 col-lg-4">
+            <p class="text-center" >
+              <%= paginate @q_articles %>
+            </p>
           </div>
         <% end %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
