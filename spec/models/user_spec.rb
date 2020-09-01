@@ -100,4 +100,12 @@ RSpec.describe User, type: :model do
     )
     expect(user.full_name).to eq "山田 二郎"
   end
+
+  it "ユーザーのカナフルネームを文字列として返すこと" do
+    user = User.new(
+      kana_last_name: "ヤマダ",
+      kana_first_name: "ジロウ"
+    )
+    expect(user.kana_full_name).to eq "ヤマダ ジロウ"
+  end
 end
