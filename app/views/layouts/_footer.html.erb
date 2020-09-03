@@ -1,10 +1,12 @@
 <footer>
   <nav class="navbar">
-    <%=link_to new_admin_session_path do %>
-      <%= image_tag 'footer_logo.png', class: "footer-logo" %>
-    <% end %>
+    <%= image_tag 'footer_logo.png', class: "footer-logo" %>
+    
     <div class="guide-link">
-      <span class="text-right"><%=link_to "Hareyakaはじめてガイド", guide_path, style: "color: #e9eef1;" %></span>
+      <span class="text-right">
+        <i class="fas fa-question-circle"><%=link_to "Hareyakaはじめてガイド", guide_path, style: "color: #e9eef1; margin-right: 10px;" %></i>
+        <i class="fas fa-user-cog"><%= link_to "管理者ログイン", new_admin_session_path, style: "color: #e9eef1;" %></i>
+      </span>
     </div>
   </nav>
 </footer>

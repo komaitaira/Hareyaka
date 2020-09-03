@@ -6,7 +6,7 @@ FactoryBot.define do
     kana_first_name { "タロウ" }
     email { "tanaka@example.com" }
     postal_code { "1234567" }
-    address { "青森県千代田区123-12-1" }
+    address { "東京都千代田区123-12-1" }
     phone_number { "12345678910" }
     password { "tanakataro" }
   end
