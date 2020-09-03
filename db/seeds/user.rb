@@ -222,6 +222,21 @@ User.create!(
       introduction: "自分に合った化粧品を知りたいです。",
       profile_image: open("./db/images/tachibana-face.jpg"),
       is_active: true
+    },
+
+    {
+      id: 14,
+      last_name: "ゲスト",
+      first_name: "ユーザー",
+      kana_last_name: "ゲスト",
+      kana_first_name: "ユーザー",
+      postal_code: "1234567",
+      address: "東京都港区123-12-1",
+      phone_number: "12345678910",
+      email: "guest@example.com",
+      password: SecureRandom.urlsafe_base64,
+      introduction: "いろんな悩みを解決したいです！",
+      is_active: true
     }
   ]
 )

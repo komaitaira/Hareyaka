@@ -54,6 +54,55 @@ Room.create!(
       id: 8,
       user_id: 7,
       company_id: 7
+    },
+
+    # ゲストユーザー・株式会社三菱USJ銀行
+    {
+      id: 9,
+      user_id: 14,
+      company_id: 2
+    },
+
+    # ゲストユーザー・株式会社光星
+    {
+      id: 10,
+      user_id: 14,
+      company_id: 3
+    },
+
+    # ゲストユーザー・株式会社グルメアソシエーションズ
+    {
+      id: 11,
+      user_id: 14,
+      company_id: 6
+    },
+
+    # ゲストユーザー・セカンドリテイリング
+    {
+      id: 12,
+      user_id: 14,
+      company_id: 7
+    },
+
+    # ゲストユーザー・ゲストカンパニー
+    {
+      id: 13,
+      user_id: 14,
+      company_id: 14
+    },
+
+    # 青山・ゲストカンパニー
+    {
+      id: 14,
+      user_id: 1,
+      company_id: 14
+    },
+
+    # 中野・ゲストカンパニー
+    {
+      id: 15,
+      user_id: 7,
+      company_id: 14
     }
   ]
 )
