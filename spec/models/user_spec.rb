@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
   describe "バリデーションのテスト" do
-    
+
     it "姓、名、カナ姓、カナ名、メール、郵便番号、住所、電話番号、パスワードがあれば有効な状態であること" do
       user = User.new(
         last_name: "田中",
@@ -12,7 +12,7 @@ RSpec.describe User, type: :model do
         kana_first_name: "タロウ",
         email: "tanaka@example.com",
         postal_code: "1234567",
-        address: "青森県黒石市123-12-1", 
+        address: "東京都千代田区123-12-1", 
         phone_number: "12345678910",
         password: "tanakataro"
       )
