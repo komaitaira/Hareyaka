@@ -23,6 +23,8 @@
         </div>
       <% end %>
 
+      <p><%= link_to 'ゲストログイン（個人閲覧用）', users_guest_sign_in_path, method: :post, class: "btn btn-warning col-sm-12" %></p>
+
       <h5>登録がお済みでない方</h5>
       <p><%= render "public/shared/links" %>から新規登録を行ってください</p>
     </div>

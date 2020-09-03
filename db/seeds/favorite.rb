@@ -94,6 +94,48 @@ Favorite.create!(
     {
       user_id: 5,
       article_id: 12
+    },
+
+    # ゲストユーザー・資産運用の鉄則
+    {
+      user_id: 14,
+      article_id: 12
+    },
+
+    # ゲストユーザー・美しく生きること
+    {
+      user_id: 14,
+      article_id: 13
+    },
+
+    # ゲストユーザー・美容に良い意外な食べ物
+    {
+      user_id: 14,
+      article_id: 14
+    },
+
+    # ゲストユーザー・スマートな服装の作り方
+    {
+      user_id: 14,
+      article_id: 15
+    },
+
+    # ゲストユーザー・今年も開催します！
+    {
+      user_id: 14,
+      article_id: 16
+    },
+
+    # ゲストユーザー・たった一手間加えるだけでまるで高級フレンチ！？
+    {
+      user_id: 14,
+      article_id: 17
+    },
+
+    # ゲストユーザー・記事タイトル
+    {
+      user_id: 14,
+      article_id: 18
     }
   ]
 )

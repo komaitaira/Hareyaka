@@ -16,7 +16,11 @@
     <% if admin_signed_in? %>
       <div class="collapse navbar-collapse" id="navmenu1">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item login-person" style="color: #e82a2a;">管理者ログイン中です</li>
+          <% if current_admin.email == "guestadmin@example.com" %>
+            <li class="nav-item login-person" style="color: #e82a2a;">ゲスト管理者としてログイン中です</li>
+          <% else %>
+            <li class="nav-item login-person" style="color: #e82a2a;">管理者ログイン中です</li>
+          <% end %>
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item"><i class="fas fa-users"></i><%= link_to '会員一覧', admin_users_path %></li>

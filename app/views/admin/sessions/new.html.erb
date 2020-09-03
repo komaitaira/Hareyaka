@@ -18,6 +18,8 @@
           <p><%= f.submit "ログイン", class: "btn btn-info col-sm-12" %></p>
         </div>
       <% end %>
+
+      <p><%= link_to 'ゲストログイン（管理者閲覧用）', admins_guest_sign_in_path, method: :post, class: "btn btn-warning col-sm-12" %></p>
     </div>
   </div>
 </div>

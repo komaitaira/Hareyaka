@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     passwords:     'admin/passwords',
     registrations: 'admin/registrations'
   }
+  devise_scope :admin do
+    post 'admins/guest_sign_in', to: 'admin/sessions#new_guest' # 管理者ゲストログイン
+  end
   namespace :admin do
     delete 'destroy_all_notifications' => 'notifications#destroy_all'
     resources :users, only: [:index, :show, :edit, :update]
@@ -25,6 +28,9 @@ Rails.application.routes.draw do
     passwords:     'corporate/passwords',
     registrations: 'corporate/registrations'
   }
+  devise_scope :company do
+    post 'companies/guest_sign_in', to: 'corporate/sessions#company_guest' # 法人ゲストログイン
+  end
   namespace :corporate do
     get 'unsubscribe' => 'companies#unsubscribe'
     put 'unsubscribe' => 'companies#hide'
@@ -45,6 +51,9 @@ Rails.application.routes.draw do
     passwords:     'public/passwords',
     registrations: 'public/registrations'
   }
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/sessions#user_guest' # 個人ゲストログイン
+  end
   scope module: :public do
     get 'unsubscribe' => 'users#unsubscribe'
     put 'unsubscribe' => 'users#hide'

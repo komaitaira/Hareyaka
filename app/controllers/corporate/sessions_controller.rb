@@ -26,6 +26,13 @@ class Corporate::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
+  # 法人ゲストログイン
+  def company_guest
+    company = Company.find(14)
+    sign_in company
+    redirect_to corporate_articles_path, notice: 'ゲストカンパニーとしてログインしました。'
+  end
+
   # 企業ログイン後　＝＞　記事一覧
 	def after_sign_in_path_for(resource)
 		corporate_articles_path
