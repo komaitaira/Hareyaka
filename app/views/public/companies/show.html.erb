@@ -1,7 +1,7 @@
 <%= attachment_image_tag @company, :background_image, class: "company-header", fallback: "business.jpg" %>
 <div class="container">
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-lg-12">
       <h1 class="text-center"><strong><%= @company.company_name %></strong></h1>
       <hr class="titleHr">
 
@@ -31,14 +31,14 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-6">
+    <div class="col-lg-6" style="margin-top: 20px; margin-bottom: 50px;">
       <div class="recommend">
         <h5>この企業のおすすめ記事</h5>
         <%= render 'public/shared/ranking', all_ranks: @company_ranks %>
       </div>
     </div>
 
-    <div class="col-sm-12 col-md-6">
+    <div class="col-lg-6" style="margin-top: 20px;">
       <h5>企業情報</h5>
       <hr class="titleHr">
       <table class='table table-borderless table-sm'>
@@ -60,7 +60,7 @@
         </tr>
       </table>
 
-      <h5>企業紹介文</h5>
+      <h5 style="margin-top: 50px;">企業紹介文</h5>
       <hr class="titleHr">
       <p><%= @company.introduction %></p>
       <hr class="titleHr">

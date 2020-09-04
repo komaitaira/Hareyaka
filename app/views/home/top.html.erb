@@ -1,72 +1,74 @@
+<%# サービス内容 %>
 <div id="box1">
-  <%= image_tag 'logo.png', class: "top-logo" %>
-</div>
-
-<div class="container">
-  <div class="row box2">
-    <div class="col-sm-12 col-md-12 text-center">
-      <h1 id="top-message"><strong>もっとあなたらしく。</strong></h1>
-      <h5>-Hareyakaは様々な悩みを持つ人とそれを解決するプロをつなげるサービスです-</h5>
-    </div>
-  </div>
-</div>
-
-<div class="container">
-  <div class="row top-content">
-    <div class="col-sm-12 col-md-12 col-lg-6">
-      <%= image_tag 'article.jpg', class: "vision" %>
-    </div>
-    <div class="col-sm-12 col-md-12 col-lg-6">
-      <div class="explanation">
-        <h2 class="explanation-title text-center"><strong>Hareyakaとは</strong></h2>
-        <p class="text-center">大小あれども、人は何かしらの悩みを</p>
-        <p class="text-center">持っているものです。</p>
-        <p class="text-center">Hareyakaはそんな多くの人の助けに</p>
-        <p class="text-center">なるような「<strong>情報</strong>」を提供します。</p>
+  <div class="container">
+    <div class="row top-summary">
+      <div class="col-sm-6 col-md-6 col-lg-5">
+        <%= image_tag 'iphone.png', class: "iphone" %>
+      </div>
+      <div class="col-sm-6 col-md-6 col-lg-7 top-message">
+        <h1 style="margin-bottom: 40px;"><strong>その悩み、プロに聞いてみよう。</strong></h1>
+        <h4><strong>Hareyaka は様々な悩みを持つ人と</strong></h4>
+        <h4><strong>それを解決するプロをつなげるサービスです。</strong></h4>
+        <p><%= link_to "今すぐ新規登録", new_user_registration_path, class: "btn btn-lg top-registration-btn" %></p>
+        <p style="font-size: small;">ポートフォリオ用にゲストログイン機能を実装しております。<%= link_to "こちら", new_user_session_path %>からお進みください。</p>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container">
-  <div class="row top-content">
-    <div class="col-sm-12 col-md-12 col-lg-6">
-      <div class="explanation">
-        <h2 class="explanation-title text-center"><strong>あなたの悩みを解決します</strong></h2>
-        <p class="text-center">気になる記事を見つけたら</p>
-        <p class="text-center">その記事を提供する会社へ「<strong>コンタクト</strong>」を取りましょう。</p>
-        <p class="text-center">その道のプロフェッショナルが</p>
-        <p class="text-center">あなたの悩みをカウンセリングします。</p>
+<%# Hareyakaでできること%>
+<div id="box2">
+  <h1 class="text-center" style="margin-bottom: 100px;"><strong>Hareyaka ではこんなことができます</strong></h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <h4><i class="fas fa-check" style="color: #128da0;"></i><strong> 記事の閲覧・お気に入り</strong></h4>
+        <%= image_tag 'article-image.png', class: "about-hareyaka card" %>
+      </div>
+      <div class="col-lg-4">
+        <h4><i class="fas fa-check" style="color: #128da0;"></i><strong> 企業のフォロー</strong></h4>
+        <%= image_tag 'follow-image.png', class: "about-hareyaka card" %>
+      </div>
+      <div class="col-lg-4">
+        <h4><i class="fas fa-check" style="color: #128da0;"></i><strong> DM（メッセージ）</strong></h4>
+        <%= image_tag 'dm-image.png', class: "about-hareyaka card" %>
       </div>
     </div>
-    <div class="col-sm-12 col-md-12 col-lg-6">
-      <%= image_tag 'communication.png', class: "vision" %>
-    </div>
+    <p class="text-center"><%= link_to "試しに記事を見てみる", articles_path, class: "btn btn-info btn-lg" %></p>
   </div>
 </div>
 
-<div class="container">
-  <div class="row top-content">
-    <div class="col-sm-12 col-md-12 col-lg-6">
-      <%= image_tag 'reach.jpg', class: "vision" %>
+<%# Hareyakaにいる専門家 %>
+<h1 class="text-center" style="margin: 150px 0 100px 0;"><strong>Hareyaka にはこんな専門家がいます</strong></h1>
+<div class="container" style="margin-bottom: 100px;">
+  <div class="row">
+    <div class="col-lg-3">
+      <h4><i class="fas fa-user-tie" style="color: #128da0;"></i><strong> お金のプロ</strong></h4>
+      <%= image_tag 'company-image1.png', class: "about-hareyaka card" %>
     </div>
-    <div class="col-sm-12 col-md-12 col-lg-6">
-      <div class="explanation">
-        <h2 class="explanation-title text-center"><strong>踏み出そう</strong></h2>
-        <p class="text-center">カウンセリングに納得したら</p>
-        <p class="text-center">是非その会社のサービスを「<strong>体験</strong>」してみましょう。</p>
-        <p class="text-center">きっとあなたの心はHareyakaに。</p>
-      </div>
+    <div class="col-lg-3">
+      <h4><i class="fas fa-user-tie" style="color: #128da0;"></i><strong> 美容のプロ</strong></h4>
+      <%= image_tag 'company-image2.png', class: "about-hareyaka card" %>
+    </div>
+    <div class="col-lg-3">
+      <h4><i class="fas fa-user-tie" style="color: #128da0;"></i><strong> 料理のプロ</strong></h4>
+      <%= image_tag 'company-image3.png', class: "about-hareyaka card" %>
+    </div>
+    <div class="col-lg-3">
+      <h4><i class="fas fa-user-tie" style="color: #128da0;"></i><strong> ファッションのプロ</strong></h4>
+      <%= image_tag 'company-image4.png', class: "about-hareyaka card" %>
     </div>
   </div>
+  <p class="text-center"><%= link_to "Hareyaka にいる他の企業を見てみる", companies_path, class: "btn btn-info btn-lg" %></p>
 </div>
 
-<div class="container">
-  <div class="row top-content">
-    <div class="col-sm-12 col-md-12 col-lg-12">
-      <div class="explanation">
-        <h6 class="text-center"><strong>Hareyakaの使い方の詳細はフッター右下の"Hareyakaはじめてガイド"をご覧ください。</strong></h6>
-      </div>
+<%# <% Hareyaka はあなたの悩みを企業と共に解決していきます %>
+<div class="container top-registraion">
+  <div class="row">
+    <div class="col-lg-12">
+      <h3 class="text-center" style="margin-top: 40px;"><strong>Hareyaka はあなたの悩みを企業と共に解決していきます</strong></h3>
+      <h3 class="text-center"><strong>まずは会員登録から始めましょう</strong></h3>
+      <p class="text-center"><%= link_to "今すぐ新規登録", new_user_registration_path, class: "btn btn-lg top-registration-btn" %></p>
     </div>
   </div>
 </div>

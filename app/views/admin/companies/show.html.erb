@@ -2,6 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
+      <span class="badge badge-primary">法人会員掲載ページ</span>
       <h1 class="text-center"><strong><%= @company.company_name %></strong></h1>
       <hr class="titleHr">
       <p class="text-right">
@@ -9,7 +10,7 @@
         <%= link_to '企業一覧へ戻る', admin_companies_path, class:"btn btn-outline-info" %>
       </p>
       <p class="text-right">
-        <span class="badge badge-primary">法人会員掲載ページ</span>企業ID【<%= @company.id %>】申請ステータス【<%= @company.approved == true ? "承認済" : "申請中" %>】会員ステータス【<%= @company.is_active == true ? "有効" : "退会済み" %>】
+        企業ID【<%= @company.id %>】申請ステータス【<%= @company.approved == true ? "承認済" : "申請中" %>】会員ステータス【<%= @company.is_active == true ? "有効" : "退会済み" %>】
       </p>
     </div>
   </div>
@@ -20,7 +21,6 @@
     <div class="col-sm-12 col-md-6">
       <div class="recommend">
         <h5>この企業のおすすめ記事</h5>
-        <strong class="admin-comment">お気に入り数が多いものを1つ抜粋して掲載します。</strong>
         <%= render 'admin/shared/ranking', all_ranks: @company_ranks %>
       </div>
     </div>
@@ -48,7 +48,6 @@
       </table>
 
       <h5>企業紹介文</h5>
-      <strong class="admin-comment">自社についての紹介文を記載します（事業内容や取り扱い商品、自社の特徴など）。その他、個人会員様へのメッセージを是非ご記載ください。</strong>
       <hr class="titleHr">
       <p><%= @company.introduction %></p>
       <hr class="titleHr">

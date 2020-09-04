@@ -109,45 +109,36 @@ a{
 }
 
 // ここからトップページ
-.top-logo{
-  width: 400px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 230px;
-  margin-bottom: 400px;
+.top-summary{
+  margin-top: 50px;
+  margin-bottom: 120px;
 }
 
-.top-image{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+.iphone{
   width: 100%;
 }
 
-#top-message{
-  margin-bottom: 70px;
+.top-registration-btn{
+  color: #fff;
+  background-image: linear-gradient(260deg, #00c4c4, #0d93e0);
+  border-radius: 50px;
+  width: 240px;
+  margin: 40px 0 20px 0;
 }
 
-.box2{
-  margin-bottom: 400px;
+.top-message{
+  margin-top: 50px;
 }
 
-.top-content{
-  margin-bottom: 150px;
-}
-
-.explanation{
-  padding-top: 70px;
-  padding-bottom: 50px;
-}
-
-.explanation-title{
-  margin-bottom: 30px;
-}
-
-.vision{
+.about-hareyaka{
   width: 100%;
+  margin: 20px 0 100px 0;
+}
+
+.top-registraion{
+  padding: 60px;
+  background-color: #f5f8fa;
+  border-radius: 15px;
 }
 // ここまでトップページ
 
@@ -336,10 +327,6 @@ a{
   margin-right: 10px;
   float: left;
 }
-
-.message{
-  font-size: small;
-}
 // ここまでDM
 
 // ここから通知
@@ -368,4 +355,5 @@ a{
 // 管理者コメント
 .admin-comment{
   color: #e67d0e;
+  font-size: small;
 }
