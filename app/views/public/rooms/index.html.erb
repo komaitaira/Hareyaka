@@ -27,9 +27,9 @@
                   <%= attachment_image_tag room.company, :profile_image, class: "img-fluid notification-face", fallback: "no_image.png" %>
                 <% end %>
               </td>
-              <td><%= room.company.company_name %></td>
+              <td><strong><%= room.company.company_name %></strong></td>
               <td>
-                <p style="font-size: small"><%= strip_tags(most_new_message(room)).truncate(45) %></p>
+                <p><%= strip_tags(most_new_message(room)).truncate(45) %></p>
               </td>
               <td>
                 <%= link_to room_path(room.id) do %>

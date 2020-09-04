@@ -336,10 +336,6 @@ a{
   margin-right: 10px;
   float: left;
 }
-
-.message{
-  font-size: small;
-}
 // ここまでDM
 
 // ここから通知
@@ -368,4 +364,5 @@ a{
 // 管理者コメント
 .admin-comment{
   color: #e67d0e;
+  font-size: small;
 }

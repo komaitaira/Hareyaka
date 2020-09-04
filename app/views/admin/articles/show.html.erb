@@ -5,7 +5,6 @@
         <h4 class="text-center">記事詳細</h4>
         <%= link_to '編集する', edit_admin_article_path(@article), class:"btn btn-info btn-sm" %>
         <%= link_to '記事一覧へ戻る', admin_articles_path, class:"btn btn-outline-info btn-sm" %>
-        <strong class="admin-comment">(こちらは実際のページのイメージです。)</strong>
         <p>
           <span class="badge badge-danger">個人会員掲載ページ</span>
           <span class="badge badge-primary">法人会員掲載ページ</span>
@@ -23,9 +22,6 @@
         <p><%= @article.body.html_safe %></p>
       </div>
 
-      <P class="text-right">
-        <strong class="admin-comment">企業様のプロフィールページへのリンクです。</strong>
-      </P>
       <p class="text-right">
         <%= link_to "この記事の話をもっと聞きたい！", admin_company_path(@article.company_id), class: "btn hear-more" %>
       </p>
