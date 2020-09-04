@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h5 class="text-center"><%= @room.user.full_name %></h5>
+      <h3 class="text-center" style="margin-bottom: 40px;"><strong><%= @room.user.full_name %></strong></h3>
       <%= link_to corporate_rooms_path do %>
         <i class="fas fa-envelope">DM一覧</i>
       <% end %>
@@ -12,7 +12,7 @@
 <div class="container">
   <hr class="titleHr">
   <div class="row">
-    <div class="offset-md-1 col-md-10 offset-md-1 col-sm-12">
+    <div class="offset-lg-1 col-lg-10 offset-lg-1">
       <% @messages.each do |m| %>
         
         <%# userのメッセージ %>

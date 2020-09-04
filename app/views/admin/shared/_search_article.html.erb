@@ -1,7 +1,7 @@
 <%= search_form_for [:admin, search] do |f| %>
   <div class="article_search_form">
     <h4>記事検索</h4>
-    <h5><%= link_to "全記事を表示", admin_articles_path %></h5>
+    <h6><%= link_to "全記事を表示", admin_articles_path %></h6>
     <div class="form-group row">
       <div class="col-md-12">
         <%= f.label :created_at_cont, :投稿日時で検索 %>

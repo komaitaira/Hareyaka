@@ -16,7 +16,7 @@
           <% end %>
         </td>
         <td>
-          <%= notification.sender_name %>からの<%= link_to 'メッセージ', room_path(notification.room_id) %>があります
+          <strong><%= notification.sender_name %></strong>からの<%= link_to 'メッセージ', room_path(notification.room_id) %>があります
           <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
         </td>
       </tr>
