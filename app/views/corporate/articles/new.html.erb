@@ -11,7 +11,7 @@
         <div class="form-group">
           <%= f.label :記事トップ画像 %>
           <%= attachment_image_tag @article, :image, class: "img-fluid image_preview", fallback: "article.jpg" %>
-          <%= f.attachment_field :image, id: "image-field" %>
+          <%= f.attachment_field :image, class: "image-field" %>
         </div>
         
         <div class="form-group">
