@@ -8,7 +8,7 @@
         <div class="form-group">
           <%= f.label :プロフィール画像  %><br>
           <%= attachment_image_tag @user, :profile_image, class: "img-fluid image_preview my-image", fallback: "no_image.png" %>
-          <%= f.attachment_field :profile_image, class: "image-field" %>
+          <%= f.attachment_field :profile_image, id: "image-field" %>
         </div>
 
         <div class="form-group">

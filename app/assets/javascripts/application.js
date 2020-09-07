@@ -68,7 +68,7 @@ $(document).on('turbolinks:load', function() {
         reader.readAsDataURL(input.files[0]);
       }
     }
-    $('.image-field').change(function(){
+    $("#image-field").change(function(){
       readURL(this);
     });
   });

@@ -49,13 +49,14 @@
           <li class="nav-item"><i class="far fa-building"></i><%= link_to 'マイページ', corporate_company_path(current_company) %></li>
           <li class="nav-item"><i class="far fa-newspaper"></i><%= link_to '記事一覧', corporate_articles_path %></li>
           <li class="nav-item"><i class="fas fa-user-friends"></i><%= link_to "フォロワー会員", followers_corporate_company_path(current_company.id) %></li>
+          <li class="nav-item"><i class="fas fa-envelope"></i><%= link_to 'DM一覧', corporate_rooms_path %></li>
           <li class="nav-item">
             <% if company_unchecked_notifications.any? %>
               <i id="notification-badge"><%= company_unchecked_notifications.count %></i>
             <% else %>
               <i class="fas fa-bell"></i>
             <% end %>
-            <%= link_to "DM通知", corporate_notifications_path %>
+            <%= link_to "通知", corporate_notifications_path %>
           </li>
           <li class="nav-item"><i class="fas fa-sign-out-alt"></i><%= link_to 'ログアウト', destroy_company_session_path, method: :delete %></li>
         </ul>
@@ -71,13 +72,14 @@
           <li class="nav-item"><i class="fas fa-user-circle"></i><%= link_to 'マイページ', user_path(current_user) %></li>
           <li class="nav-item"><i class="far fa-newspaper"></i><%= link_to '記事一覧', articles_path %></li>
           <li class="nav-item"><i class="fas fa-user-tie"></i><%= link_to '専門家', companies_path %></li>
+          <li class="nav-item"><i class="fas fa-envelope"></i><%= link_to 'DM一覧', rooms_path %></li>
           <li class="nav-item">
             <% if user_unchecked_notifications.any? %>
               <i id="notification-badge"><%= user_unchecked_notifications.count %></i>
             <% else %>
               <i class="fas fa-bell"></i>
             <% end %>
-            <%= link_to "DM通知", notifications_path %>
+            <%= link_to "通知", notifications_path %>
           </li>
           <li class="nav-item"><i class="fas fa-sign-out-alt"></i><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
         </ul>
