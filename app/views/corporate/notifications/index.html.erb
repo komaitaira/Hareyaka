@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <h4 class="text-center">通知</h4>
       <% if @notifications.exists? %>
-        <%= link_to corporate_destroy_all_notifications_path, method: :delete, "data-confirm" => "確認していないメッセージがあります。本当に削除しますか？" do %>
+        <%= link_to corporate_destroy_all_notifications_path, method: :delete, "data-confirm" => "確認していない通知があります。本当に削除しますか？" do %>
           <i class="fas fa-trash-alt">全削除</i>
         <% end %>
       <% else %>
@@ -27,7 +27,7 @@
           <%= render 'notification_list', notifications: @notifications %>
         </div>
       <% else %>
-        <p class="text-center">新着メッセージはありません</p>
+        <p class="text-center">新着通知はありません</p>
       <% end %>
     </div>
   </div>
