@@ -36,20 +36,16 @@
           <%= f.label :電話番号（ハイフンなし）%>
           <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "form-control" %>
         </div>
+        
+        <div class="form-group">
+          <%= f.label :プロフィール画像 %><br>
+          <%= attachment_image_tag @company, :profile_image, class: "img-fluid image_preview my-image", fallback: "no_image.png" %>
+          <%= f.attachment_field :profile_image, class: "image-field" %>
+        </div>
       </div>
 
       <div class="col-md-8">
-        <div class="form-group">
-          <%= f.label :ヘッダー画像 %><br>
-          <%= f.attachment_field :background_image %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :プロフィール画像 %><br>
-          <%= f.attachment_field :profile_image %>
-        </div>
-        
-        <div class="form-group">
+        <div class="form-group col-sm-4 col-md-5 col-lg-3" style="display: inline-block;">
           <%= f.label :申請ステータス %><br>
           <%= f.radio_button :approved, true %>
           <%= f.label :approved, "承認済", {value: :approved, style: "display: inline-block;"} %>
@@ -57,12 +53,18 @@
           <%= f.label :approved, "申請中", {value: :approved, style: "display: inline-block;"} %>
         </div>
         
-        <div class="form-group">
+        <div class="form-group col-sm-4 col-md-5 col-lg-3" style="display: inline-block;">
           <%= f.label :会員ステータス %><br>
           <%= f.radio_button :is_active, true %>
           <%= f.label :is_active, "有効", {value: :is_active, style: "display: inline-block;"} %>
           <%= f.radio_button :is_active, false %>
           <%= f.label :is_active, "退会済み", {value: :is_active, style: "display: inline-block;"} %>
+        </div>
+        
+        <div class="form-group">
+          <%= f.label :ヘッダー画像 %><br>
+          <%= attachment_image_tag @company, :background_image, class: "img-fluid image_preview company-header", fallback: "business.jpg" %>
+          <%= f.attachment_field :background_image, class: "image-field" %>
         </div>
 
         <div class="form-group">

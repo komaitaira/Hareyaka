@@ -36,17 +36,19 @@
           <%= f.label :電話番号（ハイフンなし）%>
           <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "form-control" %>
         </div>
+
+        <div class="form-group">
+          <%= f.label :プロフィール画像 %><br>
+          <%= attachment_image_tag @company, :profile_image, class: "img-fluid image_preview my-image", fallback: "no_image.png" %>
+          <%= f.attachment_field :profile_image, class: "image-field" %>
+        </div>
       </div>
 
       <div class="col-md-8">
         <div class="form-group">
           <%= f.label :ヘッダー画像 %><br>
-          <%= f.attachment_field :background_image %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :プロフィール画像 %><br>
-          <%= f.attachment_field :profile_image %>
+          <%= attachment_image_tag @company, :background_image, class: "img-fluid image_preview company-header", fallback: "business.jpg" %>
+          <%= f.attachment_field :background_image, class: "image-field" %>
         </div>
 
         <div class="form-group">
