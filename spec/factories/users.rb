@@ -1,13 +1,13 @@
 FactoryBot.define do
   factory :user do
-    last_name { "田中" }
+    last_name { "テスト" }
     first_name { "太郎" }
-    kana_last_name { "タナカ" }
+    kana_last_name { "テスト" }
     kana_first_name { "タロウ" }
-    email { "tanaka@example.com" }
+    email { "test@example.com" }
     postal_code { "1234567" }
     address { "東京都千代田区123-12-1" }
     phone_number { "12345678910" }
-    password { "tanakataro" }
+    password { "a" * 6 }
   end
 end
