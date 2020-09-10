@@ -12,13 +12,15 @@ class Corporate::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create # 登録申請時、管理者へ通知送信
     super
-    notification = Notification.new(
-      sender_id: Company.last.id,
-      sender_class: "company",
-      receiver_id: Admin.first.id,
-      receiver_class: "admin"
-    )
-    notification.save if notification.valid?
+    if resource.errors.empty?
+      notification = Notification.new(
+        sender_id: Company.last.id,
+        sender_class: "company",
+        receiver_id: Admin.first.id,
+        receiver_class: "admin"
+      )
+      notification.save if notification.valid?
+    end
   end
 
   # GET /resource/edit
