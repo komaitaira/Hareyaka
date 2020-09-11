@@ -31,7 +31,7 @@ RSpec.describe "Companies", type: :system do
           fill_in 'company[password]', with: ""
           fill_in 'company[password_confirmation]', with: ""
           click_button '申請する'
-          expect(page).to have_content "company は保存されませんでした。"
+          expect(page).to have_content "法人会員 は保存されませんでした。"
         end
       end
     end

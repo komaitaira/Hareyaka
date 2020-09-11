@@ -35,7 +35,7 @@ RSpec.describe 'User', type: :system do
           fill_in 'user[password]', with: ""
           fill_in 'user[password_confirmation]', with: ""
           click_button '新規登録'
-          expect(page).to have_content 'ユーザ は保存されませんでした。'
+          expect(page).to have_content '個人会員 は保存されませんでした。'
         end
       end
     end
@@ -134,7 +134,7 @@ RSpec.describe 'User', type: :system do
         it '編集に失敗する' do
           fill_in 'user[last_name]', with: ''
           click_button '変更を保存する'
-          expect(page).to have_content '件のエラーが発生したため ユーザ は保存されませんでした。'
+          expect(page).to have_content '件のエラーが発生したため 個人会員 は保存されませんでした。'
           expect(current_path).to eq('/users/' + user.id.to_s)
         end
       end

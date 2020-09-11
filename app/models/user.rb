@@ -6,10 +6,10 @@ class User < ApplicationRecord
 
   has_many :rooms, dependent: :destroy
   has_many :messages, dependent: :destroy
-  has_many :favorites
-  has_many :favorite_articles, through: :favorites, source: :article
-  has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
-  has_many :followings, through: :active_relationships, source: :follower
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_articles, through: :favorites, source: :article, dependent: :destroy
+  has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id, dependent: :destroy
+  has_many :followings, through: :active_relationships, source: :follower, dependent: :destroy
   has_many :notifications, dependent: :destroy
   
   validates :last_name, presence: true, length: { maximum: 10 }

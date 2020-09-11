@@ -36,8 +36,8 @@ class Admin::SessionsController < Devise::SessionsController
 		admin_articles_path
   end
 
-  # 管理者ログアウト後　＝＞　ログイン画面
+  # 管理者ログアウト後　＝＞　トップ画面 rootパスはhome topを設定済み。
   def after_sign_out_path_for(resource)
-    new_admin_session_path
+    root_path
   end
 end

@@ -3,6 +3,7 @@
     <div class="col-md-3 offset-md-1">
       <h4>ジャンル新規登録</h4>
       <%= form_for(@genre, url: admin_genres_path) do |f| %>
+        <%= render "admin/shared/error_messages", resource: @genre %>
         <div class="col-md-12">
           
           <div class="form-group row">
