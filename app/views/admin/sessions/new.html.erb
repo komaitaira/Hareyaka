@@ -4,6 +4,13 @@
       <h4>管理者ログイン</h4>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        
+        <% flash.each do |name, msg| %>
+          <div class="alert alert-danger" role="alert">
+            <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+          </div>
+        <% end %>
+        
         <div class="form-group">
           <%= f.label :メールアドレス, class: "col-xs-3" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>

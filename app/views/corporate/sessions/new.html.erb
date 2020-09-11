@@ -3,11 +3,15 @@
     <div class="offset-sm-2 col-sm-8 offset-sm-2">    
       <h4>法人会員の方はこちらからログイン</h4>
       <h6 style="color: grey;">※個人会員の方はヘッダーのログインからお進みください</h6>
-      <% if flash[:danger] %>
-        <p class="text-red"><%= flash[:danger] %></p>
-      <% end %>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+        <% flash.each do |name, msg| %>
+          <div class="alert alert-danger" role="alert">
+            <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+          </div>
+        <% end %>
+
         <div class="form-group">
           <%= f.label :メールアドレス, class: "col-xs-3" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
