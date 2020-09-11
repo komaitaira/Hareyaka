@@ -30,7 +30,7 @@ class Admin::CompaniesController < ApplicationController
         ).update(checked: true)
         ApprovalMailer.send_when_admin_approved(@company).deliver #承認メールを送信
       end
-      redirect_to admin_company_path(@company)
+      redirect_to admin_company_path(@company), notice: "企業情報の更新が完了しました。"
     else
       render :edit
     end
