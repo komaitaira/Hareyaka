@@ -62,13 +62,13 @@ RSpec.describe User, type: :model do
     it "パスワードが6文字以上でなければ無効であること" do
       @user.password = "a" * 5
       @user.valid?
-      expect(@user.errors[:password]).to include("は6文字以上で入力してください")
+      expect(@user.errors[:password]).to include("は6文字以上で入力してください。")
     end
     
     it "重複したメールアドレスなら無効な状態であること" do
       FactoryBot.create(:user)
       @user.valid?
-      expect(@user.errors[:email]).to include("はすでに存在します")
+      expect(@user.errors[:email]).to include("は既に存在します。")
     end
   end
 

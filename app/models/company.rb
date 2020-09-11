@@ -7,7 +7,7 @@ class Company < ApplicationRecord
   has_many :rooms, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id, dependent: :destroy
-  has_many :followers, through: :passive_relationships, source: :following
+  has_many :followers, through: :passive_relationships, source: :following, dependent: :destroy
   has_many :articles, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
@@ -17,7 +17,7 @@ class Company < ApplicationRecord
   validates :postal_code, presence: true, length: { minimum: 7, maximum: 7 }
   validates :address, presence: true, length: { maximum: 30 }
   validates :phone_number, presence: true, length: { maximum: 12 }
-  validates :introduction, length: { maximum: 500 }
+  validates :introduction, length: { maximum: 800 }
 
   attachment :profile_image
   attachment :background_image

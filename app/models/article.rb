@@ -1,10 +1,11 @@
 class Article < ApplicationRecord
   belongs_to :company
   belongs_to :genre
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
 
   validates :title, presence: true, length: { maximum: 30 }
   validates :body, presence: true
+  validates :is_active, presence: true
 
   attachment :image
 
