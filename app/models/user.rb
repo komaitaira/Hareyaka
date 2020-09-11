@@ -12,14 +12,15 @@ class User < ApplicationRecord
   has_many :followings, through: :active_relationships, source: :follower
   has_many :notifications, dependent: :destroy
   
-  validates :last_name, presence: true
-  validates :first_name, presence: true
-  validates :kana_last_name, presence: true
-  validates :kana_first_name, presence: true
-  validates :email, presence: true
-  validates :postal_code, presence: true
-  validates :address, presence: true
-  validates :phone_number, presence: true
+  validates :last_name, presence: true, length: { maximum: 10 }
+  validates :first_name, presence: true, length: { maximum: 10 }
+  validates :kana_last_name, presence: true, length: { maximum: 10 }
+  validates :kana_first_name, presence: true, length: { maximum: 10 }
+  validates :email, presence: true, length: { maximum: 30 }
+  validates :postal_code, presence: true, length: { minimum: 7, maximum: 7 }
+  validates :address, presence: true, length: { maximum: 30 }
+  validates :phone_number, presence: true, length: { maximum: 12 }
+  validates :introduction, length: { maximum: 200 }
 
   attachment :profile_image
 
