@@ -1,6 +1,6 @@
 class Admin::GenresController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_genre, only:[:edit, :update]
+  before_action :set_genre, only:[:edit, :update, :destroy]
 
   def index
     @genres = Genre.all
@@ -28,6 +28,10 @@ class Admin::GenresController < ApplicationController
     end
   end
 
+  def destroy
+    @genre.destroy
+    redirect_to admin_genres_path, notice: "ジャンルの削除が完了しました。"
+  end
   private
   def set_genre
     @genre = Genre.find(params[:id])

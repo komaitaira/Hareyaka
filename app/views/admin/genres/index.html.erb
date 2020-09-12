@@ -36,6 +36,7 @@
           <tr>
             <th>ジャンル名</th>
             <th>有効ステータス</th>
+            <th></th>
           </tr>
         </thead>
 
@@ -44,6 +45,7 @@
             <tr>
               <td><%= link_to genre.genre_name, edit_admin_genre_path(genre.id) %></td>
               <td><%= genre.is_active == true ? "有効" : "無効" %></td>
+              <td><%= link_to "削除", admin_genre_path(genre), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %></td>
             </tr>
           <% end %>
         </tbody>

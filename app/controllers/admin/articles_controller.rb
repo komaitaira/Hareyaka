@@ -1,9 +1,8 @@
 class Admin::ArticlesController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_article, only:[:show, :edit, :update]
+  before_action :set_article, only:[:show, :edit, :update, :destroy]
   
   def index
-    # @articles = Article.page(params[:page])
     @search = Article.ransack(params[:q])
     @q_articles = @search.result.page(params[:page]).reverse_order
   end
@@ -20,6 +19,11 @@ class Admin::ArticlesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @article.destroy
+    redirect_to admin_articles_path, notice: "記事情報の削除が完了しました。"
   end
 
   private
