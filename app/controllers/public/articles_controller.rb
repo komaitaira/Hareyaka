@@ -2,7 +2,6 @@ class Public::ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_search_genre, only: [:index, :show]
   before_action :set_ranking, only: [:index]
-  before_action :set_ransack, only: [:index]
 
   def index
   end
@@ -39,14 +38,5 @@ class Public::ArticlesController < ApplicationController
   def set_ranking
     # Articleモデルからcreate_all_ranks(article.rbに定義)で検索してきた結果を@all_ranksに代入
     @all_ranks = Article.create_all_ranks
-  end
-
-  def set_ransack
-    # 検索フォーム表示のため@searchを定義
-    @search = Article.all_active.ransack(params[:q])
-    # params[:q]がviewから渡されてきた場合、resultを返す
-    if params[:q].present?
-      @q_articles = @search.result.page(params[:page]).order(updated_at: "DESC")
-    end
   end
 end

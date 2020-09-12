@@ -83,6 +83,12 @@
           </li>
           <li class="nav-item"><i class="fas fa-sign-out-alt"></i><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
         </ul>
+        <dl class="searchbox">
+          <%= search_form_for @search do |f| %>
+            <dt><%= f.search_field :title_or_body_or_company_company_name_cont, placeholder: "キーワードを入力", class: "form-control" %></dt>
+            <dd><button type="submit" class="search-btn"><i class="fas fa-search" style="color: grey;"></i></button></dd>
+          <% end %>
+        </dl>
       </div>
 
     <%# ログインしていない場合 %>
@@ -98,6 +104,12 @@
           <li class="nav-item"><i class="fas fa-building"></i><%= link_to '(法人)新規登録申請', new_company_registration_path %></li>
           <li class="nav-item"><i class="far fa-building"></i><%= link_to '(法人)ログイン', new_company_session_path %></li>
         </ul>
+        <dl class="searchbox">
+          <%= search_form_for @search do |f| %>
+            <dt><%= f.search_field :title_or_body_or_company_company_name_cont, placeholder: "キーワードを入力", class: "form-control" %></dt>
+            <dd><button type="submit" class="search-btn"><i class="fas fa-search" style="color: grey;"></i></button></dd>
+          <% end %>
+        </dl>
       </div>
 
     <% end %>
