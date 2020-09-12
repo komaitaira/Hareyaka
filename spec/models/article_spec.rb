@@ -40,11 +40,11 @@ RSpec.describe Article, type: :model do
       end
     end
 
-    context "タイトルが30文字を超える場合" do
+    context "タイトルが35文字を超える場合" do
       it "エラーメッセージが出ること" do
-        @article.title = "a" * 31
+        @article.title = "a" * 36
         @article.valid?
-        expect(@article.errors[:title]).to include("は30文字以内で入力してください")
+        expect(@article.errors[:title]).to include("は35文字以内で入力してください")
       end
     end
 
