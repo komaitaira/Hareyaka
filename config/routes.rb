@@ -17,8 +17,8 @@ Rails.application.routes.draw do
     delete 'destroy_all_notifications' => 'notifications#destroy_all'
     resources :users, only: [:index, :show, :edit, :update]
     resources :companies, only: [:index, :show, :edit, :update]
-    resources :genres, only: [:index, :edit, :create, :update]
-    resources :articles, only: [:index, :show, :edit, :update]
+    resources :genres, only: [:index, :edit, :create, :update, :destroy]
+    resources :articles, only: [:index, :show, :edit, :update, :destroy]
     resources :notifications, only: :index
   end
 

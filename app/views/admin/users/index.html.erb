@@ -9,7 +9,7 @@
         <h4>会員一覧</h4>
         <% if @q_users.empty? %>
           <%# 検索該当なしの場合 %>
-          <p class="top-empty-message">条件に合う会員が見つかりませんでした</p>
+          <p class="alert alert-info" role="alert">条件に合致する記事が見つかりませんでした</p>
         <% else %>
           <%# 検索該当ありの場合 %>
           <p><%="全#{@q_users.total_count}件中" + "(#{@q_users.count}件表示)" %></p>

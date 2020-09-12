@@ -3,9 +3,8 @@ class Article < ApplicationRecord
   belongs_to :genre
   has_many :favorites, dependent: :destroy
 
-  validates :title, presence: true, length: { maximum: 30 }
+  validates :title, presence: true, length: { maximum: 35 }
   validates :body, presence: true
-  validates :is_active, presence: true
 
   attachment :image
 
