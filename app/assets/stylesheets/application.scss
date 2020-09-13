@@ -99,7 +99,7 @@ footer{
 .body{
   margin-bottom: 130px;
   background-color: #fff;
-  color: #202527;
+  color: #363636;
 }
 
 .wrapper{
@@ -180,9 +180,14 @@ a{
 .guide-content{
   padding: 20px;
 
-  .guide-title{
+  .guide-title {
+    position: relative;
+    background: #e5f1ee;
+    box-shadow: 0px 0px 0px 5px #e5f1ee;
+    border: dashed 2px white;
     margin-bottom: 60px;
-    background-color: #eff8f7;
+    padding: 10px 0 0 10px;
+    color: #454545;
   }
 
   .guide-body{
