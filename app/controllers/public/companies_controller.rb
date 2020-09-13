@@ -10,9 +10,10 @@ class Public::CompaniesController < ApplicationController
 
   def show
     @company = Company.find(params[:id])
-    # @companyに紐づくお気に入りが最も多いものを表示。(articleとgenreのis_activeがそれぞれtrueのものを限定)
+    @articles = @company.articles.all_active.page(params[:page]).order(updated_at: "DESC")
+    # @companyに紐づくお気に入りが最も多いものを3つ表示。(articleとgenreのis_activeがそれぞれtrueのものを限定)
     article_ids = @company.articles.joins(:favorites).joins(:genre).where(articles: { is_active: true }).where(genres: { is_active: true }).pluck(:id)
-    @company_ranks = Article.limit(1).find(article_ids)
+    @company_ranks = Article.limit(3).find(article_ids)
 
     # current_userと@companyとのroomがあるかどうかで分岐
     @currentUserEntry = Room.where(user_id: current_user.id)

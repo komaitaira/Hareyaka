@@ -4,6 +4,62 @@
     <div class="col-lg-12">
       <h1 class="text-center"><strong><%= @company.company_name %></strong></h1>
       <hr class="titleHr">
+      <p><%= @company.introduction %></p>
+      <hr class="titleHr">
+
+      <%# 掲載記事などの数を表示 %>
+      <div class="company-various-count">
+        <h6 class="text-center">
+          <strong><%= @company.articles.count %></strong><br>
+          <span style="font-size: small;">掲載記事</span>
+        </h6>
+      </div>
+      <div class="company-various-count">
+        <h6 class="text-center">
+          <strong><%= @company.articles.joins(:favorites).count %></strong><br>
+          <span style="font-size: small;">お気に入り</span>
+        </h6>
+      </div>
+      <div class="company-various-count">
+        <h6 class="text-center">
+          <strong><%= @company.followers.count %></strong><br>
+          <span style="font-size: small;">フォロワー</span>
+        </h6>
+      </div>
+      <div class="company-various-count">
+        <a type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          <h6 class="text-center">
+            <i class="fas fa-info-circle" style="color: #128da0;"></i><br>
+            <span style="font-size: small">企業情報</span>
+          </h6>
+        </a>
+      </div>
+
+      <%# クリックした際に以下の企業情報を表示 %>
+      <div class="collapse" id="collapseExample" style="margin-bottom: 15px;">
+        <div class="card card-body">
+          <h6>企業情報</h6>
+          <hr class="titleHr">
+          <table class='table table-borderless table-sm'>
+            <tr>
+              <th>郵便番号</th>
+              <td><%= @company.postal_code %></td>
+            </tr>
+            <tr>
+              <th>住所</th>
+              <td><%= @company.address %></td>
+            </tr>
+            <tr>
+              <th>電話番号</th>
+              <td><%= @company.phone_number %></td>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <td><%= @company.email %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
 
       <%# フォローボタン、チャットボタン表示 %>
       <% if @isRoom == true %>
@@ -29,41 +85,27 @@
   </div>
 </div>
 
+<%# 以下企業の記事一覧 %>
 <div class="container">
   <div class="row">
-    <div class="col-lg-6" style="margin-top: 20px; margin-bottom: 50px;">
+    <div class="col-lg-3" style="margin-top: 20px; margin-bottom: 50px;">
       <div class="recommend">
-        <h5>この企業のおすすめ記事</h5>
+        <h5 class="text-center">この企業のおすすめ記事</h5>
         <%= render 'public/shared/ranking', all_ranks: @company_ranks %>
       </div>
     </div>
 
-    <div class="col-lg-6" style="margin-top: 20px;">
-      <h5>企業情報</h5>
+    <div class="col-lg-9" style="margin-top: 20px;">
+      <div class="title">
+        <h5 class="text-center">この企業の掲載記事一覧</h5>
+      </div>
       <hr class="titleHr">
-      <table class='table table-borderless table-sm'>
-        <tr>
-          <th>郵便番号</th>
-          <td><%= @company.postal_code %></td>
-        </tr>
-        <tr>
-          <th>住所</th>
-          <td><%= @company.address %></td>
-        </tr>
-        <tr>
-          <th>電話番号</th>
-          <td><%= @company.phone_number %></td>
-        </tr>
-        <tr>
-          <th>メールアドレス</th>
-          <td><%= @company.email %></td>
-        </tr>
-      </table>
-
-      <h5 style="margin-top: 50px;">企業紹介文</h5>
-      <hr class="titleHr">
-      <p><%= @company.introduction %></p>
-      <hr class="titleHr">
+      <%= render 'public/articles/article_list', articles: @articles %>
+      <div class="pagenation offset-sm-3 col-sm-6 offset-md-4 col-md-4 offset-lg-4 col-lg-4">
+        <p class="text-center" >
+          <%= paginate @articles %>
+        </p>
+      </div>
     </div>
   </div>
 </div>

@@ -123,13 +123,6 @@ a{
 
 }
 
-.company-header{
-  object-fit: cover;
-  margin-bottom: 20px;
-  width: 100%;
-  height: 320px;
-}
-
 .content{
   margin-top: 10px;
 }
@@ -316,7 +309,21 @@ a{
   margin-top: 15px;
   border-top: 1px solid #e9eef1;
 }
-// ここから専門家リスト
+// ここまで専門家リスト
+
+// ここから専門家詳細
+.company-header{
+  object-fit: cover;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 320px;
+}
+
+.company-various-count{
+  float: left;
+  margin-right: 33px;
+}
+// ここまで専門家詳細
 
 // この話をもっと聞きたいボタン
 .hear-more{

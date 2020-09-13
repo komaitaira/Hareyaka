@@ -2,55 +2,97 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <span class="badge badge-primary">法人会員掲載ページ</span>
+      <div style="margin-bottom: 20px;">
+        <span class="badge badge-primary">法人会員掲載ページ</span>
+        <span style="float: right;">
+          企業ID【<%= @company.id %>】申請ステータス【<%= @company.approved == true ? "承認済" : "申請中" %>】会員ステータス【<%= @company.is_active == true ? "有効" : "退会済み" %>】
+        </span>
+      </div>
+      
       <h1 class="text-center"><strong><%= @company.company_name %></strong></h1>
       <hr class="titleHr">
+      <p><%= @company.introduction %></p>
+      <hr class="titleHr">
+
+      <%# 掲載記事などの数を表示 %>
+      <div class="company-various-count">
+        <h6 class="text-center">
+          <strong><%= @company.articles.count %></strong><br>
+          <span style="font-size: small;">掲載記事</span>
+        </h6>
+      </div>
+      <div class="company-various-count">
+        <h6 class="text-center">
+          <strong><%= @company.articles.joins(:favorites).count %></strong><br>
+          <span style="font-size: small;">お気に入り</span>
+        </h6>
+      </div>
+      <div class="company-various-count">
+        <h6 class="text-center">
+          <strong><%= @company.followers.count %></strong><br>
+          <span style="font-size: small;">フォロワー</span>
+        </h6>
+      </div>
+      <div class="company-various-count">
+        <a type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          <h6 class="text-center">
+            <i class="fas fa-info-circle" style="color: #128da0;"></i><br>
+            <span style="font-size: small">企業情報</span>
+          </h6>
+        </a>
+      </div>
+
+      <%# クリックした際に以下の企業情報を表示 %>
+      <div class="collapse" id="collapseExample" style="margin-bottom: 15px;">
+        <div class="card card-body">
+          <h6>企業情報</h6>
+          <hr class="titleHr">
+          <table class='table table-borderless table-sm'>
+            <tr>
+              <th>郵便番号</th>
+              <td><%= @company.postal_code %></td>
+            </tr>
+            <tr>
+              <th>住所</th>
+              <td><%= @company.address %></td>
+            </tr>
+            <tr>
+              <th>電話番号</th>
+              <td><%= @company.phone_number %></td>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <td><%= @company.email %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <%# 編集ボタン表示 %>
       <p class="text-right">
         <%= link_to '編集する', edit_admin_company_path(@company), class:"btn btn-info" %>
         <%= link_to '企業一覧へ戻る', admin_companies_path, class:"btn btn-outline-info" %>
-      </p>
-      <p class="text-right">
-        企業ID【<%= @company.id %>】申請ステータス【<%= @company.approved == true ? "承認済" : "申請中" %>】会員ステータス【<%= @company.is_active == true ? "有効" : "退会済み" %>】
       </p>
     </div>
   </div>
 </div>
 
+<%# 以下企業の記事一覧 %>
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-6">
+    <div class="col-lg-3" style="margin-top: 20px; margin-bottom: 50px;">
       <div class="recommend">
-        <h5>この企業のおすすめ記事</h5>
+        <h5 class="text-center">この企業のおすすめ記事</h5>
         <%= render 'admin/shared/ranking', all_ranks: @company_ranks %>
       </div>
     </div>
 
-    <div class="col-sm-12 col-md-6">
-      <h5>企業情報</h5>
+    <div class="col-lg-9" style="margin-top: 20px;">
+      <div class="title">
+        <h5 class="text-center">この企業の掲載記事一覧</h5>
+      </div>
       <hr class="titleHr">
-      <table class='table table-borderless table-sm'>
-        <tr>
-          <th>郵便番号</th>
-          <td><%= @company.postal_code %></td>
-        </tr>
-        <tr>
-          <th>住所</th>
-          <td><%= @company.address %></td>
-        </tr>
-        <tr>
-          <th>電話番号</th>
-          <td><%= @company.phone_number %></td>
-        </tr>
-        <tr>
-          <th>メールアドレス</th>
-          <td><%= @company.email %></td>
-        </tr>
-      </table>
-
-      <h5>企業紹介文</h5>
-      <hr class="titleHr">
-      <p><%= @company.introduction %></p>
-      <hr class="titleHr">
+      <%= render 'admin/articles/mypage_article_list', articles: @articles %>
     </div>
   </div>
 </div>

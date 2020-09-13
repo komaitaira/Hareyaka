@@ -3,9 +3,10 @@ class Corporate::CompaniesController < ApplicationController
   before_action :set_current_company, except: [:followers]
 
   def show
-    # @companyに紐づくお気に入りが最も多いものを取得。(articleとgenreのis_activeがそれぞれtrueのものを限定)
+    @articles = @company.articles.all_active.page(params[:page]).order(updated_at: "DESC")
+    # @companyに紐づくお気に入りが最も多いものを3つ取得。(articleとgenreのis_activeがそれぞれtrueのものを限定)
     article_ids = @company.articles.joins(:favorites).joins(:genre).where(articles: { is_active: true }).where(genres: { is_active: true }).pluck(:id)
-    @company_ranks = Article.limit(1).find(article_ids)
+    @company_ranks = Article.limit(3).find(article_ids)
   end
 
   def edit
