@@ -1,0 +1,33 @@
+<% articles.each do |article| %>
+  <div class="article-content col-md-6 col-lg-4">
+    <span class="article-info"><%= article.genre.genre_name %></span>
+      <span class="article-info" style="float: right;"><%= article.created_at.strftime('%Y/%m/%d') %></span>
+
+      <%= attachment_image_tag article, :image, class: "img-fluid aticle-image-top", fallback: "article.jpg" %>
+
+      <span class="favorite-count"><i class="fab fa-gratipay" style="color: #9b9b9b;"><%= article.favorites.count %></i></span>
+
+      <div id="favorite_button_<%= article.id %>">
+        <%= render 'public/shared/favorite_button', article: article %>
+      </div>
+
+      <div class="article-title">
+        <% if controller.controller_name == 'articles' && controller.action_name == 'show' %>
+          <h1 class="card-title text-center"><strong><%= article.title %></strong></h1>
+          <p class="article-info text-center"><strong><%= article.company.company_name %></strong></p>
+        <% else %>
+          <h5 class="card-title text-center"><strong><%= article.title.truncate(12) %></strong></h5>
+        <% end %>
+      </div>
+    <div class="article-body">
+      <%= strip_tags(article.body.to_s).truncate(70) %><br>
+      <span class="article-info"><%= article.company.company_name %></span>
+      <p style="float: right;"><%= link_to "続きを読む", admin_article_path(article.id) %></p>
+    </div>
+  </div>
+<% end %>
+<div class="pagenation offset-sm-3 col-sm-6 offset-md-4 col-md-4 offset-lg-4 col-lg-4">
+  <p class="text-center" >
+    <%= paginate @articles %>
+  </p>
+</div>

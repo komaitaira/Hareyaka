@@ -5,6 +5,67 @@
       <span class="badge badge-danger">個人会員掲載ページ</span>
       <h1 class="text-center company-name"><strong><%= @company.company_name %></strong></h1>
       <hr class="titleHr">
+      <h6 class="admin-comment">
+        <i class="fas fa-user-cog">自社についての紹介文を記載します（事業内容や取り扱い商品、自社の特徴など）。その他、個人会員様へのメッセージを是非ご記載ください。</i>
+      </h6>
+      <p><%= @company.introduction %></p>
+      <hr class="titleHr">
+
+      <%# 掲載記事などの数を表示 %>
+      <div class="company-various-count">
+        <h6 class="text-center">
+          <strong><%= @company.articles.count %></strong><br>
+          <span style="font-size: small;">掲載記事</span>
+        </h6>
+      </div>
+      <div class="company-various-count">
+        <h6 class="text-center">
+          <strong><%= @company.articles.joins(:favorites).count %></strong><br>
+          <span style="font-size: small;">お気に入り</span>
+        </h6>
+      </div>
+      <div class="company-various-count">
+        <h6 class="text-center">
+          <strong><%= @company.followers.count %></strong><br>
+          <span style="font-size: small;">フォロワー</span>
+        </h6>
+      </div>
+      <div class="company-various-count">
+        <a type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          <h6 class="text-center">
+            <i class="fas fa-info-circle" style="color: #128da0;"></i><br>
+            <span style="font-size: small">企業情報</span>
+          </h6>
+        </a>
+      </div>
+
+      <%# クリックした際に以下の企業情報を表示 %>
+      <div class="collapse" id="collapseExample" style="margin-bottom: 15px;">
+        <div class="card card-body">
+          <h6>企業情報</h6>
+          <hr class="titleHr">
+          <table class='table table-borderless table-sm'>
+            <tr>
+              <th>郵便番号</th>
+              <td><%= @company.postal_code %></td>
+            </tr>
+            <tr>
+              <th>住所</th>
+              <td><%= @company.address %></td>
+            </tr>
+            <tr>
+              <th>電話番号</th>
+              <td><%= @company.phone_number %></td>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <td><%= @company.email %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <%# 編集ボタン表示 %>
       <p class="text-right">
         <%= link_to '編集する', edit_corporate_company_path(@company), class:"btn btn-info" %>
       <%= link_to 'パスワードを変更する', edit_company_registration_path(@company), class:"btn btn-outline-info" %>
@@ -13,47 +74,28 @@
   </div>
 </div>
 
+<%# 以下企業の記事一覧 %>
 <div class="container">
   <div class="row">
-    <div class="col-lg-6" style="margin-top: 20px; margin-bottom: 50px;">
+    <div class="col-lg-3" style="margin-top: 20px; margin-bottom: 50px;">
       <div class="recommend">
-        <h5>この企業のおすすめ記事</h5>
+        <h5 class="text-center">この企業のおすすめ記事</h5>
         <h6 class="admin-comment">
-          <i class="fas fa-user-cog">お気に入り数が多いものを1つ抜粋して掲載します。</i>
+          <i class="fas fa-user-cog">お気に入り数が多いものを3つ抜粋して掲載されます。</i>
         </h6>
         <%= render 'corporate/shared/ranking', all_ranks: @company_ranks %>
       </div>
     </div>
 
-    <div class="col-lg-6" style="margin-top: 20px;">
-      <h5>企業情報</h5>
+    <div class="col-lg-9" style="margin-top: 20px;">
+      <div class="title">
+        <h5 class="text-center">この企業の掲載記事一覧</h5>
+        <h6 class="admin-comment">
+          <i class="fas fa-user-cog">掲載ステータスが掲載中の記事が掲載されます。</i>
+        </h6>
+      </div>
       <hr class="titleHr">
-      <table class='table table-borderless table-sm'>
-        <tr>
-          <th>郵便番号</th>
-          <td><%= @company.postal_code %></td>
-        </tr>
-        <tr>
-          <th>住所</th>
-          <td><%= @company.address %></td>
-        </tr>
-        <tr>
-          <th>電話番号</th>
-          <td><%= @company.phone_number %></td>
-        </tr>
-        <tr>
-          <th>メールアドレス</th>
-          <td><%= @company.email %></td>
-        </tr>
-      </table>
-
-      <h5 style="margin-top: 50px;">企業紹介文</h5>
-      <h6 class="admin-comment">
-        <i class="fas fa-user-cog">自社についての紹介文を記載します（事業内容や取り扱い商品、自社の特徴など）。その他、個人会員様へのメッセージを是非ご記載ください。</i>
-      </h6>
-      <hr class="titleHr">
-      <p><%= @company.introduction %></p>
-      <hr class="titleHr">
+      <%= render 'corporate/articles/mypage_article_list', articles: @articles %>
     </div>
   </div>
 </div>
