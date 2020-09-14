@@ -20,8 +20,10 @@ RSpec.describe Article, type: :model do
 
     context "全てのデータが入っていない場合" do
       it "全て入力されていないので保存されない" do
-        @article.company_id = ""
+        @article.company_id = @company.id
         @article.genre_id = @genre.id
+        @article.title = ""
+        @article.body = ""
         expect(@article.save).to be false
       end
     end

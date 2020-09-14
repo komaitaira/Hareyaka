@@ -6,6 +6,8 @@ FactoryBot.define do
     postal_code { "1234567" }
     address { "東京都千代田区123-12-1" }
     phone_number { "12345678910" }
-    password { "a" * 6 }
+    password { "testcompany" }
+    approved { true }
+    is_active { true }
   end
 end
