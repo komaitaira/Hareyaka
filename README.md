@@ -46,6 +46,8 @@ https://hareyaka.work
 https://docs.google.com/spreadsheets/d/1zo5diDanQnlDX6ztauF_PCgrkGDQLfGkCZXiOt0s7hg/edit#gid=420035931
 
 ## 設計書
+<img width="848" alt="スクリーンショット 2020-09-17 1 21 56" src="https://user-images.githubusercontent.com/63830279/93365713-1b43fa00-f885-11ea-98d5-87fd858dfbae.png">
+<br>
 インフラ設計書：https://app.diagrams.net/#G1pRD-1jfVz9ZsUvG8oLvqNJKymK8oZC4m <br>
 ER図：https://www.draw.io/#G1Bpz4NuuUMQFlHKxPN-DPr6uCSm5QFzgW <br>
 
