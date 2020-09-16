@@ -44,7 +44,7 @@ https://hareyaka.work
 <img width="850" alt="スクリーンショット 2020-09-17 1 02 04" src="https://user-images.githubusercontent.com/63830279/93362986-9c998d80-f881-11ea-8948-d1cba558328a.png">
 
 以下リンクに上記以外の機能を記載しております<br>
-https://docs.google.com/spreadsheets/d/1zo5diDanQnlDX6ztauF_PCgrkGDQLfGkCZXiOt0s7hg/edit#gid=420035931
+https://docs.google.com/spreadsheets/d/1W4wlZuPI5ALpAkt4EvuLftHnyrNGN6Zlgp-5mHSqcrw/edit?usp=sharing
 
 ## 設計書
 <img width="848" alt="スクリーンショット 2020-09-17 1 21 56" src="https://user-images.githubusercontent.com/63830279/93365713-1b43fa00-f885-11ea-98d5-87fd858dfbae.png">
