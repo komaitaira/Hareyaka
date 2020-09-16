@@ -39,7 +39,8 @@ https://hareyaka.work
 ③フォロワーのCSVエクスポート機能(右) = 顧客リストとして保存<br>
 <img width="850" alt="スクリーンショット 2020-09-17 0 21 17" src="https://user-images.githubusercontent.com/63830279/93363074-b76c0200-f881-11ea-94d8-046086ab0c7c.png">
 
-④summernoteを使用しユーザーが見やすい見た目に
+④summernoteを使用しユーザーが見やすい見た目に<br>
+※記事内容は全て自分の経験や考え、あるいは完全な妄想で記載しましたので是非ご覧下さい。<br>
 <img width="850" alt="スクリーンショット 2020-09-17 1 02 04" src="https://user-images.githubusercontent.com/63830279/93362986-9c998d80-f881-11ea-8948-d1cba558328a.png">
 
 以下リンクに上記以外の機能を記載しております<br>
