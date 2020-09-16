@@ -33,6 +33,10 @@ https://hareyaka.work
 ER図：https://www.draw.io/#G1Bpz4NuuUMQFlHKxPN-DPr6uCSm5QFzgW <br>
 
 ### 機能一覧
+<機能例><br>
+①法人は登録申請後、管理者が申請承認することでログイン可能(ActionMailerを使用)
+<img width="853" alt="スクリーンショット 2020-09-16 17 21 46" src="https://user-images.githubusercontent.com/63830279/93311659-3ab93380-f841-11ea-8bc0-40187ee26c87.png">
+
 https://docs.google.com/spreadsheets/d/1zo5diDanQnlDX6ztauF_PCgrkGDQLfGkCZXiOt0s7hg/edit#gid=420035931
 
 ### 環境・使用技術
