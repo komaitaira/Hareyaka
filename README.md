@@ -2,7 +2,6 @@
 
 # Hareyaka
 
-
 ## URL
 https://hareyaka.work
 
