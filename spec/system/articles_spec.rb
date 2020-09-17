@@ -27,7 +27,7 @@ RSpec.describe "Articles", type: :system do
     describe '投稿のテスト' do
       context '新規記事投稿ページへ遷移' do
         it '遷移する' do
-          click_on '記事登録'
+          click_on '記事を登録する'
           expect(page).to have_content "新規記事投稿"
           expect(current_path).to eq('/corporate/articles/new')
         end

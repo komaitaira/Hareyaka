@@ -18,7 +18,11 @@
         <td><%= link_to article.title, admin_article_path(article.id) %></td>
         <td><%= article.genre.genre_name %></td>
         <td><%= article.is_active == true ? "掲載中" : "掲載停止中" %></td>
-        <td><%= link_to "削除", admin_article_path(article), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %></td>
+        <td>
+          <%= link_to  admin_article_path(article), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

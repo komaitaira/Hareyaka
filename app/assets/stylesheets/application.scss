@@ -23,7 +23,8 @@ header{
 .header-nav{
   color:#128da0;
 	background-color: #fefefe;
-  padding-top: 5;
+  padding-top: 12px;
+  padding-bottom: 12px;
   border-top: 5px #128da0 solid;
   border-bottom: 1px #d9d9d9 solid;
 
@@ -31,7 +32,7 @@ header{
 		a{
 			color: #128da0;
       text-decoration: none;
-      margin: 0 10px 0 5px;
+      margin: 0 25px 0 5px;
 		}
 	}
 	.login-person{

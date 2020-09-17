@@ -45,7 +45,11 @@
             <tr>
               <td><%= link_to genre.genre_name, edit_admin_genre_path(genre.id) %></td>
               <td><%= genre.is_active == true ? "有効" : "無効" %></td>
-              <td><%= link_to "削除", admin_genre_path(genre), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %></td>
+              <td>
+                <%= link_to admin_genre_path(genre), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" do %>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
