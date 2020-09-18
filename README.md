@@ -1,5 +1,3 @@
-# README
-
 # Hareyaka
 <img width="850" alt="screenshot1" src="https://user-images.githubusercontent.com/63830279/93308629-7a7e1c00-f83d-11ea-8869-00167af8b8a1.png">
 
