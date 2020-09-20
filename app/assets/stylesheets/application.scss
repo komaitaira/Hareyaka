@@ -261,9 +261,10 @@ a{
 
 // ここからサイドバー
 .favorite-ranking{
+  float: left; 
   margin-bottom: 10px;
   font-size: small;
-  display: inline-block;
+  display: block;
 }
 // ここまでサイドバー
 
@@ -278,9 +279,13 @@ a{
 // ここまでお気に入り
 
 // ここからページネーション 
-.pagenation{
+.pagination-col{
   position: absolute;
   bottom: -120px;
+}
+
+.pagination {
+  justify-content: center;
 }
 
 .page-link{

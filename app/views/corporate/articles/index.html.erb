@@ -18,7 +18,7 @@
           <%# 検索該当ありの場合 %>
           <p><%="全#{@q_articles.total_count}件中" + "(#{@q_articles.count}件表示)" %></p>
           <%= render 'article_list', articles: @q_articles %>
-          <div class="pagenation offset-sm-3 col-sm-6 offset-md-4 col-md-4 offset-lg-4 col-lg-4">
+          <div class="pagination-col offset-sm-3 col-sm-6 offset-md-4 col-md-4 offset-lg-4 col-lg-4">
             <p class="text-center" >
               <%= paginate @q_articles %>
             </p>

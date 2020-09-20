@@ -1,5 +1,5 @@
 <% articles.each do |article| %>
-  <div class="article-content col-md-6 col-lg-4">
+  <div class="article-content col-md-6 col-lg-3">
     <span class="article-info"><%= article.genre.genre_name %></span>
       <span class="article-info" style="float: right;"><%= article.created_at.strftime('%Y/%m/%d') %></span>
 
@@ -26,7 +26,7 @@
     </div>
   </div>
 <% end %>
-<div class="pagenation offset-sm-3 col-sm-6 offset-md-4 col-md-4 offset-lg-4 col-lg-4">
+<div class="pagination-col offset-sm-3 col-sm-6 offset-md-4 col-md-4 offset-lg-4 col-lg-4">
   <p class="text-center" >
     <%= paginate @articles %>
   </p>

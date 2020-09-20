@@ -77,7 +77,7 @@
 <%# 以下企業の記事一覧 %>
 <div class="container">
   <div class="row">
-    <div class="col-lg-3" style="margin-top: 20px; margin-bottom: 50px;">
+    <div class="col-lg-12" style="margin-top: 30px;">
       <div class="recommend">
         <h5 class="text-center">この企業のおすすめ記事</h5>
         <h6 class="admin-comment">
@@ -87,7 +87,7 @@
       </div>
     </div>
 
-    <div class="col-lg-9" style="margin-top: 20px;">
+    <div class="col-lg-12" style="margin-top: 30px;">
       <div class="title">
         <h5 class="text-center">この企業の掲載記事一覧</h5>
         <h6 class="admin-comment">
@@ -96,6 +96,11 @@
       </div>
       <hr class="titleHr">
       <%= render 'corporate/articles/mypage_article_list', articles: @articles %>
+      <div class="pagination-col offset-sm-3 col-sm-6 offset-md-4 col-md-4 offset-lg-4 col-lg-4">
+        <p class="text-center" >
+          <%= paginate @articles %>
+        </p>
+      </div>
     </div>
   </div>
 </div>

@@ -1,14 +1,14 @@
 <hr class="titleHr">
 <% all_ranks.each.with_index(1) do |article, i| %>
-  <% if i == 1 %>
-    <i class="fas fa-bookmark" style="color: gold;"><%= i %></i>
-  <% elsif i == 2 %>
-    <i class="fas fa-bookmark" style="color: silver;"><%= i %></i>
-  <% elsif i == 3 %>
-    <i class="fas fa-bookmark" style="color: orange;"><%= i %></i>
-  <% end %>
+  <div class="favorite-ranking col-lg-4">
+    <% if i == 1 %>
+      <i class="fas fa-bookmark" style="color: gold;"><%= i %></i>
+    <% elsif i == 2 %>
+      <i class="fas fa-bookmark" style="color: silver;"><%= i %></i>
+    <% elsif i == 3 %>
+      <i class="fas fa-bookmark" style="color: orange;"><%= i %></i>
+    <% end %>
 
-  <div class="favorite-ranking card shadow-lg col-md-12 col-lg-12">
     <span class="article-info"><%= article.genre.genre_name %></span>
     <span class="article-info" style="float: right;"><%= article.created_at.strftime('%Y/%m/%d') %></span>
 

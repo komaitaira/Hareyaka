@@ -21,7 +21,7 @@
           <%# 検索該当ありの場合 %>
           <p><%="全#{@q_followers.total_count}件中" + "(#{@q_followers.count}件表示)" %></p>
           <%= render 'follower_list', followers: @q_followers %>
-          <div class="pagenation offset-sm-3 col-sm-6 offset-md-4 col-md-4 offset-lg-4 col-lg-4">
+          <div class="pagination-col offset-sm-3 col-sm-6 offset-md-4 col-md-4 offset-lg-4 col-lg-4">
             <p class="text-center" >
               <%= paginate @q_followers %>
             </p>

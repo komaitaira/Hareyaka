@@ -1,14 +1,15 @@
 <hr class="titleHr">
 <% all_ranks.each.with_index(1) do |article, i| %>
-  <% if i == 1 %>
-    <i class="fas fa-bookmark" style="color: gold;"><%= i %></i>
-  <% elsif i == 2 %>
-    <i class="fas fa-bookmark" style="color: silver;"><%= i %></i>
-  <% elsif i == 3 %>
-    <i class="fas fa-bookmark" style="color: orange;"><%= i %></i>
-  <% end %>
 
-  <div class="favorite-ranking card shadow-lg col-md-12 col-lg-12">
+  <div class="favorite-ranking col-lg-4">
+    <% if i == 1 %>
+      <i class="fas fa-bookmark" style="color: gold;"><%= i %></i>
+    <% elsif i == 2 %>
+      <i class="fas fa-bookmark" style="color: silver;"><%= i %></i>
+    <% elsif i == 3 %>
+      <i class="fas fa-bookmark" style="color: orange;"><%= i %></i>
+    <% end %>
+
     <span class="article-info"><%= article.genre.genre_name %></span>
     <span class="article-info" style="float: right;"><%= article.created_at.strftime('%Y/%m/%d') %></span>
 
@@ -19,9 +20,9 @@
     <div class="article-title">
       <% if controller.controller_name == 'articles' && controller.action_name == 'show' %>
         <span class="article-info"><%= article.company.company_name %></span>
-        <h1 class="card-title text-center"><strong><%= article.title %></strong></h1>
+        <h1 class="text-center"><strong><%= article.title %></strong></h1>
       <% else %>
-        <h5 class="card-title text-center"><strong><%= article.title.truncate(15) %></strong></h5>
+        <h5 class="text-center"><strong><%= article.title.truncate(15) %></strong></h5>
       <% end %>
     </div>
 
