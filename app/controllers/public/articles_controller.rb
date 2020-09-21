@@ -36,7 +36,9 @@ class Public::ArticlesController < ApplicationController
   end
 
   def set_ranking
-    # Articleモデルからcreate_all_ranks(article.rbに定義)で検索してきた結果を@all_ranksに代入
-    @all_ranks = Article.create_all_ranks
+    # 全記事の中からお気に入りが最も多いものを3つ取得。(articleとgenreのis_activeがそれぞれtrueのものを限定)
+    article_ids = Article.joins(:favorites).all_active.pluck(:id)
+    three_ids = article_ids.group_by(&:to_i).sort_by{|_,v|-v.size}.map(&:first).first(3)
+    @all_ranks = Article.find(three_ids)
   end
 end

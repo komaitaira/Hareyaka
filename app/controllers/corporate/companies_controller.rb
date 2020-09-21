@@ -5,8 +5,9 @@ class Corporate::CompaniesController < ApplicationController
   def show
     @articles = @company.articles.all_active.page(params[:page]).order(updated_at: "DESC")
     # @companyに紐づくお気に入りが最も多いものを3つ取得。(articleとgenreのis_activeがそれぞれtrueのものを限定)
-    article_ids = @company.articles.joins(:favorites).joins(:genre).where(articles: { is_active: true }).where(genres: { is_active: true }).pluck(:id)
-    @company_ranks = Article.limit(3).find(article_ids)
+    article_ids = @company.articles.joins(:favorites).all_active.pluck(:id)
+    three_ids = article_ids.group_by(&:to_i).sort_by{|_,v|-v.size}.map(&:first).first(3)
+    @company_ranks = Article.find(three_ids)
   end
 
   def edit
