@@ -48,6 +48,8 @@ https://docs.google.com/spreadsheets/d/1W4wlZuPI5ALpAkt4EvuLftHnyrNGN6Zlgp-5mHSq
 <img width="848" alt="スクリーンショット 2020-09-17 1 21 56" src="https://user-images.githubusercontent.com/63830279/93365713-1b43fa00-f885-11ea-98d5-87fd858dfbae.png">
 <br>
 インフラ設計書：https://app.diagrams.net/#G1pRD-1jfVz9ZsUvG8oLvqNJKymK8oZC4m <br>
+
+<img width="850" alt="スクリーンショット 2020-09-22 10 01 23" src="https://user-images.githubusercontent.com/63830279/93835622-c9530800-fcba-11ea-8846-c655cab56865.png">
 ER図：https://app.diagrams.net/#G1Bpz4NuuUMQFlHKxPN-DPr6uCSm5QFzgW <br>
 
 ### 環境・使用技術
