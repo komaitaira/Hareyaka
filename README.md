@@ -1,5 +1,5 @@
 # Hareyaka
-<img width="850" alt="screenshot1" src="https://user-images.githubusercontent.com/63830279/93308629-7a7e1c00-f83d-11ea-8869-00167af8b8a1.png">
+<img width="850" alt="スクリーンショット 2020-09-28 13 16 26" src="https://user-images.githubusercontent.com/63830279/94390257-20f6e500-018d-11eb-8694-e9c39e795a38.png">
 
 ## URL
 https://hareyaka.work
@@ -61,3 +61,7 @@ ER図：https://drive.google.com/file/d/1Bpz4NuuUMQFlHKxPN-DPr6uCSm5QFzgW/view?u
 * AWS(EC2、RDS for MySQL、Route53、CloudWatch、S3、Lambda)
 * Nginx、Puma
 
+
+## Qiita
+[【第１回】RSpecビギナーが、ビギナーなりにModelSpecを書いてみた](https://qiita.com/komaitaira/items/37f464c17f7cdc61d292 "【第１回】RSpecビギナーが、ビギナーなりにModelSpecを書いてみた")<br>
+[【第２回】RSpecビギナーが、ビギナーなりにSystemSpecを書いてみた（沼編）](https://qiita.com/komaitaira/items/b9efc86cde48fb5ca8ef "【第２回】RSpecビギナーが、ビギナーなりにSystemSpecを書いてみた（沼編）")<br>
