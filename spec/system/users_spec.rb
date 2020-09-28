@@ -15,7 +15,7 @@ RSpec.describe 'User', type: :system do
           fill_in 'user[kana_first_name]', with: "タロウ"
           fill_in 'user[email]', with: "test@example.com"
           fill_in 'user[postal_code]', with: "1234567"
-          fill_in 'user[address]', with: "東京都千代田区123-12-1"
+          fill_in 'user[address]', with: "東京都足立区123-12-1"
           fill_in 'user[phone_number]', with: "12345678910"
           fill_in 'user[password]', with: "testtaro"
           fill_in 'user[password_confirmation]', with: "testtaro"
@@ -89,7 +89,7 @@ RSpec.describe 'User', type: :system do
         end
       end
 
-      context '表示の確認' do
+      context '表示の確認と編集' do
         before do
           visit edit_user_path(user)
         end
@@ -127,14 +127,20 @@ RSpec.describe 'User', type: :system do
           expect(page).to have_field 'user[introduction]', with: user.introduction
         end
         it '編集に成功する' do
+          # 名前を二郎に変更
+          fill_in 'user[first_name]', with: '二郎'
+          fill_in 'user[kana_first_name]', with: 'ジロウ'
           click_button '変更を保存する'
           expect(page).to have_content '会員情報の更新が完了しました。'
+          expect(page).to have_content 'テスト 二郎 (テスト ジロウ)'
           expect(current_path).to eq('/users/' + user.id.to_s)
         end
         it '編集に失敗する' do
-          fill_in 'user[last_name]', with: ''
+          # first_name 名前(名)を空欄で入力
+          fill_in 'user[first_name]', with: ''
           click_button '変更を保存する'
           expect(page).to have_content '件のエラーが発生したため 個人会員 は保存されませんでした。'
+          expect(page).to have_content '名前(名)を入力してください'
           expect(current_path).to eq('/users/' + user.id.to_s)
         end
       end

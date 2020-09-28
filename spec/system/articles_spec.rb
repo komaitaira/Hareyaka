@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "Articles", type: :system do
   describe '記事のテスト' do
     let(:company){FactoryBot.create(:company)}
-    let!(:genre){FactoryBot.create(:genre)}
-    let!(:article) { FactoryBot.create(:article, company: company, genre: genre) }
+    let(:genre){FactoryBot.create(:genre)}
+    let!(:article){FactoryBot.create(:article, company: company, genre: genre)}
     before do
       visit new_company_session_path
       fill_in 'company[email]', with: company.email
