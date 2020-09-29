@@ -8,37 +8,37 @@
     <div class="row">
       <div class="col-md-4">
         <div class="form-group">
-          <%= f.label :企業名 %>
+          <%= f.label :company_name %>
           <%= f.text_field :company_name, autofocus: true, autocomplete: "company_name", class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :フリガナ %>
+          <%= f.label :kana_company_name %>
           <%= f.text_field :kana_company_name, autofocus: true, autocomplete: "kana_company_name", class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :メールアドレス %>
+          <%= f.label :email %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :郵便番号（ハイフンなし）%>
+          <%= f.label :poatal_code, "郵便番号（ハイフンなし）" %>
           <%= f.text_field :postal_code, autofocus: true, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :住所 %>
+          <%= f.label :address %>
           <%= f.text_field :address, autofocus: true, class: "form-control", collection: JpPrefecture::Prefecture.all, :value_method => :name %>
         </div>
 
         <div class="form-group">
-          <%= f.label :電話番号（ハイフンなし）%>
+          <%= f.label :phone_number, "電話番号（ハイフンなし）" %>
           <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "form-control" %>
         </div>
         
         <div class="form-group">
-          <%= f.label :プロフィール画像 %><br>
+          <%= f.label :profile_image, "プロフィール画像" %><br>
           <%= attachment_image_tag @company, :profile_image, class: "img-fluid read_preview my-image", fallback: "no_image.png" %>
           <%= f.attachment_field :profile_image, id: "profile-image-field" %>
         </div>
@@ -46,29 +46,29 @@
 
       <div class="col-md-8">
         <div class="form-group col-sm-4 col-md-5 col-lg-3" style="display: inline-block;">
-          <%= f.label :申請ステータス %><br>
+          <p>申請ステータス</p>
           <%= f.radio_button :approved, true %>
-          <%= f.label :approved, "承認済", {value: :approved, style: "display: inline-block;"} %>
+          <%= f.label :approved, "承認済", style: "margin-right: 15px;" %>
           <%= f.radio_button :approved, false %>
-          <%= f.label :approved, "申請中", {value: :approved, style: "display: inline-block;"} %>
+          <%= f.label :approved, "申請中" %>
         </div>
         
         <div class="form-group col-sm-4 col-md-5 col-lg-3" style="display: inline-block;">
-          <%= f.label :会員ステータス %><br>
+          <p>会員ステータス</p>
           <%= f.radio_button :is_active, true %>
-          <%= f.label :is_active, "有効", {value: :is_active, style: "display: inline-block;"} %>
+          <%= f.label :is_active, "有効", style: "margin-right: 15px;" %>
           <%= f.radio_button :is_active, false %>
-          <%= f.label :is_active, "退会済み", {value: :is_active, style: "display: inline-block;"} %>
+          <%= f.label :is_active, "退会済み" %>
         </div>
         
         <div class="form-group">
-          <%= f.label :ヘッダー画像 %><br>
+          <%= f.label :background_image, "ヘッダー画像" %><br>
           <%= attachment_image_tag @company, :background_image, class: "img-fluid head_preview company-header", fallback: "business.jpg" %>
           <%= f.attachment_field :background_image, id: "header-image-field" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :企業紹介文 %>
+          <%= f.label :introduction, "企業紹介文" %>
           <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", placeholder: "自己紹介文を入力して下さい", class: "form-control", style: "height: 300px;" %>
         </div>
 

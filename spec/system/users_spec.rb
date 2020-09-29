@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'User', type: :system do
-  let(:user){FactoryBot.create(:user)}
+  let!(:user){FactoryBot.create(:user)}
   describe 'ユーザー認証のテスト' do
     describe 'ユーザー新規登録' do
       before do
@@ -10,15 +10,15 @@ RSpec.describe 'User', type: :system do
       context '新規登録画面に遷移' do
         it '新規登録に成功する' do
           fill_in 'user[last_name]', with: "テスト"
-          fill_in 'user[first_name]', with: "太郎"
+          fill_in 'user[first_name]', with: "二郎"
           fill_in 'user[kana_last_name]', with: "テスト"
-          fill_in 'user[kana_first_name]', with: "タロウ"
-          fill_in 'user[email]', with: "test@example.com"
-          fill_in 'user[postal_code]', with: "1234567"
+          fill_in 'user[kana_first_name]', with: "ジロウ"
+          fill_in 'user[email]', with: "testjiro@example.com"
+          fill_in 'user[postal_code]', with: "2222222"
           fill_in 'user[address]', with: "東京都足立区123-12-1"
-          fill_in 'user[phone_number]', with: "12345678910"
-          fill_in 'user[password]', with: "testtaro"
-          fill_in 'user[password_confirmation]', with: "testtaro"
+          fill_in 'user[phone_number]', with: "22222222222"
+          fill_in 'user[password]', with: "testjiro"
+          fill_in 'user[password_confirmation]', with: "testjiro"
           click_button '新規登録'
           expect(page).to have_content 'アカウント登録が完了しました。'
         end
@@ -47,8 +47,8 @@ RSpec.describe 'User', type: :system do
 
       context 'ログイン画面に遷移' do
         it 'ログインに成功する' do
-          fill_in 'user[email]', with: user.email
-          fill_in 'user[password]', with: user.password
+          fill_in "メールアドレス", with: "test@example.com"
+          fill_in 'パスワード', with: "testtaro"
           click_button 'ログイン'
           expect(page).to have_content 'ログインしました。'
         end
@@ -127,12 +127,12 @@ RSpec.describe 'User', type: :system do
           expect(page).to have_field 'user[introduction]', with: user.introduction
         end
         it '編集に成功する' do
-          # 名前を二郎に変更
-          fill_in 'user[first_name]', with: '二郎'
-          fill_in 'user[kana_first_name]', with: 'ジロウ'
+          # 名前を三郎に変更
+          fill_in 'user[first_name]', with: '三郎'
+          fill_in 'user[kana_first_name]', with: 'サブロウ'
           click_button '変更を保存する'
           expect(page).to have_content '会員情報の更新が完了しました。'
-          expect(page).to have_content 'テスト 二郎 (テスト ジロウ)'
+          expect(page).to have_content 'テスト 三郎 (テスト サブロウ)'
           expect(current_path).to eq('/users/' + user.id.to_s)
         end
         it '編集に失敗する' do
