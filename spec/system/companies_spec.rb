@@ -9,26 +9,26 @@ RSpec.describe "Companies", type: :system do
         visit new_company_registration_path
       end
       it '登録申請に成功する' do
-        fill_in 'company[company_name]', with: "テスト2株式会社"
-        fill_in 'company[kana_company_name]', with: "テストツーカブシキガイシャ"
-        fill_in 'company[email]', with: "test2company@example.com"
-        fill_in 'company[postal_code]', with: "2222222"
-        fill_in 'company[address]', with: "東京都千代田区222-22-2"
-        fill_in 'company[phone_number]', with: "22222222222"
-        fill_in 'company[password]', with: "test2company"
-        fill_in 'company[password_confirmation]', with: "test2company"
+        fill_in '企業名', with: "テスト2株式会社"
+        fill_in 'フリガナ', with: "テストツーカブシキガイシャ"
+        fill_in 'メールアドレス', with: "test2company@example.com"
+        fill_in '郵便番号(ハイフンなし)', with: "2222222"
+        fill_in '住所', with: "東京都千代田区222-22-2"
+        fill_in '電話番号(ハイフンなし)', with: "22222222222"
+        fill_in 'パスワード', with: "test2company"
+        fill_in '確認用パスワード', with: "test2company"
         click_button '申請する'
         expect(page).to have_content '登録申請ありがとうございます。法人会員専用ページは運営にて申請が承認がされた後に閲覧可能になります。承認済メールが届くまで今しばらくお待ちください。'
       end
       it '登録申請に失敗する' do
-        fill_in 'company[company_name]', with: ""
-        fill_in 'company[kana_company_name]', with: ""
-        fill_in 'company[email]', with: ""
-        fill_in 'company[postal_code]', with: ""
-        fill_in 'company[address]', with: ""
-        fill_in 'company[phone_number]', with: ""
-        fill_in 'company[password]', with: ""
-        fill_in 'company[password_confirmation]', with: ""
+        fill_in '企業名', with: ""
+        fill_in 'フリガナ', with: ""
+        fill_in 'メールアドレス', with: ""
+        fill_in '郵便番号(ハイフンなし)', with: ""
+        fill_in '住所', with: ""
+        fill_in '電話番号(ハイフンなし)', with: ""
+        fill_in 'パスワード', with: ""
+        fill_in '確認用パスワード', with: ""
         click_button '申請する'
         expect(page).to have_content "法人会員 は保存されませんでした。"
       end
@@ -39,14 +39,14 @@ RSpec.describe "Companies", type: :system do
     before do
       # 法人が登録申請フォーム入力
       visit new_company_registration_path
-      fill_in 'company[company_name]', with: "テスト2株式会社"
-      fill_in 'company[kana_company_name]', with: "テストツーカブシキガイシャ"
-      fill_in 'company[email]', with: "test2company@example.com"
-      fill_in 'company[postal_code]', with: "2222222"
-      fill_in 'company[address]', with: "東京都千代田区222-22-2"
-      fill_in 'company[phone_number]', with: "22222222222"
-      fill_in 'company[password]', with: "test2company"
-      fill_in 'company[password_confirmation]', with: "test2company"
+      fill_in '企業名', with: "テスト2株式会社"
+      fill_in 'フリガナ', with: "テストツーカブシキガイシャ"
+      fill_in 'メールアドレス', with: "test2company@example.com"
+      fill_in '郵便番号(ハイフンなし)', with: "2222222"
+      fill_in '住所', with: "東京都千代田区222-22-2"
+      fill_in '電話番号(ハイフンなし)', with: "22222222222"
+      fill_in 'パスワード', with: "test2company"
+      fill_in '確認用パスワード', with: "test2company"
       click_button '申請する' # 通知が送信される
     end
     
@@ -54,8 +54,8 @@ RSpec.describe "Companies", type: :system do
       before do
         # 管理者でログイン
         visit new_admin_session_path
-        fill_in 'admin[email]', with: admin.email
-        fill_in 'admin[password]', with: admin.password
+        fill_in 'メールアドレス', with: admin.email
+        fill_in 'パスワード', with: admin.password
         click_button 'ログイン'
       end
       it 'ヘッダーに法人登録申請と表示される' do
@@ -68,21 +68,20 @@ RSpec.describe "Companies", type: :system do
       it 'リンクから企業詳細ページへ遷移できる' do
         visit admin_notifications_path
         notification = Notification.find_by({receiver_id: admin.id, receiver_class: "admin", sender_id: Company.last.id, sender_class: "company"})
-        # find("#request_message").click # ページに同一の文言のリンクがある場合（今回の場合「法人登録申請」）、idを指定してあげる
-        find("#request_message").click
-        expect(current_path).to eq('/admin/companies/' + notification.sender_id.to_s)
+        find("#request_message").click # ページに同一の文言のリンクがある場合（今回の場合「法人登録申請」）、idを指定してあげる
+        expect(current_path).to eq admin_company_path(notification.sender_id)
       end
       it '編集画面へ遷移する' do
         visit admin_company_path(Company.last.id)
         click_link '編集する'
-        expect(current_path).to eq('/admin/companies/' + Company.last.id.to_s + '/edit')
+        expect(current_path).to eq edit_admin_company_path(Company.last.id)
       end
       it '申請ステータスを承認済にする' do
         visit edit_admin_company_path(Company.last.id)
         choose "company_approved_true" # 申請ステータスを承認済にチェック（company_approved_trueはラジオボタン要素のid）
         click_button '変更を保存する'
         expect(page).to have_content '企業情報の更新が完了しました。'
-        expect(current_path).to eq('/admin/companies/' + Company.last.id.to_s)
+        expect(current_path).to eq admin_company_path(Company.last.id)
       end
     end
 
@@ -90,8 +89,8 @@ RSpec.describe "Companies", type: :system do
       context '承認前の法人ログイン' do
         it 'ログインに失敗し、メール受信後に再度ログインするようメッセージが出る' do
           visit new_company_session_path
-          fill_in 'company[email]', with: "test2company@example.com"
-          fill_in 'company[password]', with: "test2company"
+          fill_in 'メールアドレス', with: "test2company@example.com"
+          fill_in 'パスワード', with: "test2company"
           click_button 'ログイン'
           expect(page).to have_content '登録申請が未承認です。申し訳ございませんが、承認済メールが届くまで今しばらくお待ちください。'
         end
@@ -107,16 +106,16 @@ RSpec.describe "Companies", type: :system do
           visit new_company_session_path
         end
         it 'ログインに成功する' do
-          fill_in 'company[email]', with: "test2company@example.com"
-          fill_in 'company[password]', with: "test2company"
+          fill_in 'メールアドレス', with: "test2company@example.com"
+          fill_in 'パスワード', with: "test2company"
           click_button 'ログイン'
           expect(page).to have_content 'ログインしました。'
         end
         it 'ログインに失敗する' do
-          fill_in 'company[email]', with: ""
-          fill_in 'company[password]', with: ""
+          fill_in 'メールアドレス', with: ""
+          fill_in 'パスワード', with: ""
           click_button 'ログイン'
-          expect(current_path).to eq(new_company_session_path)
+          expect(current_path).to eq new_company_session_path
         end
       end
     end
@@ -125,8 +124,8 @@ RSpec.describe "Companies", type: :system do
   describe '法人会員のテスト' do
     before do
       visit new_company_session_path
-      fill_in 'company[email]', with: company.email
-      fill_in 'company[password]', with: company.password
+      fill_in 'メールアドレス', with: company.email
+      fill_in 'パスワード', with: company.password
       click_button 'ログイン'
     end
 
@@ -146,7 +145,7 @@ RSpec.describe "Companies", type: :system do
       end
       context '編集画面へ遷移の確認' do
         it '遷移ができる' do
-          expect(current_path).to eq('/corporate/companies/' + company.id.to_s + '/edit')
+          expect(current_path).to eq edit_corporate_company_path(company)
         end
       end
       context '表示及び編集の確認' do
@@ -160,34 +159,34 @@ RSpec.describe "Companies", type: :system do
           expect(page).to have_field 'company[background_image]'
         end
         it '企業名編集フォームに企業名が表示される' do
-          expect(page).to have_field 'company[company_name]', with: company.company_name
+          expect(page).to have_field '企業名', with: company.company_name
         end
         it 'フリガナ編集フォームに自分の企業カナ名が表示される' do
-          expect(page).to have_field 'company[kana_company_name]', with: company.kana_company_name
+          expect(page).to have_field 'フリガナ', with: company.kana_company_name
         end
         it 'メールアドレス編集フォームに自分のメールアドレスが表示される' do
-          expect(page).to have_field 'company[email]', with: company.email
+          expect(page).to have_field 'メールアドレス', with: company.email
         end
         it '郵便番号編集フォームに自分の郵便番号が表示される' do
-          expect(page).to have_field 'company[postal_code]', with: company.postal_code
+          expect(page).to have_field '郵便番号(ハイフンなし)', with: company.postal_code
         end
         it '住所編集フォームに自分の住所が表示される' do
-          expect(page).to have_field 'company[address]', with: company.address
+          expect(page).to have_field '住所', with: company.address
         end
         it '電話番号編集フォームに自分の電話番号が表示される' do
-          expect(page).to have_field 'company[phone_number]', with: company.phone_number
+          expect(page).to have_field '電話番号(ハイフンなし)', with: company.phone_number
         end
         it '自己紹介文編集フォームに自分の自己紹介文が表示される' do
-          expect(page).to have_field 'company[introduction]', with: company.introduction
+          expect(page).to have_field '自己紹介文', with: company.introduction
         end
         it '編集に成功する' do
-          fill_in 'company[introduction]', with: "テスト株式会社のマイページへようこそ！"
+          fill_in '自己紹介文', with: "テスト株式会社のマイページへようこそ！"
           click_button '変更を保存する'
           expect(page).to have_content '企業情報の更新が完了しました。'
-          expect(current_path).to eq('/corporate/companies/' + company.id.to_s)
+          expect(current_path).to eq corporate_company_path(company)
         end
         it '編集に失敗する' do
-          fill_in 'company[company_name]', with: ""
+          fill_in '企業名', with: ""
           click_button '変更を保存する'
           expect(page).to have_content '件のエラーが発生したため 法人会員 は保存されませんでした。'
         end

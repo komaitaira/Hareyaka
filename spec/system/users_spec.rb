@@ -57,7 +57,7 @@ RSpec.describe 'User', type: :system do
           fill_in 'メールアドレス', with: ''
           fill_in 'パスワード', with: ''
           click_button 'ログイン'
-          expect(current_path).to eq(new_user_session_path)
+          expect(current_path).to eq new_user_session_path
         end
       end
     end
@@ -85,7 +85,7 @@ RSpec.describe 'User', type: :system do
       context '編集画面へ遷移' do
         it '遷移ができる' do
           visit edit_user_path(user)
-          expect(current_path).to eq('/users/' + user.id.to_s + '/edit')
+          expect(current_path).to eq edit_user_path(user)
         end
       end
 
@@ -133,7 +133,7 @@ RSpec.describe 'User', type: :system do
           click_button '変更を保存する'
           expect(page).to have_content '会員情報の更新が完了しました。'
           expect(page).to have_content 'テスト 三郎 (テスト サブロウ)'
-          expect(current_path).to eq('/users/' + user.id.to_s)
+          expect(current_path).to eq user_path(user)
         end
         it '編集に失敗する' do
           # first_name 名前(名)を空欄で入力
@@ -141,7 +141,7 @@ RSpec.describe 'User', type: :system do
           click_button '変更を保存する'
           expect(page).to have_content '件のエラーが発生したため 個人会員 は保存されませんでした。'
           expect(page).to have_content '名前(名)を入力してください'
-          expect(current_path).to eq('/users/' + user.id.to_s)
+          expect(current_path).to eq user_path(user)
         end
       end
     end
