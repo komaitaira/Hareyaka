@@ -6,53 +6,50 @@
       <%= form_for(@user, url: user_path) do |f| %>
         <%= render 'public/shared/error_messages', resource: @user %>
         <div class="form-group">
-          <%= f.label :プロフィール画像  %><br>
           <%= attachment_image_tag @user, :profile_image, class: "img-fluid image_preview my-image", fallback: "no_image.png" %>
           <%= f.attachment_field :profile_image, id: "image-field" %>
         </div>
 
         <div class="form-group row">
           <div class="col-sm-6">
-            <%= f.label :名前 %>
-            <%= f.label :"(姓)"%><%= f.text_field :last_name, autofocus: true, class: "form-control" %>
+            <%= f.label :last_name %><%= f.text_field :last_name, autofocus: true, class: "form-control" %>
           </div>
           <div class="col-sm-6">
-            <%= f.label :"(名)" %><%= f.text_field :first_name, autofocus: true, class: "form-control" %>
+            <%= f.label :first_name %><%= f.text_field :first_name, autofocus: true, class: "form-control" %>
           </div>
         </div>
 
         <div class="form-group row">
           <div class="col-sm-6">
-            <%= f.label :フリガナ %>
-            <%= f.label :"(セイ)"%><%= f.text_field :kana_last_name, autofocus: true, class: "form-control" %>
+            <%= f.label :kana_last_name %><%= f.text_field :kana_last_name, autofocus: true, class: "form-control" %>
           </div>
           <div class="col-sm-6">
-            <%= f.label :"(メイ)" %><%= f.text_field :kana_first_name, autofocus: true, class: "form-control" %>
+            <%= f.label :kana_first_name %><%= f.text_field :kana_first_name, autofocus: true, class: "form-control" %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :メールアドレス  %>
+          <%= f.label :email  %>
           <%= f.email_field :email, autofocus: true, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :郵便番号（ハイフンなし） %>
+          <%= f.label :postal_code %>
           <%= f.text_field :postal_code, autofocus: true, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :住所 %>
+          <%= f.label :address %>
           <%= f.text_field :address, autofocus: true, class: "form-control", collection: JpPrefecture::Prefecture.all, :value_method => :name %>
         </div>
 
         <div class="form-group">
-          <%= f.label :電話番号（ハイフンなし）%>
+          <%= f.label :phone_number %>
           <%= f.text_field :phone_number, autofocus: true, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :自己紹介文%>
+          <%= f.label :introduction %>
           <%= f.text_area :introduction, placeholder: "例)最近は美容グッズや健康食品にハマっています！何かおすすめの物があれば教えてください！", autofocus: true, class: "form-control" %>
         </div>
 
