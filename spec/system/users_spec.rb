@@ -129,7 +129,7 @@ RSpec.describe 'User', type: :system do
         end
         it '編集に成功する' do
           # 名前を三郎に変更
-          fill_in 'user[first_name]', with: '三郎'
+          fill_in '名前(名)', with: '三郎'
           fill_in 'フリガナ(メイ)', with: 'サブロウ'
           click_button '変更を保存する'
           expect(page).to have_content '会員情報の更新が完了しました。'
@@ -138,7 +138,7 @@ RSpec.describe 'User', type: :system do
         end
         it '編集に失敗する' do
           # first_name 名前(名)を空欄で入力
-          fill_in 'user[first_name]', with: ''
+          fill_in '名前(名)', with: ''
           click_button '変更を保存する'
           expect(page).to have_content '件のエラーが発生したため 個人会員 は保存されませんでした。'
           expect(page).to have_content '名前(名)を入力してください'

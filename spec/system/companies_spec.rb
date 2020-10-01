@@ -37,7 +37,7 @@ RSpec.describe "Companies", type: :system do
 
   describe '法人がログイン可能になるまでのテスト' do
     before do
-      # 法人が登録申請フォーム入力
+      # 1.法人が登録申請フォーム入力
       visit new_company_registration_path
       fill_in '企業名', with: "テスト2株式会社"
       fill_in 'フリガナ', with: "テストツーカブシキガイシャ"
@@ -52,19 +52,22 @@ RSpec.describe "Companies", type: :system do
     
     describe '管理者：通知の確認〜申請承認のテスト' do
       before do
-        # 管理者でログイン
+        # 2.管理者でログイン
         visit new_admin_session_path
         fill_in 'メールアドレス', with: admin.email
         fill_in 'パスワード', with: admin.password
         click_button 'ログイン'
       end
+      # 3.法人登録申請という文言があることから、管理者ログインができていることを確認
       it 'ヘッダーに法人登録申請と表示される' do
         expect(page).to have_content('法人登録申請')
       end
+      # 4.法人登録申請のリンクをクリックし、申請企業名を確認
       it '法人登録申請一覧に申請してきた法人名が表示される' do
         visit admin_notifications_path
         expect(page).to have_content("テスト2株式会社 様からの法人登録申請があります")
       end
+      # 5.申請一覧から法人登録申請というリンクをクリックする
       it 'リンクから企業詳細ページへ遷移できる' do
         visit admin_notifications_path
         notification = Notification.find_by({receiver_id: admin.id, receiver_class: "admin", sender_id: Company.last.id, sender_class: "company"})
@@ -73,11 +76,13 @@ RSpec.describe "Companies", type: :system do
         end
         expect(current_path).to eq admin_company_path(notification.sender_id)
       end
+      # 6.登録情報編集ページへ
       it '編集画面へ遷移する' do
         visit admin_company_path(Company.last.id)
         click_link '編集する'
         expect(current_path).to eq edit_admin_company_path(Company.last.id)
       end
+      # 7.ラジオボタンに注意
       it '申請ステータスを承認済にする' do
         visit edit_admin_company_path(Company.last.id)
         choose "company_approved_true" # 申請ステータスを承認済にチェック（company_approved_trueはラジオボタン要素のid）
