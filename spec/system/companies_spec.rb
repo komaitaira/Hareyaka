@@ -68,7 +68,9 @@ RSpec.describe "Companies", type: :system do
       it 'リンクから企業詳細ページへ遷移できる' do
         visit admin_notifications_path
         notification = Notification.find_by({receiver_id: admin.id, receiver_class: "admin", sender_id: Company.last.id, sender_class: "company"})
-        find("#request_message").click # ページに同一の文言のリンクがある場合（今回の場合「法人登録申請」）、idを指定してあげる
+        within '.request-message' do
+          click_link '法人登録申請' # ページに同一の文言のリンクがある場合（今回の場合「法人登録申請」）、classを指定してあげてwithin囲む
+        end
         expect(current_path).to eq admin_company_path(notification.sender_id)
       end
       it '編集画面へ遷移する' do
