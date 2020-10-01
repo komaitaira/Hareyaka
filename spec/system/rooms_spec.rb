@@ -7,8 +7,8 @@ RSpec.describe "Rooms", type: :system do
   describe 'DMのテスト' do
     before do
       visit new_user_session_path
-      fill_in 'user[email]', with: user.email
-      fill_in 'user[password]', with: user.password
+      fill_in 'メールアドレス', with: user.email
+      fill_in 'パスワード', with: user.password
       click_button 'ログイン'
       expect(page).to have_content 'ログインしました。'
     end
@@ -16,12 +16,12 @@ RSpec.describe "Rooms", type: :system do
     context '表示の確認' do
       it '専門家一覧に遷移ができる' do
         click_on '専門家'
-        expect(current_path).to eq('/companies')
+        expect(current_path).to eq companies_path
       end
       it '企業詳細画面に遷移しDMを始めるボタンが表示される' do
         visit companies_path
         click_on 'テスト株式会社'
-        expect(current_path).to eq('/companies/' + company.id.to_s)
+        expect(current_path).to eq company_path(company)
         expect(page).to have_content 'テスト株式会社'
         expect(page).to have_button 'DMを始める'
       end
@@ -33,15 +33,15 @@ RSpec.describe "Rooms", type: :system do
         click_on 'DMを始める'
       end
       it 'チャットルームに入ることができ、送信フォームが表示される' do
-        expect expect(page).to have_field 'message[message]'
+        expect expect(page).to have_field 'メッセージを入力して下さい'
       end
       it 'メッセージを送信できる' do
-        fill_in 'message[message]', with: 'テストメッセージ'
+        fill_in 'メッセージを入力して下さい', with: 'テストメッセージ'
         click_button '送信'
         expect(page).to have_content 'テストメッセージ'
       end
       it 'メッセージ送信後、DM一覧画面に送信履歴が追加される' do
-        fill_in 'message[message]', with: 'テストメッセージ'
+        fill_in 'メッセージを入力して下さい', with: 'テストメッセージ'
         click_button '送信'
         expect(page).to have_content 'テストメッセージ' # チャットルーム内のメッセージ
         visit rooms_path
@@ -55,13 +55,13 @@ RSpec.describe "Rooms", type: :system do
         # 個人側でメッセージ送信
         visit company_path(company)
         click_on 'DMを始める'
-        fill_in 'message[message]', with: 'テストメッセージ'
+        fill_in 'メッセージを入力して下さい', with: 'テストメッセージ'
         click_button '送信'
         logout(user)
         # 法人ログイン
         visit new_company_session_path
-        fill_in 'company[email]', with: company.email
-        fill_in 'company[password]', with: company.password
+        fill_in 'メールアドレス', with: company.email
+        fill_in 'パスワード', with: company.password
         click_button 'ログイン'
         expect(page).to have_content 'ログインしました。'
       end
@@ -82,7 +82,7 @@ RSpec.describe "Rooms", type: :system do
       it 'メッセージを送信できる' do
         click_on '通知'
         click_on 'メッセージ'
-        fill_in 'message[message]', with: 'テストメッセージへの返信'
+        fill_in 'メッセージを入力して下さい', with: 'テストメッセージへの返信'
         click_button '送信'
         expect(page).to have_content 'テストメッセージへの返信'
       end

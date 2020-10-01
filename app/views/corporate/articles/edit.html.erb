@@ -8,30 +8,30 @@
     <div class="row">
       <div class="col-md-4">     
         <div class="form-group">
-          <%= f.label :記事トップ画像 %>
+          <%= f.label :image, "記事トップ画像" %>
           <%= attachment_image_tag @article, :image, class: "img-fluid image_preview", fallback: "article.jpg" %>
           <%= f.attachment_field :image, id: "image-field" %>
         </div>
         
         <div class="form-group">
-          <%= f.label :ジャンル %><br>
+          <%= f.label :genre_id, "ジャンル" %><br>
           <%= f.collection_select :genre_id, Genre.all, :id, :genre_name, include_blank: "--選択してください--" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :掲載ステータス %><br>
+          <%= f.label :is_active, "掲載ステータス" %><br>
           <%= f.select :is_active, [["掲載中", true], ["掲載停止中", false]], include_blank: "--選択してください--" %>
         </div>
       </div>
 
       <div class="col-md-8">
         <div class="form-group">
-          <%= f.label :記事タイトル %>
+          <%= f.label :title %>
           <%= f.text_field :title, autofocus: true, class: "form-control" %>
         </div>
 
         <div class="field">
-          <%= f.label :記事内容（文字の大きさ、色など自由に変更できます。また写真やリンクの添付も可能です） %>
+          <%= f.label :body, "記事内容（文字の大きさ、色など自由に変更できます。また写真やリンクの添付も可能です）" %>
           <%= f.text_area :body, 'data-provider': :summernote %>
         </div>
 
