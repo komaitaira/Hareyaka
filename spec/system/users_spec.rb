@@ -1,14 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe 'User', type: :system do
-  let!(:user){FactoryBot.create(:user)}
+  let(:user){FactoryBot.create(:user)}
   describe 'ユーザー認証のテスト' do
     describe 'ユーザー新規登録' do
       before do
-        visit new_user_registration_path
+        visit new_user_registration_path # 新規登録画面へ遷移
       end
       context '新規登録画面に遷移' do
         it '新規登録に成功する' do
+          # fill_in で登録情報をテキストボックスへ入力
           fill_in '名前(姓)', with: "テスト"
           fill_in '名前(名)', with: "二郎"
           fill_in 'フリガナ(セイ)', with: "テスト"
@@ -19,7 +20,7 @@ RSpec.describe 'User', type: :system do
           fill_in '電話番号(ハイフンなし)', with: "22222222222"
           fill_in 'パスワード', with: "testjiro"
           fill_in '確認用パスワード', with: "testjiro"
-          click_button '新規登録'
+          click_button '新規登録' # ボタンをクリック
           expect(page).to have_content 'アカウント登録が完了しました。'
         end
         
@@ -47,8 +48,8 @@ RSpec.describe 'User', type: :system do
 
       context 'ログイン画面に遷移' do
         it 'ログインに成功する' do
-          fill_in "メールアドレス", with: "test@example.com"
-          fill_in 'パスワード', with: "testtaro"
+          fill_in "メールアドレス", with: user.email
+          fill_in 'パスワード', with: user.password
           click_button 'ログイン'
           expect(page).to have_content 'ログインしました。'
         end
