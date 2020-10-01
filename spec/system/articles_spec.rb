@@ -60,8 +60,8 @@ RSpec.describe "Articles", type: :system do
           visit new_corporate_article_path
         end
         it '投稿に成功する' do
-          select "テストジャンル"
-          select "掲載中"
+          select "テストジャンル", from: 'ジャンル'
+          select "掲載中", from: '掲載ステータス'
           fill_in '記事タイトル', with: "RSpecは難しい"
           fill_in '記事内容', with: "難しいけどテストスイートが通って全部緑になると嬉しい"
           click_button "記事を投稿する"
