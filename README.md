@@ -65,3 +65,4 @@ ER図：https://drive.google.com/file/d/1Bpz4NuuUMQFlHKxPN-DPr6uCSm5QFzgW/view?u
 ## Qiita
 [【第１回】RSpecビギナーが、ビギナーなりにModelSpecを書いてみた](https://qiita.com/komaitaira/items/37f464c17f7cdc61d292 "【第１回】RSpecビギナーが、ビギナーなりにModelSpecを書いてみた")<br>
 [【第２回】RSpecビギナーが、ビギナーなりにSystemSpecを書いてみた（沼編）](https://qiita.com/komaitaira/items/b9efc86cde48fb5ca8ef "【第２回】RSpecビギナーが、ビギナーなりにSystemSpecを書いてみた（沼編）")<br>
+[【第３回】RSpecビギナーが、ビギナーなりにSystemSpecを書いてみた（完結編）](https://qiita.com/komaitaira/items/2648d742285c129712eb "【第３回】RSpecビギナーが、ビギナーなりにSystemSpecを書いてみた（完結編）")<br>
