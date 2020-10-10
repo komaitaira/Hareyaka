@@ -87,6 +87,7 @@ gem 'summernote-rails'
 gem "chartkick"
 gem 'refile-s3'
 gem 'dotenv-rails'
+gem 'simplecov'
 group :production do
   gem 'mysql2'
 end
