@@ -5,12 +5,15 @@
       <div class="col-sm-6 col-md-6 col-lg-5">
         <%= image_tag 'iphone.png', class: "iphone" %>
       </div>
-      <div class="col-sm-6 col-md-6 col-lg-7 top-message">
-        <h1 style="margin-bottom: 40px;"><strong>その悩み、プロに聞いてみよう。</strong></h1>
-        <h4><strong>Hareyaka は様々な悩みを持つ人と</strong></h4>
-        <h4><strong>それを解決するプロをつなげるサービスです。</strong></h4>
-        <p><%= link_to "今すぐ新規登録", new_user_registration_path, class: "btn btn-lg top-registration-btn" %></p>
-        <p style="font-size: small;">ポートフォリオ用にゲストログイン機能を実装しております。<%= link_to "こちら", new_user_session_path %>からお進みください。</p>
+      <div class="col-sm-6 col-md-6 col-lg-7">
+        <div class="top-message">
+          <h1><strong>その悩み、プロに聞いてみよう。</strong></h1>
+          <div class="background"></div>
+          <h4><strong>Hareyaka は様々な悩みを持つ人と</strong></h4>
+          <h4><strong>それを解決するプロをつなげるサービスです。</strong></h4>
+          <p><%= link_to "今すぐ新規登録", new_user_registration_path, class: "btn btn-lg top-registration-btn" %></p>
+          <p style="font-size: small;">ポートフォリオ用にゲストログイン機能を実装しております。<%= link_to "こちら", new_user_session_path %>からお進みください。</p>
+        </div>
       </div>
     </div>
   </div>
@@ -18,8 +21,7 @@
 
 <div id="box2">
   <%# Hareyakaの仕組み%>
-  <h1 class="text-center"><strong>Hareyaka の仕組み</strong></h1>
-  <h5 class="text-center">個人・法人どちらにもメリットのあるものになっております</h5>
+  <h1 class="text-center"><strong class="under">Hareyaka の仕組み</strong></h1>
   <div class="container">
     <div class="row">
       <div class="offset-lg-2 col-lg-8">
@@ -28,7 +30,7 @@
     </div>
   </div>
   <%# Hareyakaでできること%>
-  <h1 class="text-center" style="margin-bottom: 100px;"><strong>Hareyaka ではこんなことができます</strong></h1>
+  <h1 class="text-center" style="margin-bottom: 100px;"><strong class="under">Hareyaka ではこんなことができます</strong></h1>
   <div class="container">
     <div class="row">
       <div class="col-lg-4">
@@ -49,7 +51,7 @@
 </div>
 
 <%# Hareyakaにいる専門家 %>
-<h1 class="text-center" style="margin: 150px 0 100px 0;"><strong>Hareyaka にはこんな専門家がいます</strong></h1>
+<h1 class="text-center" style="margin: 150px 0 100px 0;"><strong class="under">Hareyaka にはこんな専門家がいます</strong></h1>
 <div class="container" style="margin-bottom: 100px;">
   <div class="row">
     <div class="col-lg-3">
