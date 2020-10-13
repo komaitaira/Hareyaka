@@ -145,6 +145,17 @@ a{
   margin-bottom: 120px;
 }
 
+.background {
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(90deg,#d8e9f2, #ffffff);
+  margin-bottom: 45px;
+}
+
+.under{
+  border-bottom: solid 2px #17a2b8;
+}
+
 .iphone{
   width: 100%;
 }
