@@ -41,7 +41,30 @@ https://hareyaka.work
 ※記事内容は全て自分の経験や考え、あるいは完全な妄想で記載しましたので是非ご覧下さい。<br>
 <img width="850" alt="スクリーンショット 2020-09-17 1 02 04" src="https://user-images.githubusercontent.com/63830279/93362986-9c998d80-f881-11ea-8948-d1cba558328a.png">
 
-以下リンクに上記以外の機能を記載しております<br>
+- ユーザー登録、ログイン機能(devise)
+  - 自動住所入力
+  - メール(法人登録申請)
+- 投稿機能
+  - 画像投稿(refile)
+  - 画像プレビュー
+  - 記事投稿(summernote)
+- お気に入り機能(Ajax)
+  - ランキング機能(ジャンル及び掲載ステータスが有効のもの)
+  - お気に入りジャンル割合表示機能
+- フォロー機能(Ajax)
+- ページネーション機能(kaminari)
+- 検索機能(ransack)
+- DM機能
+- 通知機能
+- CSVエキスポート機能
+- RSpec
+  - 単体テスト(ModelSpec)
+  - 統合テスト(SystemSpec)
+- AWS
+  - S3(画像アップロード用、リサイズ用バケット)
+  - Lambda(画像をアップロードするとLambda関数のトリガーが発火し、リサイズ用S3バケットへ保存)
+
+以下リンクに詳細を記載しております<br>
 https://docs.google.com/spreadsheets/d/1W4wlZuPI5ALpAkt4EvuLftHnyrNGN6Zlgp-5mHSqcrw/edit?usp=sharing
 
 ## 設計書
