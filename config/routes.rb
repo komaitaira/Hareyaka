@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     registrations: 'admin/registrations'
   }
   devise_scope :admin do
-    post 'admins/guest_sign_in', to: 'admin/sessions#new_guest' # 管理者ゲストログイン
+    post 'admins/guest_sign_in', to: 'admin/sessions#admin_guest' # 管理者ゲストログイン
   end
   namespace :admin do
     delete 'destroy_all_notifications' => 'notifications#destroy_all'

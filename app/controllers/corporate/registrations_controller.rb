@@ -20,6 +20,13 @@ class Corporate::RegistrationsController < Devise::RegistrationsController
         receiver_class: "admin"
       )
       notification.save if notification.valid?
+      notification_guest = Notification.new(
+        sender_id: Company.last.id,
+        sender_class: "company",
+        receiver_id: Admin.last.id, # ゲスト管理者
+        receiver_class: "admin"
+      )
+      notification_guest.save if notification_guest.valid?
     end
   end
 

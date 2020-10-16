@@ -25,7 +25,6 @@ class Admin::CompaniesController < ApplicationController
       if @company.approved == true
         # 通知を受け取った側が管理者のデータかつcheckedがfalseのものを取得しtrueに更新
         Notification.where(
-          receiver_id: current_admin.id,
           receiver_class: "admin",
           checked: false,
           sender_id: @company.id

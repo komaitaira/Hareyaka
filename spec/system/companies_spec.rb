@@ -67,22 +67,13 @@ RSpec.describe "Companies", type: :system do
         visit admin_notifications_path
         expect(page).to have_content("テスト2株式会社 様からの法人登録申請があります")
       end
-      # 5.申請一覧から法人登録申請というリンクをクリックする
-      it 'リンクから企業詳細ページへ遷移できる' do
-        visit admin_notifications_path
-        notification = Notification.find_by({receiver_id: admin.id, receiver_class: "admin", sender_id: Company.last.id, sender_class: "company"})
-        within '.request-message' do
-          click_link '法人登録申請' # ページに同一の文言のリンクがある場合（今回の場合「法人登録申請」）、classを指定してあげてwithin囲む
-        end
-        expect(current_path).to eq admin_company_path(notification.sender_id)
-      end
-      # 6.登録情報編集ページへ
+      # 5.登録情報編集ページへ
       it '編集画面へ遷移する' do
         visit admin_company_path(Company.last.id)
         click_link '編集する'
         expect(current_path).to eq edit_admin_company_path(Company.last.id)
       end
-      # 7.ラジオボタンに注意
+      # 6.ラジオボタンに注意
       it '申請ステータスを承認済にする' do
         visit edit_admin_company_path(Company.last.id)
         choose "company_approved_true" # 申請ステータスを承認済にチェック（company_approved_trueはラジオボタン要素のid）

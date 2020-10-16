@@ -17,8 +17,18 @@ require './db/seeds/relationship.rb'
 
 # 管理者
 Admin.create!(
-  id: 1,
-  email: 'admin@example.com',
-  password: 'adminadmin',
-  password_confirmation: 'adminadmin'
-  )
+  [
+    {
+      id: 1,
+      email: 'admin@example.com',
+      password: 'adminadmin',
+      password_confirmation: 'adminadmin'
+    },
+
+    {
+      id: 2,
+      email: 'guestadmin@example.com',
+      password: SecureRandom.urlsafe_base64
+    }
+  ]
+)
