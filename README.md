@@ -1,5 +1,5 @@
 # Hareyaka
-<img width="850" alt="スクリーンショット 2020-09-28 13 16 26" src="https://user-images.githubusercontent.com/63830279/94390257-20f6e500-018d-11eb-8694-e9c39e795a38.png">
+<img width="1440" alt="スクリーンショット 2020-10-18 22 04 17" src="https://user-images.githubusercontent.com/63830279/96368266-08775a80-118e-11eb-9c35-2ad1de4e0db3.png">
 
 ## URL
 https://hareyaka.work
