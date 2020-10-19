@@ -2,7 +2,6 @@
   <div class="row">
     <div class="offset-sm-2 col-sm-8 offset-sm-2">
       <h4>管理者ログイン</h4>
-      <h6 style="color: red;">※法人登録申請の確認/承認はゲストログインではなく以下のメールアドレス・パスワードからログインをお願いします。</h6>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         
         <% flash.each do |name, msg| %>
@@ -13,13 +12,11 @@
         
         <div class="form-group">
           <%= f.label :email, class: "col-xs-3" %>
-          <span style="color: grey;">admin@example.com</span>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
         </div>
 
         <div class="form-group">
           <%= f.label :password, class: "col-xs-3" %>
-          <span style="color: grey;">adminadmin</span>
           <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
         </div>
 
