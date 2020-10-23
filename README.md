@@ -57,9 +57,12 @@ https://hareyaka.work
 - DM機能
 - 通知機能
 - CSVエキスポート機能
-- RSpec
-  - 単体テスト(ModelSpec)
-  - 統合テスト(SystemSpec)
+- RSpec 
+  - 単体テスト(ModelSpec) <br>
+  [【第１回】RSpecビギナーが、ビギナーなりにModelSpecを書いてみた](https://qiita.com/komaitaira/items/37f464c17f7cdc61d292 "【第１回】RSpecビギナーが、ビギナーなりにModelSpecを書いてみた")
+  - 統合テスト(SystemSpec)<br>
+  [【第２回】RSpecビギナーが、ビギナーなりにSystemSpecを書いてみた（沼編)](https://qiita.com/komaitaira/items/b9efc86cde48fb5ca8ef "【第２回】RSpecビギナーが、ビギナーなりにSystemSpecを書いてみた（沼編）") <br>
+  [【第３回】RSpecビギナーが、ビギナーなりにSystemSpecを書いてみた（完結編）](https://qiita.com/komaitaira/items/2648d742285c129712eb "【第３回】RSpecビギナーが、ビギナーなりにSystemSpecを書いてみた（完結編）") 
 - AWS
   - S3(画像アップロード用、リサイズ用バケット)
   - Lambda(画像をアップロードするとLambda関数のトリガーが発火し、リサイズ用S3バケットへ保存)
@@ -80,12 +83,11 @@ ER図：https://drive.google.com/file/d/1Bpz4NuuUMQFlHKxPN-DPr6uCSm5QFzgW/view?u
 ### 環境・使用技術
 * Ruby 2.5.7
 * Rails 5.2.4.3
+* jQuery
 * MySQL2
 * AWS(EC2、RDS for MySQL、Route53、CloudWatch、S3、Lambda)
 * Nginx、Puma
 
 
 ## Qiita
-[【第１回】RSpecビギナーが、ビギナーなりにModelSpecを書いてみた](https://qiita.com/komaitaira/items/37f464c17f7cdc61d292 "【第１回】RSpecビギナーが、ビギナーなりにModelSpecを書いてみた")<br>
-[【第２回】RSpecビギナーが、ビギナーなりにSystemSpecを書いてみた（沼編）](https://qiita.com/komaitaira/items/b9efc86cde48fb5ca8ef "【第２回】RSpecビギナーが、ビギナーなりにSystemSpecを書いてみた（沼編）")<br>
-[【第３回】RSpecビギナーが、ビギナーなりにSystemSpecを書いてみた（完結編）](https://qiita.com/komaitaira/items/2648d742285c129712eb "【第３回】RSpecビギナーが、ビギナーなりにSystemSpecを書いてみた（完結編）")<br>
+https://qiita.com/komaitaira
