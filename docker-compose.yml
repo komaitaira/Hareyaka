@@ -17,7 +17,7 @@ services:
     volumes:
       - '.:/Hareyaka'
     environment: 
-      - 'DB_PASSWORD=password'
+      - 'MYSQL_ROOT_PASSWORD=password'
     tty: true
     stdin_open: true
     depends_on:
