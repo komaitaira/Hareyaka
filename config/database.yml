@@ -31,7 +31,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   port: 3306
-  password: <%= ENV.fetch("DATABASE_PASSWORD") %>
+  password: <%= ENV.fetch("DB_PASSWORD") %>
   host: db # docker-compose.ymlのservice名と合わせる
 
 development:
