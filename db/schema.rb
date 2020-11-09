@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_08_07_031414) do
 
-  create_table "admins", force: :cascade do |t|
+  create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2020_08_07_031414) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "articles", force: :cascade do |t|
+  create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "company_id", null: false
     t.integer "genre_id", null: false
     t.string "title", null: false
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_08_07_031414) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "companies", force: :cascade do |t|
+  create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -57,24 +57,24 @@ ActiveRecord::Schema.define(version: 2020_08_07_031414) do
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
   end
 
-  create_table "favorites", force: :cascade do |t|
+  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "article_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "genres", force: :cascade do |t|
+  create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "genre_name", null: false
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "company_id"
-    t.integer "room_id"
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "company_id"
+    t.bigint "room_id"
     t.text "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -83,36 +83,36 @@ ActiveRecord::Schema.define(version: 2020_08_07_031414) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "notifications", force: :cascade do |t|
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "receiver_id"
     t.integer "sender_id"
     t.string "receiver_class"
     t.string "sender_class"
     t.string "action"
-    t.integer "room_id"
+    t.bigint "room_id"
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_notifications_on_room_id"
   end
 
-  create_table "relationships", force: :cascade do |t|
+  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "following_id", null: false
     t.integer "follower_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "rooms", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "company_id"
+  create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_rooms_on_company_id"
     t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -134,4 +134,6 @@ ActiveRecord::Schema.define(version: 2020_08_07_031414) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "rooms", "companies"
+  add_foreign_key "rooms", "users"
 end

@@ -4,21 +4,44 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 #
-default: &default
-  adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
 
-development:
-  <<: *default
-  database: db/development.sqlite3
+# =======sqlite3の元々の設定=======
+# default: &default
+#   adapter: sqlite3
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   timeout: 5000
+
+# development:
+#   <<: *default
+#   database: db/development.sqlite3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
+
+# test:
+#   <<: *default
+#   database: db/test.sqlite3
+# =======sqlite3の元々の設定=======
+
+# ここから追加
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  port: 3306
+  password: <%= ENV.fetch("DATABASE_PASSWORD") %>
+  host: db # docker-compose.ymlのservice名と合わせる
+
+development:
+  <<: *default
+  database: hareyaka_development # 任意
+
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: hareyaka_test # 任意
+# ここまで追加
 
 production:
   <<: *default

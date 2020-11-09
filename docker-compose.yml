@@ -1,0 +1,26 @@
+version: '3'
+
+volumes:
+  mysql-data:
+
+services:
+  db: 
+    image: mysql:5.7
+    volumes:
+      - 'mysql-data:/var/lib/mysql'
+
+  web:
+    build: .
+    command: /bin/sh -c "rm -f /Hareyaka/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    ports:
+      - '3000:3000'
+    volumes:
+      - '.:/Hareyaka'
+    environment: 
+      - 'DATABASE_PASSWORD=password'
+    tty: true
+    stdin_open: true
+    depends_on:
+      - db
+    links:
+      - db
