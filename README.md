@@ -18,17 +18,17 @@ https://hareyaka.work
 ## サイトテーマ
 イメージは「プロ限定知恵袋」。悩みを持つ人とそれを解決するプロをつなげるサービス。
 
-### テーマを選んだ理由
+## テーマを選んだ理由
 私は前職が銀行員で主に個人への金融商品の販売に携わっていました。<br>
 2018年に話題になった年金2000万円問題を始め、将来へのお金の不安は働き盛りの方や若年層は特に持っていらっしゃると思うのですが、私はその不安の解消のために必要なこととして、これからの時代は資産運用が非常に大切になってくると思っております。もっと多くの方にとって資産運用を分かりやすく身近なものにしたいと考えた事がきっかけで、お金だけでなく大小はあれども何かしらの悩みを抱えている世の中の多くの人々の助けになるようなサービスがあれば、より多くの人がもっと人生を楽しむことができると思い、このテーマにしました。
 
-### ターゲットユーザ
+## ターゲットユーザ
 悩みを持つ幅広い年齢層
 
-### 主な利用シーン
+## 主な利用シーン
 身近な人にはあまり言いたくないような悩み（健康、美容、お金、恋愛、etc.）を持つ方、悩みはあるけどわざわざ外に出向いていくほどでもない（銀行に話を聞きにいく等）と思っている方が、インターネット上で気軽に情報を手に入れられたり、その道のプロに話を聞きたい時に利用する。
 
-### 機能一覧
+## 機能一覧
 <機能例><br>
 ①法人は登録申請後、管理者が申請承認することでログイン可能(ActionMailerを使用)
 <img width="850" alt="スクリーンショット 2020-09-17 1 01 29" src="https://user-images.githubusercontent.com/63830279/93362967-973c4300-f881-11ea-9007-d6e428f24068.png">
@@ -72,20 +72,28 @@ https://docs.google.com/spreadsheets/d/1W4wlZuPI5ALpAkt4EvuLftHnyrNGN6Zlgp-5mHSq
 
 ## 設計書
 インフラ設計書：<br>
-<img width="848" alt="スクリーンショット 2020-09-17 1 21 56" src="https://user-images.githubusercontent.com/63830279/93365713-1b43fa00-f885-11ea-98d5-87fd858dfbae.png">
+<img width="850" alt="スクリーンショット 2020-11-09 20 30 07" src="https://user-images.githubusercontent.com/63830279/98536115-972d5200-22ca-11eb-88b5-942c01f50cba.png">
+
 
 ER図：<br>
 <img width="850" alt="スクリーンショット 2020-09-22 10 01 23" src="https://user-images.githubusercontent.com/63830279/93835622-c9530800-fcba-11ea-8846-c655cab56865.png">
 
 
-### 環境・使用技術
+## 環境・使用技術
+### フロントエンド
+* Bootstrap
+* jQuery
+### バックエンド
 * Ruby 2.5.7
 * Rails 5.2.4.3
-* jQuery
-* MySQL2
-* AWS(EC2、RDS for MySQL、Route53、CloudWatch、S3、Lambda)
-* Nginx、Puma
-
+### 開発環境
+Vagrant 2.2.4
+Docker/Docker-compose
+MySQL2
+### 本番環境
+AWS (EC2、RDS for MySQL、Route53、CloudWatch、S3、Lambda)
+MySQL2
+Nginx、 Puma
 
 ## Qiita
 https://qiita.com/komaitaira
